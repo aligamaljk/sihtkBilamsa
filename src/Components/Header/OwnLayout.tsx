@@ -20,8 +20,8 @@ const OwnLayout = ({t} : {t : any}) => {
         </Header>
         <Content
           style={{
-            padding: '0 50px',
-            marginTop: 90,
+            // padding: '0 50px',
+            marginTop: 81,
           }}
         >
           <Outlet />

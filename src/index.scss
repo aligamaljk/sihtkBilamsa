@@ -7,3 +7,36 @@
 // body{
 //   background-color: #f8f8f8;
 // }
+
+.section-header{
+        padding: 20px 70px;
+        background-color: #8c4191;
+        // background-blend-mode: multiply;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) ;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 250px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #fff;
+        .title{
+            font-size: 25px;
+            font-weight: 700;
+            color: #fff;
+            cursor: pointer;
+        }
+        .link{
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+            font-weight: 500;
+            a{
+                text-decoration: none;
+                color: #fff;
+            }
+        }
+        }
