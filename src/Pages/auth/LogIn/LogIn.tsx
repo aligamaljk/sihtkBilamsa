@@ -19,7 +19,7 @@ const LogIn: React.FC<ITranslation> = ({ t }) => {
     console.log('Success:', values);
     dispatch(setCurrentUser(values));
     setStoredUser(values.username);
-    message.success(t.successLog);
+    message.success(t.successLog + ' ' + values.username);
     navigate('/profile');
   };
   // const { mutate: onAuthLogin, isLoading } = useMutation( authLogin , {

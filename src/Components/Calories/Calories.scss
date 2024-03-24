@@ -1,0 +1,103 @@
+.calories{
+    .section-header{
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../../assets/alonso-reyes-0HlI76m4jxU-unsplash.jpg);
+        background-size: cover;
+        background-position: center center;
+    }
+    .container{
+        margin:10px 0 50px;
+        padding: 50px 0;
+        .title-calories{
+            font-size: 30px;
+            font-weight: 700;
+            line-height: 32px;
+            letter-spacing: 1.5px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .content{
+            display: flex;
+            justify-content: center;
+            // align-items: center;
+            gap: 30px;
+            padding: 0 30px;
+            margin: 50px auto 0;
+            max-width: 1200px;
+            .content-left{
+                width: 50%;
+                background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) , url(../../assets/pexels-jane-trang-doan-1092730.jpg);
+                background-size: cover;
+                background-position: center center;
+                background-repeat: no-repeat;
+                .ant-form-item-required{
+                    color: white;
+                }
+                .calories-form-button{
+                    width: 100%;
+                    margin-top: 10px;
+                    box-shadow: none;
+                    letter-spacing: 2px;
+                    font-size: 19px;
+                    font-weight: 500;
+                }
+            }
+            .content-right{
+                background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) , url(../../assets/charles-gaudreault-xXofYCc3hqc-unsplash.jpg);
+                background-size: cover;
+                background-position: center center;
+                background-repeat: no-repeat;
+                width: 50%;
+                color: #fff;
+                .calories-container{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    // flex-wrap: wrap;
+                    gap: 20px;
+                    .calories-foot-wrapper-mor,
+                    .calories-foot-wrapper-less{
+                        display: flex;
+                        flex-direction: column;
+                        gap: 20px;
+                        .title-calories-less,
+                        .title-calories-mor{
+                            color: rgb(117, 181, 160);
+                            font-size: 23px;
+                            font-weight: 700;
+                            line-height: 32px;
+                            letter-spacing: 1.5px;
+                            text-align: center;
+                            border-bottom: 1px solid #698;
+                            padding-bottom: 10px;
+                        }
+                        .calories-foot-item{
+                            display: flex;
+                            align-items: center;
+                            // justify-content: center;
+                            gap: 10px;
+                            .calories-foot-item-title{
+                                font-size: 20px;
+                                font-weight: 700;
+                                line-height: 32px;
+                                letter-spacing: 1.5px;
+                                color: rgb(114, 199, 170);
+                            }
+                            .calories-foot-item-desc{
+                                font-size: 16px;
+                                font-weight: 400;
+                                line-height: 32px;
+                                letter-spacing: 1.5px;
+                            }
+                        }
+                        .total-calories{
+                            font-size: 18px;
+                            font-weight: 700;
+                            line-height: 32px;
+                            letter-spacing: 1.5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

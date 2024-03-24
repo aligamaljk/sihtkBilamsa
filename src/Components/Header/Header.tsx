@@ -6,6 +6,7 @@ import { clearStoredUser, getStoredUser, setLang } from '../../services/user-sto
 import { ITranslation } from '../../types';
 import img from '../../assets/download.png';
 import img2 from '../../assets/translating.0144a3cdb7995b9cf71d492fe721e60b.svg';
+import { IoIosArrowDown } from 'react-icons/io';
 
 const HeaderApp: React.FC<ITranslation> = ({ t }) => {
   const navigate = useNavigate();
@@ -25,6 +26,21 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
       label: 'العربية',
     },
   ];
+
+  const itemsLink = [
+    {
+      key: '1',
+      label: <Link to="/bmr"> BMR</Link>,
+    },
+    {
+      key: '2',
+      label: <Link to="/calories">{t.calories}</Link>,
+    },
+    {
+      key: '3',
+      label: <Link to="/blogs">{t.articles}</Link>,
+    },
+  ];
   return (
     <div className="header">
       <div className="logo">
@@ -33,7 +49,28 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
       <div className="links">
         <Link to="/">{t.home}</Link>
         <Link to="/about">{t.aboutUs}</Link>
-        <Link to="/blogs">{t.blogs}</Link>
+        <Dropdown
+          arrow={{ pointAtCenter: true }}
+          trigger={['hover']}
+          menu={{ items: itemsLink }}
+        >
+          <span
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '5px',
+              cursor: 'pointer',
+              fontSize: '18px',
+              fontWeight: '400',
+              color: 'black',
+              textTransform: 'capitalize',
+              letterSpacing: '0.14px',
+            }}
+          >
+            {t.services} <IoIosArrowDown />
+          </span>
+        </Dropdown>
+        {/* <Link to="/blogs">{t.articles}</Link> */}
         <Link to="/contact">{t.contactUs}</Link>
       </div>
       <div className="login">
@@ -68,10 +105,17 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
           menu={{ items: items, onClick: chanageLang }}
         >
           <span
-            style={{ cursor: 'pointer', fontSize: '16px', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '5px' }}
+            style={{
+              cursor: 'pointer',
+              fontSize: '16px',
+              fontWeight: '600',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '5px',
+            }}
           >
             <Image src={img2} preview={false} width={18} />
-          {t.Language}
+            {t.Language}
           </span>
         </Dropdown>
       </div>

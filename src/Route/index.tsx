@@ -10,6 +10,7 @@ import SignUp from '../Pages/auth/SignUp/SignUp';
 import Blogs from '../Components/Blogs/Blogs';
 import Contact from '../Components/Contact/Contact';
 import Profile from '../Components/Profile/Profile';
+import Calories from '../Components/Calories/Calories';
 
 const RoutesWrapper = ({ t }: { t: any }) => {
   const routes = useRoutes([
@@ -30,6 +31,10 @@ const RoutesWrapper = ({ t }: { t: any }) => {
           element: <h1> about </h1>,
         },
         {
+          path: 'contact',
+          element: <Contact t={t} />,
+        },
+        {
           path: 'blogs',
           element: getStoredUser() ? (
             <Blogs t={t} />
@@ -38,8 +43,12 @@ const RoutesWrapper = ({ t }: { t: any }) => {
           ),
         },
         {
-          path: 'contact',
-          element: <Contact t={t} />,
+          path: 'calories',
+          element: getStoredUser() ? <Calories t={t}/> : <Navigate to="/login" replace />,
+        },
+        {
+          path: 'bmr',
+          element: getStoredUser() ? <h1> bmr </h1> : <Navigate to="/login" replace />,
         },
         {
           path: 'profile',

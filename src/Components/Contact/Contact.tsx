@@ -54,7 +54,7 @@ const Contact : React.FC <ITranslation> = ({t}) => {
                   name="message"
                   rules={[{ required: true, message: t.requiredMessage }]}
                 >
-                  <Input.TextArea placeholder="Message" />
+                  <Input.TextArea placeholder="Message"  autoSize={{ minRows: 4, maxRows: 6 }}  />
                 </Form.Item>
 
                 <Form.Item>
