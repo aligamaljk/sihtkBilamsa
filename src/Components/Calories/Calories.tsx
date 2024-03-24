@@ -102,7 +102,6 @@ const Calories : React.FC <ITranslation> = ({t}) => {
                   </div>
                   <div className="calories-foot-item">
                     <div className="calories-foot-item-title">
-                      {' '}
                       {t.protein}:
                     </div>
                     <div className="calories-foot-item-desc"> 100g</div>
