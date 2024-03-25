@@ -52,7 +52,8 @@ export default {
   for: 'Forget',
   senUpMes: 'Sign up to ',
   contactTitle: 'Contact Health',
-  contactDesc: 'Our team receives your inquiries and provides support 24/7.',
+  contactDesc:
+    'Our team receives your inquiries and provides support 24/7.',
   contactName: 'Name',
   contactEmail: 'Email',
   contactMessage: 'Message',
@@ -107,4 +108,12 @@ export default {
   LogOutMessageModal : "Are you sure you want to log out?",
   okText : "Ok",
   cancelText : "Cancel",
+  websiteName: 'Sihtk Bilamsa',
+  aboutPage: {
+    about: 'About',
+    aboutDescriptionP1:
+      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore a illo, deserunt illum at similique soluta. Deleniti eligendi sunt, inventore eius, quod culpa architecto quibusdam, vitae consequatur harum odit nulla!',
+    aboutDescriptionP2:
+      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore a illo, deserunt illum at similique soluta. Deleniti eligendi sunt, inventore eius, quod culpa architecto quibusdam, vitae consequatur harum odit nulla!'
+  }
 };

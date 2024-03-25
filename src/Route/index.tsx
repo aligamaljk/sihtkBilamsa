@@ -11,6 +11,7 @@ import Blogs from '../Components/Blogs/Blogs';
 import Contact from '../Components/Contact/Contact';
 import Profile from '../Components/Profile/Profile';
 import Calories from '../Components/Calories/Calories';
+import AboutUs from '../Components/AboutUs/AboutUs';
 
 const RoutesWrapper = ({ t }: { t: any }) => {
   const routes = useRoutes([
@@ -28,7 +29,7 @@ const RoutesWrapper = ({ t }: { t: any }) => {
         },
         {
           path: 'about',
-          element: <h1> about </h1>,
+          element: <AboutUs t={t}/>,
         },
         {
           path: 'contact',
