@@ -1,0 +1,41 @@
+# Ignore build artifacts
+dist/
+
+# Ignore Node.js modules
+node_modules/
+
+# Ignore version control directories
+.git/
+
+# Ignore Vite cache
+.cache/
+
+# Ignore log files
+logs/
+
+# Ignore TypeScript and JavaScript build output
+*.tsbuildinfo
+*.js
+
+# Ignore Vite output directory
+build/
+
+# Ignore environment files
+.env
+
+# Ignore editor-specific files
+.vscode/
+.idea/
+
+# Ignore test files
+tests/
+
+# Ignore coverage directory
+coverage/
+
+# Ignore generated files
+generated/
+
+# Ignore eslint and stylelint configuration files
+.eslintrc.js
+.stylelintrc.js
