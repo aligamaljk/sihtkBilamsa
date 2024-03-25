@@ -2,8 +2,64 @@ import { Link } from "react-router-dom";
 import { ITranslation } from "../../types"
 import { IoIosArrowForward } from 'react-icons/io';
 import "./Calories.scss"
-import { Button, Card, Form, Input, Select } from "antd";
+import { Button, Card, Form, Input, Select, SelectProps } from "antd";
+import { useState } from "react";
 const Calories : React.FC <ITranslation> = ({t}) => {
+  const [form] = Form.useForm();
+  const [bmi,setBmi] = useState<number>(0)
+  const onFinish = (values: any) => {
+    console.log("Success:", values);
+    const { weight, height, burn } = values;
+    const bmi = weight / (height * height);
+    setBmi(bmi)
+  }
+  console.log('BMI:',bmi);
+  const Bodyshape  = () => {
+   let valueShape ;
+   let des;
+  switch (true) {
+    case bmi < 18:
+      valueShape = t.skinny
+      des = t.des1
+      break;
+    case bmi >= 18 && bmi < 25:
+      valueShape = t.normal
+      des = t.des2
+      break;
+    case bmi >= 25 && bmi < 30:
+      valueShape = t.overweight
+      des = t.des3
+      break;
+    case bmi >= 30 && bmi < 35:
+      valueShape = t.firstDegree
+      des = t.des4
+      break;
+    case bmi >= 35 && bmi < 40:
+      valueShape = t.secondDegree
+      des = t.des5
+      break;
+    case bmi >= 40:
+      valueShape = t.dangerousObesity
+      des = t.des6
+      break;
+    default:
+      valueShape = t.dangerousObesity
+      break;
+  }
+  return {valueShape,des}
+}
+// console.log('Bodyshape:',Bodyshape());
+
+const options : SelectProps['options']  = [
+  {
+    value: 'male',
+    label: t.male,
+  },
+  {
+    value: 'female',
+    label: t.female,
+  },
+];
   return (
     <>
       <div className="calories">
@@ -15,10 +71,13 @@ const Calories : React.FC <ITranslation> = ({t}) => {
           </div>
         </div>
         <div className="container">
+          <div className="container-calories">
           <div className="title-calories">{t.caloriesTitle}</div>
           <div className="content">
             <Card className="content-left">
-              <Form layout="vertical" name="calories" className="form-calories">
+              <Form layout="vertical" name="calories" className="form-calories"
+                form={form} onFinish={onFinish}
+              >
                 <Form.Item
                   name="weight"
                   label={t.weight}
@@ -116,6 +175,23 @@ const Calories : React.FC <ITranslation> = ({t}) => {
                   </div>
                 </div>
               </div>
+              <div className="body-shape">
+                <h1>{t.bodyShape}: <span>{Bodyshape().valueShape}</span> </h1>
+                <p>{Bodyshape().des}</p>
+              </div>
+            </Card>
+          </div>
+          </div>
+          <div className="container-food">
+            <Card className="card-food">
+              <h3 className="title-card">{t.foodCalories}</h3>
+              <Form className="container-form">
+                <Select placeholder={t.selectFood}
+                showSearch
+                allowClear
+                 options={options}
+                />
+              </Form>
             </Card>
           </div>
         </div>

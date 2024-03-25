@@ -80,7 +80,7 @@
                                 font-weight: 700;
                                 line-height: 32px;
                                 letter-spacing: 1.5px;
-                                color: rgb(114, 199, 170);
+                                // color: rgb(114, 199, 170);
                             }
                             .calories-foot-item-desc{
                                 font-size: 16px;
@@ -97,6 +97,17 @@
                         }
                     }
                 }
+            }
+        }
+        .container-food{
+            margin-top: 50px;
+            .title-card{
+                font-size: 30px;
+                font-weight: 700;
+                line-height: 32px;
+                letter-spacing: 1.5px;
+                text-align: center;
+                margin: 20px 0;
             }
         }
     }

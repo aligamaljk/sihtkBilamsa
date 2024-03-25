@@ -8,7 +8,7 @@ import { setCurrentLang, setCurrentUser } from '../../services/store/reducers/us
 import { useDispatch } from 'react-redux';
 import "./OwnLayout.scss"
 import HeaderApp from './Header';
-import FooterApp from './Footer';
+import FooterApp from "../Footer/Footer";
 const { Content, Sider, Header, Footer } = Layout;
 const OwnLayout = ({t} : {t : any}) => {
   return (
@@ -27,7 +27,7 @@ const OwnLayout = ({t} : {t : any}) => {
           <Outlet />
         </Content>
         <Footer>
-          <FooterApp />
+          <FooterApp t={t} />
         </Footer>
       </Layout>
   );

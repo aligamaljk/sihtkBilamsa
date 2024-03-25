@@ -94,6 +94,25 @@ export interface ITranslation {
         totalCalories?: string;
         caloriesMore?: string;
         caloriesLess?: string;
+        bodyShape?: string;
+        skinny?: string;
+        normal?: string;
+        overweight?: string;
+        firstDegree?: string;
+        secondDegree?: string;
+        dangerousObesity?: string;
+        des1?: string;
+        des2?: string;
+        des3?: string;
+        des4?: string;
+        des5?: string;
+        des6?: string;
+        foodCalories?: string;
+        selectFood?: string;
+        LogOutMessageModal?: string;
+        okText?: string;
+        cancelText?: string;
+        footer?: string;
     };
 }
 

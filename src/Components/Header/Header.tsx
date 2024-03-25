@@ -1,4 +1,4 @@
-import { Button, Dropdown, Image, message } from 'antd';
+import { Button, Dropdown, Image, message, Popconfirm } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setCurrentLang, setCurrentUser } from '../../services/store/reducers/user';
@@ -75,20 +75,43 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
       </div>
       <div className="login">
         {getStoredUser() ? (
-          <Button
-            onClick={() => {
-              clearStoredUser();
-              dispatch(setCurrentUser(null));
-              navigate('/login');
-              message.success(t.LogOutMessage);
-            }}
-            type="text"
-            danger
-            size="small"
-            style={{ fontSize: '16px', fontWeight: '600' }}
+          <div className="login">
+             <Popconfirm
+              // title={t.LogOutMessage}
+              title="Are you sure?"
+              icon={<></>}
+              placement="topLeft"
+              okType="danger"
+              okText={t.okText}
+              cancelText={t.cancelText}
+              onConfirm={() => {
+                clearStoredUser();
+                dispatch(setCurrentUser(null));
+                navigate('/login');
+                // message.success(t.LogOutMessage);
+              }}
+              onCancel={() => {
+                message.error('Click on No');
+              }}
+              // okText="Yes"
+              // cancelText="No"
+              >
+                <Button
+                  type="text"
+                  danger
+                  size="small"
+                  style={{ fontSize: '16px', fontWeight: '600' }}
+                >
+                  {t.LogOut}
+                </Button>
+            </Popconfirm>
+          <Link to="/profile"
+            title='Profile'
+            style={{ display: 'flex', alignItems: 'center', gap: '5px',marginRight: '5px' }}
           >
-            {t.LogOut}
-          </Button>
+            <Image src={img} preview={false} width={18} />
+          </Link>
+          </div>
         ) : (
           <Link
             to="/login"

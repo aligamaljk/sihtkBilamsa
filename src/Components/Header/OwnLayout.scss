@@ -44,4 +44,14 @@
             }
         }
     }
+    @media screen and (max-width: 800px) {
+        .main-header{
+            .header{
+                .links{
+                    display: none;
+                }
+            }
+        }
+
+    }
 }
