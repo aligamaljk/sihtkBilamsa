@@ -52,7 +52,8 @@ export default {
   for: 'Forget',
   senUpMes: 'Sign up to ',
   contactTitle: 'Contact Health',
-  contactDesc: 'Our team receives your inquiries and provides support 24/7.',
+  contactDesc:
+    'Our team receives your inquiries and provides support 24/7.',
   contactName: 'Name',
   contactEmail: 'Email',
   contactMessage: 'Message',
@@ -83,10 +84,18 @@ export default {
   exercise: 'how many days of exercise',
   days: 'Days',
   calculate: 'Calculate',
-  carbs : 'Carbs',
-  protein : 'Protein',
-  fat : 'Fat',
-  totalCalories : 'Total Calories',
-  caloriesMore : 'calories more than', 
-  caloriesLess : 'calories less than',
+  carbs: 'Carbs',
+  protein: 'Protein',
+  fat: 'Fat',
+  totalCalories: 'Total Calories',
+  caloriesMore: 'calories more than',
+  caloriesLess: 'calories less than',
+  websiteName: 'Sihtk Bilamsa',
+  aboutPage: {
+    about: 'About',
+    aboutDescriptionP1:
+      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore a illo, deserunt illum at similique soluta. Deleniti eligendi sunt, inventore eius, quod culpa architecto quibusdam, vitae consequatur harum odit nulla!',
+    aboutDescriptionP2:
+      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore a illo, deserunt illum at similique soluta. Deleniti eligendi sunt, inventore eius, quod culpa architecto quibusdam, vitae consequatur harum odit nulla!'
+  }
 };

@@ -1,0 +1,89 @@
+.about {
+  background-color: white;
+  .about-us-header {
+    position: relative;
+    .bg-image {
+      background-image: url(../../assets/heart-plate-with-fruits.jpg);
+      background-size: cover;
+      background-position: center;
+      position: absolute;
+      inset: 0;
+      z-index: 5;
+    }
+    .section-header {
+      background-color: rgba(7, 233, 169, 0.1);
+      position: relative;
+      z-index: 10;
+    }
+  }
+
+  .about-us-body {
+    padding: 70px 200px;
+    .description-section {
+      display: grid;
+      padding: 0px 50px;
+      grid-template-columns: 0.7fr 1fr;
+      gap: 30px;
+
+      // Description Info
+      .des-sec-info {
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        flex-direction: column;
+        h2 {
+          display: flex;
+          gap: 5px;
+          align-items: center;
+          span {
+            font-size: 4rem;
+            font-weight: 500;
+          }
+        }
+        .text {
+          p {
+            padding-block: 0.25em;
+            font-size: 1.75rem;
+            font-weight: 400;
+          }
+        }
+      }
+
+      // Description Images
+      .des-sec-images {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        .rectangle {
+          flex-basis: calc(50% - 5px);
+          position: relative;
+        }
+        .rectangle.two {
+          top: 2rem;
+        }
+        .overlay {
+          position: relative;
+          margin-bottom: 10px;
+          overflow: hidden;
+          &::after {
+            content: '';
+            background-color: #06b4cf;
+            opacity: 0.05;
+            border-radius: 20px;
+            position: absolute;
+            inset: 0;
+            z-index: 10;
+          }
+        }
+
+        img {
+          width: 100%;
+          object-fit: cover;
+          vertical-align: middle;
+          position: relative;
+          z-index: 5;
+        }
+      }
+    }
+  }
+}
