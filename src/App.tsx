@@ -7,8 +7,9 @@ import RoutesWrapper from './Route';
 import { useSelector } from 'react-redux';
 import  QueryProvider  from './services/react-query/index';
 import "./styles/ant.scss";
+import { StoreType } from './types';
 function App() {
-  const { currentLang } = useSelector((state: any) => state?.user);
+  const { currentLang } = useSelector((state: StoreType) => state?.user);
   console.log(currentLang);
   const t = currentLang === 'en' ? en : ar;
   useEffect(() => {
