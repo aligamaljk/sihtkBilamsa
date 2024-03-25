@@ -77,8 +77,9 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
         {getStoredUser() ? (
           <div className="login">
              <Popconfirm
-              // title={t.LogOutMessage}
-              title="Are you sure?"
+              title={t.LogOut}
+              description={t.LogOutMessageModal}
+              // title="Are you sure?"
               icon={<></>}
               placement="topLeft"
               okType="danger"
@@ -88,7 +89,7 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
                 clearStoredUser();
                 dispatch(setCurrentUser(null));
                 navigate('/login');
-                // message.success(t.LogOutMessage);
+                message.success(t.LogOutMessage);
               }}
               onCancel={() => {
                 message.error('Click on No');

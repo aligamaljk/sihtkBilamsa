@@ -113,7 +113,7 @@ export interface ITranslation {
         okText?: string;
         cancelText?: string;
         footer?: string;
-  t: {
+  t?: {
     LogIn?: string;
     onError?: string;
     requiredName?: string;
