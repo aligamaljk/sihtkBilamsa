@@ -133,7 +133,7 @@ const Calories : React.FC <ITranslation> = ({t}) => {
             </Card>
             <Card className="content-right">
               <div className="title-calories">
-                {t.calories} <span>(300 cal)</span>{' '}
+                {t.calories} <span>( {bmi} cal)</span>{' '}
               </div>
               <div className="calories-container">
                 {more && bmi > 0 ? (

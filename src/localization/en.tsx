@@ -1,7 +1,7 @@
 export default {
   greeting: 'Hello',
   logo: 'Health',
-  OwnNotFound: 'OwnNotFound',
+  OwnNotFound: 'Go Back To The Homepage',
   product: 'Products',
   cart: 'Cart',
   home: 'Home',
@@ -114,13 +114,14 @@ export default {
   aboutPage: {
     about: 'About',
     aboutDescriptionP1:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore a illo, deserunt illum at similique soluta. Deleniti eligendi sunt, inventore eius, quod culpa architecto quibusdam, vitae consequatur harum odit nulla!',
+      'We aim to provide a comprehensive platform to promote health and well-being, striving to assist you in improving your healthy lifestyle. We offer a range of tools and features to help you track your physical activity and set healthy goals.',
     aboutDescriptionP2:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore a illo, deserunt illum at similique soluta. Deleniti eligendi sunt, inventore eius, quod culpa architecto quibusdam, vitae consequatur harum odit nulla!'
+      'Additionally, we endeavor to provide important data and statistics to help you monitor your progress and make better health decisions. Furthermore, we offer articles and educational resources on health to assist you in making informed and healthy choices.',
+      teamSectionTitlePart1: 'Meet Our',
+      teamSectionTitlePart2: 'Team'
   },
   goal:"Goal",
   moreCal:" gain weight",
   lessCal:" lose weight",
   stability:"Weight stability",
-
-};
+  }
