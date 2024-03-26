@@ -1,5 +1,5 @@
 import { Button, Dropdown, Image, message, Popconfirm } from 'antd';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setCurrentLang, setCurrentUser } from '../../services/store/reducers/user';
 import { clearStoredUser, getStoredUser, setLang } from '../../services/user-storage';
@@ -38,17 +38,17 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
     },
     {
       key: '3',
-      label: <Link to="/blogs">{t.articles}</Link>,
+      label: <Link to="/articles">{t.articles}</Link>,
     },
   ];
   return (
     <div className="header">
       <div className="logo">
-        <Link to="/">{t.logo}</Link>
+        <Link to="/"  >{t.logo}</Link>
       </div>
       <div className="links">
-        <Link to="/">{t.home}</Link>
-        <Link to="/about">{t.aboutUs}</Link>
+        <NavLink to="/" className={({ isActive }) => (isActive ? 'activeLink' : '')}>{t.home}</NavLink>
+        <NavLink to="/about" className={({ isActive }) => (isActive ? 'activeLink' : '')}>{t.aboutUs}</NavLink>
         <Dropdown
           arrow={{ pointAtCenter: true }}
           trigger={['hover']}
@@ -71,7 +71,7 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
           </span>
         </Dropdown>
         {/* <Link to="/blogs">{t.articles}</Link> */}
-        <Link to="/contact">{t.contactUs}</Link>
+        <NavLink to="/contact" className={({ isActive }) => (isActive ? 'activeLink' : '')}>{t.contactUs}</NavLink>
       </div>
       <div className="login">
         {getStoredUser() ? (
@@ -106,21 +106,22 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
                   {t.LogOut}
                 </Button>
             </Popconfirm>
-          <Link to="/profile"
+          <NavLink to="/profile"
             title='Profile'
             style={{ display: 'flex', alignItems: 'center', gap: '5px',marginRight: '5px' }}
           >
             <Image src={img} preview={false} width={18} />
-          </Link>
+          </NavLink>
           </div>
         ) : (
-          <Link
+          <NavLink
+          className={({ isActive }) => (isActive ? 'active' : '')}
             to="/login"
             style={{ display: 'flex', alignItems: 'center', gap: '5px' }}
           >
             <Image src={img} preview={false} width={18} />
             {t.LogIn}
-          </Link>
+          </NavLink>
         )}
         <Dropdown
           arrow={{ pointAtCenter: true }}

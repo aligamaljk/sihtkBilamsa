@@ -36,7 +36,7 @@ const RoutesWrapper = ({ t }: { t: any }) => {
           element: <Contact t={t} />,
         },
         {
-          path: 'blogs',
+          path: 'articles',
           element: getStoredUser() ? (
             <Blogs t={t} />
           ) : (

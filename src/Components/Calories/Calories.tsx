@@ -4,13 +4,16 @@ import { IoIosArrowForward } from 'react-icons/io';
 import "./Calories.scss"
 import { Button, Card, Form, Input, Select, SelectProps } from "antd";
 import { useState } from "react";
+import CalorieFood from "./CalorieFood";
 const Calories : React.FC <ITranslation> = ({t}) => {
   const [form] = Form.useForm();
   const [bmi,setBmi] = useState<number>(0)
+  const [more,setMore] = useState<string | undefined>(undefined)
   const onFinish = (values: any) => {
     console.log("Success:", values);
-    const { weight, height, burn } = values;
+    const { weight, height, burn,more } = values;
     const bmi = weight / (height * height);
+    setMore(more)
     setBmi(bmi)
   }
   console.log('BMI:',bmi);
@@ -48,18 +51,6 @@ const Calories : React.FC <ITranslation> = ({t}) => {
   }
   return {valueShape,des}
 }
-// console.log('Bodyshape:',Bodyshape());
-
-const options : SelectProps['options']  = [
-  {
-    value: 'male',
-    label: t.male,
-  },
-  {
-    value: 'female',
-    label: t.female,
-  },
-];
   return (
     <>
       <div className="calories">
@@ -90,7 +81,7 @@ const options : SelectProps['options']  = [
                   label={t.height}
                   rules={[{ required: true, message: t.requiredHeight }]}
                 >
-                  <Input type="number" placeholder="C/M" />
+                  <Input type="number" placeholder="M" />
                 </Form.Item>
                 <Form.Item
                   name="burn"
@@ -115,6 +106,20 @@ const options : SelectProps['options']  = [
                     <Select.Option value="4"> 6-7 {t.days}</Select.Option>
                   </Select>
                 </Form.Item>
+                <Form.Item
+                name="more"
+                label={t.goal}
+                rules={[{ required: true, message: t.requiredGoal }]}
+              >
+                <Select
+                  placeholder={t.requiredGoal}
+                  onChange={(value) => setMore(value)}
+                >
+                  <Select.Option value={"more"}>{t.moreCal}</Select.Option>
+                  <Select.Option value={"less"}>{t.lessCal}</Select.Option>
+                  <Select.Option value={"stability"}>{t.stability}</Select.Option>
+                </Select> 
+              </Form.Item>
                 <Form.Item>
                   <Button
                     type="primary"
@@ -131,6 +136,8 @@ const options : SelectProps['options']  = [
                 {t.calories} <span>(300 cal)</span>{' '}
               </div>
               <div className="calories-container">
+                {more && bmi > 0 ? (
+                  more == "more" ? (
                 <div className="calories-foot-wrapper-mor">
                   <div className="title-calories-mor">{t.caloriesMore}</div>
                   <div className="calories-foot-item">
@@ -153,6 +160,9 @@ const options : SelectProps['options']  = [
                     <div className="calories-foot-item-desc"> 2000</div>
                   </div>
                 </div>
+                    
+                  ) : (
+                    more == "less" ? (
                 <div className="calories-foot-wrapper-less ">
                   <div className="title-calories-less">{t.caloriesLess}</div>
                   <div className="calories-foot-item">
@@ -174,25 +184,51 @@ const options : SelectProps['options']  = [
                     <div className="calories-foot-item-desc"> 2000</div>
                   </div>
                 </div>
+                      
+                    ) : (
+                <div className="calories-foot-wrapper-less ">
+                  <div className="title-calories-less">{t.caloriesStability}</div>
+                  <div className="calories-foot-item">
+                    <div className="calories-foot-item-title"> {t.carbs}:</div>
+                    <div className="calories-foot-item-desc"> 50g</div>
+                  </div>
+                  <div className="calories-foot-item">
+                    <div className="calories-foot-item-title">
+                      {t.protein}:
+                    </div>
+                    <div className="calories-foot-item-desc"> 100g</div>
+                  </div>
+                  <div className="calories-foot-item">
+                    <div className="calories-foot-item-title"> {t.fat}:</div>
+                    <div className="calories-foot-item-desc"> 20g</div>
+                  </div>
+                  <div className="calories-foot-item">
+                    <h3 className="total-calories">{t.totalCalories}:</h3>
+                    <div className="calories-foot-item-desc"> 2000</div>
+                  </div>
+                </div>
+                    )
+                    
+                  )
+                ) : (
+                  <>
+                    <div className="emt">
+                      not found
+                    </div>
+                  </>
+                )}
               </div>
+              {more && bmi > 0 &&(
               <div className="body-shape">
                 <h1>{t.bodyShape}: <span>{Bodyshape().valueShape}</span> </h1>
                 <p>{Bodyshape().des}</p>
               </div>
+              ) }
             </Card>
           </div>
           </div>
           <div className="container-food">
-            <Card className="card-food">
-              <h3 className="title-card">{t.foodCalories}</h3>
-              <Form className="container-form">
-                <Select placeholder={t.selectFood}
-                showSearch
-                allowClear
-                 options={options}
-                />
-              </Form>
-            </Card>
+            <CalorieFood t={t} />
           </div>
         </div>
       </div>

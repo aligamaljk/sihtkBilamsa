@@ -31,6 +31,7 @@ export default {
   requiredCategory: 'Please select a sports!',
   requiredBurn: 'Please Select your burn rate!',
   requiredExercise: 'Please Select your exercise rate!',
+  requiredGoal: 'Please Select your goal!',
   LogIn: 'LogIn',
   successLog: 'Success LogIn',
   errorLog: 'Error LogIn',
@@ -90,6 +91,7 @@ export default {
   totalCalories : 'Total Calories',
   caloriesMore : 'calories more than', 
   caloriesLess : 'calories less than',
+  caloriesStability : 'Calories stability',
   bodyShape : 'Body shape',
   skinny : 'Slim ',
   normal : "normal weight",
@@ -115,5 +117,10 @@ export default {
       'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore a illo, deserunt illum at similique soluta. Deleniti eligendi sunt, inventore eius, quod culpa architecto quibusdam, vitae consequatur harum odit nulla!',
     aboutDescriptionP2:
       'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore a illo, deserunt illum at similique soluta. Deleniti eligendi sunt, inventore eius, quod culpa architecto quibusdam, vitae consequatur harum odit nulla!'
-  }
+  },
+  goal:"Goal",
+  moreCal:" gain weight",
+  lessCal:" lose weight",
+  stability:"Weight stability",
+
 };
