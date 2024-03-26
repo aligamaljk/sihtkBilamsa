@@ -1,7 +1,7 @@
 export default {
   greeting: 'مرحبا',
   logo: 'الصحه',
-  OwnNotFound: 'صفحة غير موجودة',
+  OwnNotFound: 'إرجع للصفحة الرئيسية',
   home: 'الرئيسية',
   contactUs: 'اتصل بنا',
   articles: 'مقالات',
