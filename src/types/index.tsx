@@ -118,6 +118,8 @@ export interface ITranslation {
       about?: string;
       aboutDescriptionP1?: string;
       aboutDescriptionP2?: string;
+      teamSectionTitlePart1?: string;
+      teamSectionTitlePart2?: string;
     };
   };
 }

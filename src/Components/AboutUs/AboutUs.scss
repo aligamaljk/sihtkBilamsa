@@ -1,7 +1,11 @@
+@import '../../styles/variables';
+
 .about {
   background-color: white;
+
   .about-us-header {
     position: relative;
+
     .bg-image {
       background-image: url(../../assets/heart-plate-with-fruits.jpg);
       background-size: cover;
@@ -10,6 +14,7 @@
       inset: 0;
       z-index: 5;
     }
+
     .section-header {
       background-color: rgba(7, 233, 169, 0.1);
       position: relative;
@@ -19,6 +24,11 @@
 
   .about-us-body {
     padding: 70px 200px;
+
+    @media (max-width: 768px) {
+      padding: 70px 0;
+    }
+
     .description-section {
       display: grid;
       padding: 0px 50px;
@@ -31,18 +41,25 @@
         justify-content: center;
         align-items: start;
         flex-direction: column;
+
         h2 {
           display: flex;
-          gap: 5px;
+          gap: 8px;
           align-items: center;
+
           span {
-            font-size: 4rem;
-            font-weight: 500;
+            font-size: 3rem;
+            font-weight: 600;
+
+            &.website-name {
+              color: $primary-color;
+            }
           }
         }
+
         .text {
           p {
-            padding-block: 0.25em;
+            padding-block: 0.5em;
             font-size: 1.75rem;
             font-weight: 400;
           }
@@ -54,20 +71,24 @@
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
+
         .rectangle {
           flex-basis: calc(50% - 5px);
           position: relative;
         }
+
         .rectangle.two {
           top: 2rem;
         }
+
         .overlay {
           position: relative;
           margin-bottom: 10px;
           overflow: hidden;
+
           &::after {
             content: '';
-            background-color: #06b4cf;
+            background-color: $blueSky-500;
             opacity: 0.05;
             border-radius: 20px;
             position: absolute;
