@@ -48,10 +48,10 @@ function AboutUs({ t }: ITranslation) {
           </div>
 
           <div className='des-sec-info'>
-            <h2>
-              <span>{t.aboutPage?.about}</span>
+            <div className='title'>
+              <h2>{t.aboutPage?.about}</h2>
               <span className='website-name'>{t.websiteName}</span>
-            </h2>
+            </div>
             <div className='text'>
               <p>{t.aboutPage?.aboutDescriptionP1}</p>
               <p>{t.aboutPage?.aboutDescriptionP2}</p>
