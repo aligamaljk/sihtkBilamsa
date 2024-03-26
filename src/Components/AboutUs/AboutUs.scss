@@ -1,7 +1,11 @@
+@import '../../styles/variables';
+
 .about {
   background-color: white;
+
   .about-us-header {
     position: relative;
+
     .bg-image {
       background-image: url(../../assets/heart-plate-with-fruits.jpg);
       background-size: cover;
@@ -10,6 +14,7 @@
       inset: 0;
       z-index: 5;
     }
+
     .section-header {
       background-color: rgba(7, 233, 169, 0.1);
       position: relative;
@@ -19,33 +24,33 @@
 
   .about-us-body {
     padding: 70px 200px;
+
+    @media (max-width: 1100px) {
+      padding: 70px 100px;
+    }
+    @media (max-width: 768px) {
+      padding: 70px 0;
+    }
+
     .description-section {
       display: grid;
       padding: 0px 50px;
-      grid-template-columns: 0.7fr 1fr;
       gap: 30px;
+      grid-template-columns: 0.7fr 1fr;
 
-      // Description Info
-      .des-sec-info {
-        display: flex;
-        justify-content: center;
-        align-items: start;
-        flex-direction: column;
-        h2 {
-          display: flex;
-          gap: 5px;
-          align-items: center;
-          span {
-            font-size: 4rem;
-            font-weight: 500;
-          }
+      @media (max-width: 1300px) {
+        grid-template-columns: minmax(300px, 0.5fr) 1fr;
+      }
+      @media (max-width: 1100px) {
+        grid-template-columns: 1fr;
+        .des-sec-images {
+          grid-row-start: 2;
+          padding: 0px 150px;
         }
-        .text {
-          p {
-            padding-block: 0.25em;
-            font-size: 1.75rem;
-            font-weight: 400;
-          }
+      }
+      @media (max-width: 890px) {
+        .des-sec-images {
+          padding: 0px;
         }
       }
 
@@ -54,20 +59,24 @@
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
+
         .rectangle {
           flex-basis: calc(50% - 5px);
           position: relative;
         }
+
         .rectangle.two {
           top: 2rem;
         }
+
         .overlay {
           position: relative;
           margin-bottom: 10px;
           overflow: hidden;
+
           &::after {
             content: '';
-            background-color: #06b4cf;
+            background-color: $blueSky-500;
             opacity: 0.05;
             border-radius: 20px;
             position: absolute;
@@ -82,6 +91,32 @@
           vertical-align: middle;
           position: relative;
           z-index: 5;
+        }
+      }
+
+      // Description Info
+      .des-sec-info {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+        .title {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          font-size: 3rem;
+          font-weight: 600;
+        }
+        .website-name {
+          color: $primary-color;
+        }
+
+        .text {
+          p {
+            padding-block: 0.5em;
+            font-size: 1.75rem;
+            font-weight: 400;
+          }
         }
       }
     }
