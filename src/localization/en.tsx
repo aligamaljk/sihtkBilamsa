@@ -1,7 +1,7 @@
 export default {
   greeting: 'Hello',
   logo: 'Health',
-  OwnNotFound: 'OwnNotFound',
+  OwnNotFound: 'Go Back To The Homepage',
   product: 'Products',
   cart: 'Cart',
   home: 'Home',
