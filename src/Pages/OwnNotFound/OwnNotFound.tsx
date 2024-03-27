@@ -9,7 +9,7 @@ const OwnNotFound = ({ t }: ITranslation) => {
     <div className='page-not-found'>
       {/* <h1>{t.OwnNotFound}</h1> */}
       <img
-        src='404-with-a-cat.svg'
+        src='/404-with-a-cat.svg'
         alt='404 error photo with a cute cat'
       />
 

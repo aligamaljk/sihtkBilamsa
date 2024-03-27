@@ -1,54 +1,71 @@
 import { Button, Dropdown, Image, message, Popconfirm } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setCurrentLang, setCurrentUser } from '../../services/store/reducers/user';
-import { clearStoredUser, getStoredUser, setLang } from '../../services/user-storage';
+import {
+  setCurrentLang,
+  setCurrentUser
+} from '../../services/store/reducers/user';
+import {
+  clearStoredUser,
+  getStoredUser,
+  setLang
+} from '../../services/user-storage';
 import { ITranslation } from '../../types';
 import img from '../../assets/download.png';
 import img2 from '../../assets/translating.0144a3cdb7995b9cf71d492fe721e60b.svg';
 import { IoIosArrowDown } from 'react-icons/io';
+import { MdLanguage } from 'react-icons/md';
+import { UserOutlined } from '@ant-design/icons';
+import { HiOutlineLogin } from 'react-icons/hi';
+import Logo from '../UI/Logo';
 
 const HeaderApp: React.FC<ITranslation> = ({ t }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const chanageLang = ({ key }: {key: string }) => {
+  const chanageLang = ({ key }: { key: string }) => {
     dispatch(setCurrentLang(key));
     setLang(key);
-    document.getElementsByTagName('html')[0].setAttribute('lang', key);
+    document
+      .getElementsByTagName('html')[0]
+      .setAttribute('lang', key);
   };
   const items = [
     {
       key: 'en',
-      label: 'English',
+      label: 'English'
     },
     {
       key: 'ar',
-      label: 'العربية',
-    },
+      label: 'العربية'
+    }
   ];
 
   const itemsLink = [
     {
       key: '1',
-      label: <Link to="/bmr"> BMR</Link>,
+      label: <Link to='/bmr'> BMR</Link>
     },
     {
       key: '2',
-      label: <Link to="/calories">{t.calories}</Link>,
+      label: <Link to='/calories'>{t.calories}</Link>
     },
     {
       key: '3',
-      label: <Link to="/blogs">{t.articles}</Link>,
-    },
+      label: <Link to='/blogs'>{t.articles}</Link>
+    }
   ];
   return (
-    <div className="header">
-      <div className="logo">
-        <Link to="/">{t.logo}</Link>
+    <div className='header'>
+      <div className='logo'>
+        {/* <Link to='/'>{t.logo}</Link> */}
+        <Link to='/'>
+          {/* <img src={logo} alt='logo' /> */}
+          <Logo />
+        </Link>
       </div>
-      <div className="links">
-        <Link to="/">{t.home}</Link>
-        <Link to="/about">{t.aboutUs}</Link>
+      <div className='links'>
+        <Link to='/'>{t.home}</Link>
+        <Link to='/about'>{t.aboutUs}</Link>
         <Dropdown
           arrow={{ pointAtCenter: true }}
           trigger={['hover']}
@@ -62,27 +79,27 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
               cursor: 'pointer',
               fontSize: '18px',
               fontWeight: '400',
-              color: 'black',
+              color: 'white',
               textTransform: 'capitalize',
-              letterSpacing: '0.14px',
+              letterSpacing: '0.14px'
             }}
           >
             {t.services} <IoIosArrowDown />
           </span>
         </Dropdown>
         {/* <Link to="/blogs">{t.articles}</Link> */}
-        <Link to="/contact">{t.contactUs}</Link>
+        <Link to='/contact'>{t.contactUs}</Link>
       </div>
-      <div className="login">
-        {getStoredUser() ? (
-          <div className="login">
-             <Popconfirm
+      <div className='login'>
+        {getStoredUser() ?
+          <div className='login'>
+            <Popconfirm
               title={t.LogOut}
               description={t.LogOutMessageModal}
               // title="Are you sure?"
               icon={<></>}
-              placement="topLeft"
-              okType="danger"
+              placement='topLeft'
+              okType='danger'
               okText={t.okText}
               cancelText={t.cancelText}
               onConfirm={() => {
@@ -96,32 +113,43 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
               }}
               // okText="Yes"
               // cancelText="No"
+            >
+              <Button
+                type='text'
+                danger
+                size='small'
+                style={{ fontSize: '16px', fontWeight: '600' }}
               >
-                <Button
-                  type="text"
-                  danger
-                  size="small"
-                  style={{ fontSize: '16px', fontWeight: '600' }}
-                >
-                  {t.LogOut}
-                </Button>
+                {t.LogOut}
+              </Button>
             </Popconfirm>
-          <Link to="/profile"
-            title='Profile'
-            style={{ display: 'flex', alignItems: 'center', gap: '5px',marginRight: '5px' }}
-          >
-            <Image src={img} preview={false} width={18} />
-          </Link>
+            <Link
+              to='/profile'
+              title='Profile'
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '5px',
+                marginRight: '5px'
+              }}
+            >
+              <UserOutlined />
+              {/* <Image src={img} preview={false} width={18} /> */}
+            </Link>
           </div>
-        ) : (
-          <Link
-            to="/login"
-            style={{ display: 'flex', alignItems: 'center', gap: '5px' }}
+        : <Link
+            to='/login'
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '5px'
+            }}
           >
-            <Image src={img} preview={false} width={18} />
+            {/* <Image src={img} preview={false} width={18} /> */}
             {t.LogIn}
+            <HiOutlineLogin />
           </Link>
-        )}
+        }
         <Dropdown
           arrow={{ pointAtCenter: true }}
           // trigger={['click']}
@@ -136,10 +164,12 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
               display: 'flex',
               alignItems: 'center',
               gap: '5px',
+              color: 'white'
             }}
           >
-            <Image src={img2} preview={false} width={18} />
+            {/* <Image src={img2} preview={false} width={18} /> */}
             {t.Language}
+            <MdLanguage />
           </span>
         </Dropdown>
       </div>

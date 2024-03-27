@@ -1,57 +1,58 @@
-.layout{
-    min-height: 100vh;
-    .main-header{
-        background-color: #fff;
-        left: 0;
-        position: fixed;
-        right: 0;
-        top: 0;
-        z-index: 999;
-        .header{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-            width: 100%;
-            .logo{
-                font-size: 24px;
-                font-weight: 700;
-                a{
-                    color: #000;
-                }
-            }
-            .links{
-                display: flex;
-                align-items: center;
-                gap: 20px;
-            }
-            a{
-                color: #000;
-                font-size: 18px;
-                letter-spacing: .14px;
-                text-transform: capitalize;
-                transition: .2s linear;
-                white-space: nowrap;
-            }
-            .login{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-direction: row;
-                height: 100%;
-                gap: 10px;
-                background: transparent;
-            }
-        }
-    }
-    @media screen and (max-width: 800px) {
-        .main-header{
-            .header{
-                .links{
-                    display: none;
-                }
-            }
-        }
+@import '../../styles/variables';
 
+.layout {
+  min-height: 100vh;
+  .main-header {
+    background-color: $black-800;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 999;
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      width: 100%;
+      .logo {
+        font-size: 24px;
+        font-weight: 700;
+        a {
+          color: $white-500;
+        }
+      }
+      .links {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      a {
+        color: $white-500;
+        font-size: 18px;
+        letter-spacing: 0.14px;
+        text-transform: capitalize;
+        transition: 0.2s linear;
+        white-space: nowrap;
+      }
+      .login {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        height: 100%;
+        gap: 10px;
+        background: transparent;
+      }
     }
+  }
+  @media screen and (max-width: 800px) {
+    .main-header {
+      .header {
+        .links {
+          display: none;
+        }
+      }
+    }
+  }
 }

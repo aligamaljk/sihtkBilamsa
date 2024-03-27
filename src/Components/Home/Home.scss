@@ -1,0 +1,7 @@
+.home {
+  background-image: url('/hero-img.jpg');
+  background-position: center;
+  background-size: cover;
+  transform: scaleX(-1);
+  min-height: calc(100vh - 80px);
+}

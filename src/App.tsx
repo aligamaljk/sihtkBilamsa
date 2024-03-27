@@ -1,15 +1,17 @@
-import{ useEffect } from 'react';
+import { useEffect } from 'react';
 import './App.scss';
 import en from './localization/en';
 import ar from './localization/ar';
 import { ConfigProvider, App as AntApp } from 'antd';
 import RoutesWrapper from './Route';
 import { useSelector } from 'react-redux';
-import  QueryProvider  from './services/react-query/index';
-import "./styles/ant.scss";
+import QueryProvider from './services/react-query/index';
+import './styles/ant.scss';
 import { StoreType } from './types';
 function App() {
-  const { currentLang } = useSelector((state: StoreType) => state?.user);
+  const { currentLang } = useSelector(
+    (state: StoreType) => state?.user
+  );
   console.log(currentLang);
   const t = currentLang === 'en' ? en : ar;
   useEffect(() => {
@@ -36,15 +38,15 @@ function App() {
             colorText: '#294151',
             fontSize: 16,
             controlHeight: 40,
-            colorBtnColor: "#fff",
-            secBtnBg: "#F8F5FF",
-            secColor: "#8A4CF5",
-            defaultBg: "#EEF0FF",
-            defaultColor: "#4F5062",
-            defaultBorderColor: "#B0B0C0",
-            thirdColor: "#59A6ED",
-            Accent: "#EBF2FA",
-            line: "#CFD8E3",
+            colorBtnColor: '#fff',
+            secBtnBg: '#F8F5FF',
+            secColor: '#8A4CF5',
+            defaultBg: '#EEF0FF',
+            defaultColor: '#4F5062',
+            defaultBorderColor: '#B0B0C0',
+            thirdColor: '#59A6ED',
+            Accent: '#EBF2FA',
+            line: '#CFD8E3',
             // grayTxt: "#595959",
             // linearBg: "linear-gradient(270deg, #8A4CF5 0%, #595FBC 100%)",
             // secBtnBorderColor: "#C7BBF9",
@@ -82,14 +84,14 @@ function App() {
             paddingXL: 40,
             borderRadiusSM: 4,
             borderRadiusLG: 12,
-            borderRadiusXS: 4,
+            borderRadiusXS: 4
             // colorBgLayout: "#F0F1F2",
             // colorBgContainer: "#ffffff",
             // colorBgElevated: "#ffffff",
             // boxShadow: "0px 0px 24px rgba(0, 0, 0, 0.1);",
             // boxShadowSecondary: "0px 0px 24px rgba(0, 0, 0, 0.1);",
             // colorPrimaryBorder: "#6D29F6",
-          },
+          }
         }}
         virtual
       >
