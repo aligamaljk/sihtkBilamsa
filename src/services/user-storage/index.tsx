@@ -3,7 +3,6 @@ const TOKEN_LOCALSTORAGE_KEY = "access-token";
 const LANG_LOCALSTORAGE_KEY = "lang";
 
 // Helper functions to manage user data in localStorage
-
 export function getStoredUser(): any | null {
   const storedUser = localStorage.getItem(USER_LOCALSTORAGE_KEY);
   return storedUser ? JSON.parse(storedUser) : null;

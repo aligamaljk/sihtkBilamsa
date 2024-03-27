@@ -155,7 +155,6 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
             <Popconfirm
               title={t.LogOut}
               description={t.LogOutMessageModal}
-              // title="Are you sure?"
               icon={<></>}
               placement='topLeft'
               okType='danger'
@@ -170,8 +169,6 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
               onCancel={() => {
                 message.info(t.popupCanceledMessage);
               }}
-              // okText="Yes"
-              // cancelText="No"
             >
               <Link
                 to='/profile'
@@ -195,8 +192,7 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
                 >
                   {t.LogOut}
                   <UserOutlined />
-                  {/* <Image src={img} preview={false} width={18} /> */}
-                </Button>
+                 </Button>
               </Link>
             </Popconfirm>
           </div>
@@ -209,7 +205,6 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
               paddingRight: '10px'
             }}
           >
-            {/* <Image src={img} preview={false} width={18} /> */}
             {t.LogIn}
             <HiOutlineLogin />
           </Link>

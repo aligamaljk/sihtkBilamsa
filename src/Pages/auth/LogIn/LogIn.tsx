@@ -18,8 +18,8 @@ const LogIn: React.FC<ITranslation> = ({ t }) => {
   const onAuthLogin = (values: any) => {
     console.log('Success:', values);
     dispatch(setCurrentUser(values));
-    setStoredUser(values.username);
-    message.success(t.successLog + ' ' + values.username);
+    setStoredUser(values.name);
+    message.success(t.successLog + ' ' + values.name);
     navigate('/profile');
   };
   // const { mutate: onAuthLogin, isLoading } = useMutation( authLogin , {
@@ -46,7 +46,7 @@ const LogIn: React.FC<ITranslation> = ({ t }) => {
         <div className="section-header">
           <h1 className="title">{t.LogIn}</h1>
           <div className="link">
-            <Link to="/">{t.home}</Link> <IoIosArrowForward />
+            <Link to="/">{t.homeTab}</Link> <IoIosArrowForward />
             {t.LogIn}
           </div>
         </div>
@@ -61,11 +61,18 @@ const LogIn: React.FC<ITranslation> = ({ t }) => {
             className="login-form-body"
           >
             <Form.Item
-              name="username"
-              label={t.username}
+              name="name"
+              label={t.name}
               rules={[{ required: true, message: t.requiredName }]}
             >
-              <Input />
+              <Input placeholder={t.name} type='text' />
+            </Form.Item>
+            <Form.Item
+              name="email"
+              label={t.email}
+              rules={[{ required: true, message: t.requiredEmail }]}
+            >
+              <Input placeholder={t.email} type='email' />
             </Form.Item>
             <Form.Item
               name="password"
@@ -84,8 +91,7 @@ const LogIn: React.FC<ITranslation> = ({ t }) => {
                   letterSpacing: '.16px',
                 }}
               >
-                {' '}
-                {t.forget}{' '}
+                {t.forget}
               </Link>
             </p>
             <Form.Item>

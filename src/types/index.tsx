@@ -136,6 +136,7 @@ export interface ITranslation {
     caloriesStability?: string;
     popupCanceledMessage?: string;
     requiredGoal?: string;
+    quantityMess?: string;
   };
 }
 

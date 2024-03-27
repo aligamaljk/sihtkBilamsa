@@ -12,7 +12,7 @@ function App() {
   const { currentLang } = useSelector(
     (state: StoreType) => state?.user
   );
-  console.log(currentLang);
+  // console.log(currentLang);
   const t = currentLang === 'en' ? en : ar;
   useEffect(() => {
     if (currentLang) {

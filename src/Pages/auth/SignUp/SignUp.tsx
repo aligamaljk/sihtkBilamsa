@@ -51,7 +51,7 @@ const SignUp : React.FC <ITranslation> = ({t}) => {
                   htmlType="submit"
                   loading={false}
                 >
-                  {t.LogIn}
+                  {t.sinUp}
                 </Button>
               </Form.Item>
               <p

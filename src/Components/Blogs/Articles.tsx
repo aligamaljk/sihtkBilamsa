@@ -3,9 +3,10 @@ import { ITranslation } from '../../types'
 import { Card, Image } from 'antd'
 import "./Articles.scss"
 import img from "../../assets/94f2b7445db34d4b86e9a7111ed9b4ee.jpg"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { IoIosArrowForward } from 'react-icons/io';
 const Articles : React.FC <ITranslation> = ({t}) => {
+  const navget = useNavigate()
   return (
     <>
       <div className="articles">
@@ -19,7 +20,9 @@ const Articles : React.FC <ITranslation> = ({t}) => {
         <div className="container">
           <div className="cards">
           {[1,2,3,4,5,6,7,8,9,10]?.map((item) => (
-            <Card key={item} className="card" >
+            <Card key={item} className="card"
+              onClick={()=>navget("/articles/22")}
+            >
               <div className="img">
                 <Image  preview={false} src={img} />
               </div>

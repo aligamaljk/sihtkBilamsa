@@ -14,7 +14,7 @@ export default {
   services: 'Services',
   footer: 'Footer',
   username: 'username',
-  email: 'email',
+  email: 'Email',
   password: 'password',
   requiredName: 'Please input your username!',
   requiredAge: 'Please input your age!',
@@ -91,6 +91,7 @@ export default {
   totalCalories: 'Total Calories',
   caloriesMore: 'calories more than',
   caloriesLess: 'calories less than',
+  caloriesStability : 'Calories stability',
   bodyShape: 'Body shape',
   skinny: 'Slim ',
   normal: 'normal weight',
@@ -124,8 +125,8 @@ export default {
       'We aim to provide a comprehensive platform to promote health and well-being, striving to assist you in improving your healthy lifestyle. We offer a range of tools and features to help you track your physical activity and set healthy goals.',
     aboutDescriptionP2:
       'Additionally, we endeavor to provide important data and statistics to help you monitor your progress and make better health decisions. Furthermore, we offer articles and educational resources on health to assist you in making informed and healthy choices.',
-    teamSectionTitlePart1: 'Meet Our',
-    teamSectionTitlePart2: 'Team'
+      teamSectionTitlePart1: 'Meet Our',
+      teamSectionTitlePart2: 'Team'
   },
   popupCanceledMessage: 'Thank you for choosing to stay with us',
 
@@ -133,4 +134,6 @@ export default {
   moreCal:" gain weight",
   lessCal:" lose weight",
   stability:"Weight stability",
+  quantity:"Quantity",
+  quantityMess:"Write the quantity in (Grams)",
   }

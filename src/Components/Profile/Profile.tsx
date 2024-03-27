@@ -56,7 +56,7 @@ const Profile : React.FC <ITranslation> = ({t}) => {
         <div className="section-header">
           <h1 className="title">{t.profile}</h1>
           <div className="link">
-            <Link to="/">{t.home}</Link> <IoIosArrowForward />
+            <Link to="/">{t.homeTab}</Link> <IoIosArrowForward />
             {t.profile}
           </div>
         </div>
@@ -142,6 +142,9 @@ const Profile : React.FC <ITranslation> = ({t}) => {
                   rules={[{ required: true, message: t.requiredHeight }]}
                 >
                   <Input placeholder={t.height} />
+                </Form.Item>
+                <Form.Item name="description" label={"description"}>
+                  <Input.TextArea rows={4}  autoSize={{ minRows: 3, maxRows: 7 }}   placeholder={"description"} />
                 </Form.Item>
                 <Form.Item
                   name="categoryProduct"

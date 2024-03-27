@@ -12,6 +12,7 @@ import Profile from '../Components/Profile/Profile';
 import Calories from '../Components/Calories/Calories';
 import AboutUs from '../Components/AboutUs/AboutUs';
 import Articles from '../Components/Blogs/Articles';
+import BlogsDetails from '../Components/Blogs/BlogsDetails/BlogsDetails';
 
 const RoutesWrapper = ({ t }: { t: any }) => {
   const routes = useRoutes([
@@ -42,6 +43,10 @@ const RoutesWrapper = ({ t }: { t: any }) => {
           ) : (
             <Navigate to="/login" replace />
           ),
+        },
+        {
+          path: 'articles/:id',
+          element:<BlogsDetails t={t} />
         },
         {
           path: 'calories',
