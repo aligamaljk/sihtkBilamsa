@@ -121,5 +121,6 @@ export default {
   moreCal:"زياده الوزن",
   lessCal:" تقليل الوزن",
   stability:"ثبات الوزن",
-  
+  quantity:"الكمية",
+  quantityMess:"اكتب الكمية (بالجرام)",
   }

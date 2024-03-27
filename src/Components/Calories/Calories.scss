@@ -111,4 +111,36 @@
             }
         }
     }
+    .card-food{
+        width: 100%;
+        .ant-card-body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        .container-food{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-direction: column;
+            padding: 10px 20px;
+            max-width: 1000px;
+            .col-form{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 20px;
+                .title-form{
+                    font-size: 18px;
+                    font-weight: 700;
+                    line-height: 32px;
+                    letter-spacing: 1.5px;
+                    width: 200px;
+                }
+            }
+        }
+    }
 }

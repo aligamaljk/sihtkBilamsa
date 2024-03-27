@@ -61,11 +61,11 @@ const LogIn: React.FC<ITranslation> = ({ t }) => {
             className="login-form-body"
           >
             <Form.Item
-              name="username"
-              label={t.username}
-              rules={[{ required: true, message: t.requiredName }]}
+              name="email"
+              label={t.email}
+              rules={[{ required: true, message: t.requiredEmail }]}
             >
-              <Input />
+              <Input placeholder={t.email} type='email' />
             </Form.Item>
             <Form.Item
               name="password"
@@ -84,8 +84,7 @@ const LogIn: React.FC<ITranslation> = ({ t }) => {
                   letterSpacing: '.16px',
                 }}
               >
-                {' '}
-                {t.forget}{' '}
+                {t.forget}
               </Link>
             </p>
             <Form.Item>

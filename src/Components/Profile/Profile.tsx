@@ -143,6 +143,9 @@ const Profile : React.FC <ITranslation> = ({t}) => {
                 >
                   <Input placeholder={t.height} />
                 </Form.Item>
+                <Form.Item name="description" label={"description"}>
+                  <Input.TextArea rows={4}  autoSize={{ minRows: 3, maxRows: 7 }}   placeholder={"description"} />
+                </Form.Item>
                 <Form.Item
                   name="categoryProduct"
                   label={t.sports}

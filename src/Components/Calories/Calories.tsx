@@ -8,14 +8,66 @@ import CalorieFood from "./CalorieFood";
 const Calories : React.FC <ITranslation> = ({t}) => {
   const [form] = Form.useForm();
   const [bmi,setBmi] = useState<number>(0)
+  const [bmr,setBmr] = useState<number>(0)
   const [more,setMore] = useState<string | undefined>(undefined)
+  const [caloriesMor,setCaloriesMor] = useState <any>({
+    fat: 0,
+    protein: 0,
+    carbs: 0
+  })
+  const [caloriesMed,setCaloriesMed] = useState <any>({
+    fat: 0,
+    protein: 0,
+    carbs: 0
+  })
+  const [caloriesHigh,setCaloriesHigh] = useState <any>({
+    fat: 0,
+    protein: 0,
+    carbs: 0
+  })
   const onFinish = (values: any) => {
     console.log("Success:", values);
-    const { weight, height, burn,more } = values;
-    const bmi = weight / (height * height);
+    const { weight, height, burn,more,age,gender,exercise } = values;
+    const bmi = weight / ((height / 100) * (height / 100));
+    const genType = gender === "male" ? 5 : -161
     setMore(more)
     setBmi(bmi)
+    setBmr(((10*weight) + (6.25*height) - (5*age) + genType) * exercise) 
+    console.log({
+      genType,
+      bmr,
+      more,
+      exercise,
+      weight,
+      height,
+      age,
+      gender,
+      burn
+
+    });
+    
+    if(burn === "more" || burn === "week"){
+      setCaloriesMor({
+        carbs: (bmr * 25) / 100 / 4,
+        protein: (bmr * 40) / 100 / 4,
+        fat: (bmr * 35) / 100 / 9
+      })
+    } else if(burn === "medium"){
+      setCaloriesMed({
+        carbs: (bmr * 40) / 100 / 4,
+        protein: (bmr * 30) / 100 / 4,
+        fat: (bmr * 30)/100 / 9
+      })
+    } else if(burn === "high"){
+      setCaloriesHigh({
+        carbs: (bmr * 55) / 100 / 4,
+        protein: (bmr * 20) / 100 / 4,
+        fat: (bmr * 25) / 100 / 9
+      })
+    }
   }
+  console.log('BMR:',bmr);
+  
   console.log('BMI:',bmi);
   const Bodyshape  = () => {
    let valueShape ;
@@ -70,6 +122,23 @@ const Calories : React.FC <ITranslation> = ({t}) => {
                 form={form} onFinish={onFinish}
               >
                 <Form.Item
+                  name="age"
+                  label={t.age}
+                  rules={[{ required: true, message: t.requiredAge }]}
+                >
+                  <Input type="number" placeholder={t.age} />
+                </Form.Item>
+                <Form.Item
+                  name="gender"
+                  label={t.gender}
+                  rules={[{ required: true, message: t.requiredGender }]}
+                >
+                  <Select placeholder={t.requiredGender}>
+                    <Select.Option value="male">{t.male}</Select.Option>
+                    <Select.Option value="female">{t.female}</Select.Option>
+                  </Select>
+                </Form.Item>
+                <Form.Item
                   name="weight"
                   label={t.weight}
                   rules={[{ required: true, message: t.requiredWeight }]}
@@ -81,7 +150,7 @@ const Calories : React.FC <ITranslation> = ({t}) => {
                   label={t.height}
                   rules={[{ required: true, message: t.requiredHeight }]}
                 >
-                  <Input type="number" placeholder="M" />
+                  <Input type="number" placeholder="C/M" />
                 </Form.Item>
                 <Form.Item
                   name="burn"
@@ -89,9 +158,9 @@ const Calories : React.FC <ITranslation> = ({t}) => {
                   rules={[{ required: true, message: t.requiredBurn }]}
                 >
                   <Select placeholder={t.requiredBurn}>
-                    <Select.Option value="1">{t.burn1}</Select.Option>
-                    <Select.Option value="2">{t.burn2}</Select.Option>
-                    <Select.Option value="3">{t.burn3}</Select.Option>
+                    <Select.Option value="week">{t.burn1}</Select.Option>
+                    <Select.Option value="medium">{t.burn2}</Select.Option>
+                    <Select.Option value="high">{t.burn3}</Select.Option>
                   </Select>
                 </Form.Item>
                 <Form.Item
@@ -100,10 +169,11 @@ const Calories : React.FC <ITranslation> = ({t}) => {
                   rules={[{ required: true, message: t.requiredExercise }]}
                 >
                   <Select placeholder={t.requiredExercise}>
-                    <Select.Option value="1">1 {t.days} </Select.Option>
-                    <Select.Option value="2">2-3 {t.days}</Select.Option>
-                    <Select.Option value="3"> 4-5 {t.days}</Select.Option>
-                    <Select.Option value="4"> 6-7 {t.days}</Select.Option>
+                    <Select.Option value="1.2">1 {t.days} </Select.Option>
+                    <Select.Option value="1.3">2-3 {t.days}</Select.Option>
+                    <Select.Option value="1.55"> 4-5 {t.days}</Select.Option>
+                    <Select.Option value="1.7"> 6-7 {t.days}</Select.Option>
+                    <Select.Option value="1.9"> 7+ {t.days}</Select.Option>
                   </Select>
                 </Form.Item>
                 <Form.Item
@@ -133,7 +203,7 @@ const Calories : React.FC <ITranslation> = ({t}) => {
             </Card>
             <Card className="content-right">
               <div className="title-calories">
-                {t.calories} <span>( {bmi} cal)</span>{' '}
+                {t.calories} <span>( {bmr.toFixed(2)} cal)</span>
               </div>
               <div className="calories-container">
                 {more && bmi > 0 ? (
@@ -142,22 +212,22 @@ const Calories : React.FC <ITranslation> = ({t}) => {
                   <div className="title-calories-mor">{t.caloriesMore}</div>
                   <div className="calories-foot-item">
                     <div className="calories-foot-item-title"> {t.carbs}:</div>
-                    <div className="calories-foot-item-desc"> 50g</div>
+                    <div className="calories-foot-item-desc"> {caloriesMor.carbs.toFixed(2)}g </div>
                   </div>
                   <div className="calories-foot-item">
                     <div className="calories-foot-item-title">
                       {' '}
                       {t.protein}:
                     </div>
-                    <div className="calories-foot-item-desc"> 100g</div>
+                    <div className="calories-foot-item-desc"> {caloriesMor.protein.toFixed(2)}g</div>
                   </div>
                   <div className="calories-foot-item">
                     <div className="calories-foot-item-title"> {t.fat}:</div>
-                    <div className="calories-foot-item-desc"> 20g</div>
+                    <div className="calories-foot-item-desc"> {caloriesMor.fat.toFixed(2)}g</div>
                   </div>
                   <div className="calories-foot-item">
                     <h3 className="total-calories">{t.totalCalories}:</h3>
-                    <div className="calories-foot-item-desc"> 2000</div>
+                    <div className="calories-foot-item-desc"> {bmr.toFixed(2)}g</div>
                   </div>
                 </div>
                     
@@ -167,48 +237,48 @@ const Calories : React.FC <ITranslation> = ({t}) => {
                   <div className="title-calories-less">{t.caloriesLess}</div>
                   <div className="calories-foot-item">
                     <div className="calories-foot-item-title"> {t.carbs}:</div>
-                    <div className="calories-foot-item-desc"> 50g</div>
+                    <div className="calories-foot-item-desc"> 
+                      {caloriesHigh.carbs.toFixed(2)}g
+                    </div>
                   </div>
                   <div className="calories-foot-item">
                     <div className="calories-foot-item-title">
                       {t.protein}:
                     </div>
-                    <div className="calories-foot-item-desc"> 100g</div>
+                    <div className="calories-foot-item-desc"> {caloriesHigh.protein.toFixed(2)}g</div>
                   </div>
                   <div className="calories-foot-item">
                     <div className="calories-foot-item-title"> {t.fat}:</div>
-                    <div className="calories-foot-item-desc"> 20g</div>
+                    <div className="calories-foot-item-desc"> {caloriesHigh.fat.toFixed(2)}g</div>
                   </div>
                   <div className="calories-foot-item">
                     <h3 className="total-calories">{t.totalCalories}:</h3>
-                    <div className="calories-foot-item-desc"> 2000</div>
+                    <div className="calories-foot-item-desc"> {bmr.toFixed(2)} </div>
                   </div>
                 </div>
-                      
-                    ) : (
+                  ) : (
                 <div className="calories-foot-wrapper-less ">
                   <div className="title-calories-less">{t.caloriesStability}</div>
                   <div className="calories-foot-item">
                     <div className="calories-foot-item-title"> {t.carbs}:</div>
-                    <div className="calories-foot-item-desc"> 50g</div>
+                    <div className="calories-foot-item-desc"> {caloriesMed.carbs.toFixed(2)}g </div>
                   </div>
                   <div className="calories-foot-item">
                     <div className="calories-foot-item-title">
                       {t.protein}:
                     </div>
-                    <div className="calories-foot-item-desc"> 100g</div>
+                    <div className="calories-foot-item-desc"> {caloriesMed.protein.toFixed(2)}g </div>
                   </div>
                   <div className="calories-foot-item">
                     <div className="calories-foot-item-title"> {t.fat}:</div>
-                    <div className="calories-foot-item-desc"> 20g</div>
+                    <div className="calories-foot-item-desc"> {caloriesMed.fat.toFixed(2)}g </div>
                   </div>
                   <div className="calories-foot-item">
                     <h3 className="total-calories">{t.totalCalories}:</h3>
-                    <div className="calories-foot-item-desc"> 2000</div>
+                    <div className="calories-foot-item-desc"> {bmr.toFixed(2)} </div>
                   </div>
                 </div>
                     )
-                    
                   )
                 ) : (
                   <>
