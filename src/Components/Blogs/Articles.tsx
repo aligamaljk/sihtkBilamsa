@@ -1,18 +1,18 @@
 import React from 'react'
 import { ITranslation } from '../../types'
 import { Card, Image } from 'antd'
-import "./Blogs.scss"
-import img from "../../assets/94f2b7445db34d4b86e9a7111ed9b4ee.png"
+import "./Articles.scss"
+import img from "../../assets/94f2b7445db34d4b86e9a7111ed9b4ee.jpg"
 import { Link } from 'react-router-dom'
 import { IoIosArrowForward } from 'react-icons/io';
-const Blogs : React.FC <ITranslation> = ({t}) => {
+const Articles : React.FC <ITranslation> = ({t}) => {
   return (
     <>
-      <div className="blogs">
+      <div className="articles">
         <div className="section-header">
           <h1 className="title">{t.articles}</h1>
           <div className="link">
-            <Link to="/">{t.home}</Link> <IoIosArrowForward />
+            <Link to="/">{t.homeTab}</Link> <IoIosArrowForward />
             {t.articles}
           </div>
         </div>
@@ -37,7 +37,7 @@ const Blogs : React.FC <ITranslation> = ({t}) => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Blogs
+export default Articles;

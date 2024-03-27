@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { ITranslation } from '../../types';
 import { IoIosArrowForward } from 'react-icons/io';
 import './AboutUs.scss';
+import TeamSection from './teamSection/TeamSection';
 
 function AboutUs({ t }: ITranslation) {
   return (
@@ -12,7 +13,7 @@ function AboutUs({ t }: ITranslation) {
         <div className='section-header'>
           <h1 className='title'>{t.aboutUs}</h1>
           <div className='link'>
-            <Link to='/'>{t.home}</Link>
+            <Link to='/'>{t.homeTab}</Link>
             <IoIosArrowForward />
             {t.contactUs}
           </div>
@@ -21,6 +22,7 @@ function AboutUs({ t }: ITranslation) {
 
       {/* About Page Body */}
       <div className='about-us-body'>
+        {/* Description first content section */}
         <div className='description-section'>
           <div className='des-sec-images'>
             <div className='rectangle one'>
@@ -46,16 +48,18 @@ function AboutUs({ t }: ITranslation) {
           </div>
 
           <div className='des-sec-info'>
-            <h2>
-              <span>{t.aboutPage?.about}</span>
-              <span>{t.websiteName}</span>
-            </h2>
+            <div className='title'>
+              <h2>{t?.aboutPage?.about}</h2>
+              <span className='website-name'>{t?.websiteName}</span>
+            </div>
             <div className='text'>
-              <p>{t.aboutPage?.aboutDescriptionP1}</p>
-              <p>{t.aboutPage?.aboutDescriptionP2}</p>
+              <p>{t?.aboutPage?.aboutDescriptionP1}</p>
+              <p>{t?.aboutPage?.aboutDescriptionP2}</p>
             </div>
           </div>
         </div>
+
+        <TeamSection t={t} />
       </div>
     </div>
   );

@@ -7,11 +7,11 @@ import LogIn from '../Pages/auth/LogIn/LogIn';
 import { getStoredUser } from '../services/user-storage';
 import ForgotPassword from '../Pages/auth/forgot-password/ForgotPassword';
 import SignUp from '../Pages/auth/SignUp/SignUp';
-import Blogs from '../Components/Blogs/Blogs';
 import Contact from '../Components/Contact/Contact';
 import Profile from '../Components/Profile/Profile';
 import Calories from '../Components/Calories/Calories';
 import AboutUs from '../Components/AboutUs/AboutUs';
+import Articles from '../Components/Blogs/Articles';
 
 const RoutesWrapper = ({ t }: { t: any }) => {
   const routes = useRoutes([
@@ -38,7 +38,7 @@ const RoutesWrapper = ({ t }: { t: any }) => {
         {
           path: 'articles',
           element: getStoredUser() ? (
-            <Blogs t={t} />
+            <Articles t={t} />
           ) : (
             <Navigate to="/login" replace />
           ),

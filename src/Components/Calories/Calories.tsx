@@ -57,7 +57,7 @@ const Calories : React.FC <ITranslation> = ({t}) => {
         <div className="section-header">
           <h1 className="title">{t.calories}</h1>
           <div className="link">
-            <Link to="/">{t.home}</Link> <IoIosArrowForward />
+            <Link to="/">{t.homeTab}</Link> <IoIosArrowForward />
             {t.calories}
           </div>
         </div>

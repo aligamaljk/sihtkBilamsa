@@ -11,7 +11,7 @@ const Contact : React.FC <ITranslation> = ({t}) => {
           <div className="section-header">
             <h1 className="title">{t.contactUs}</h1>
             <div className="link">
-              <Link to="/">{t.home}</Link> <IoIosArrowForward />
+              <Link to="/">{t.homeTab}</Link> <IoIosArrowForward />
               {t.contactUs}
             </div>
           </div>

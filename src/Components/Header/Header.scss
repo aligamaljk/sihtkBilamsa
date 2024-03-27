@@ -1,0 +1,19 @@
+@import '../../styles/variables';
+
+.header {
+  a.link-tab.active {
+    color: $primary-color;
+  }
+}
+
+.servicesItem {
+  color: $black-500;
+  &.link-tab.active {
+    color: $primary-color;
+  }
+}
+
+.overlay-services-dropdown .ant-dropdown-menu-item,
+.overlay-services-dropdown .ant-dropdown-menu-submenu-title {
+  padding: 0 !important;
+}
