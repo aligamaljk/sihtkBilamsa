@@ -9,6 +9,7 @@ export interface ITranslation {
     LogOutMessage?: string;
     Language?: string;
     homeTab?: string;
+    profileTab?: string;
     logInTitle?: string;
     logo?: string;
     username?: string;

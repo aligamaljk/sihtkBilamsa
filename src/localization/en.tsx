@@ -5,6 +5,7 @@ export default {
   product: 'Products',
   cart: 'Cart',
   homeTab: 'Home',
+  profileTab: 'Profile',
   contactUs: 'Contact Us',
   articles: 'Articles',
   blogs: 'Blogs',

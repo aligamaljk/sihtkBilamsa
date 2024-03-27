@@ -22,6 +22,7 @@ import Logo from '../UI/Logo';
 import './Header.scss';
 import { useState } from 'react';
 import ActiveLinkTab from '../UI/ActiveLinkTab';
+import { GoSignOut } from 'react-icons/go';
 
 const HeaderApp: React.FC<ITranslation> = ({ t }) => {
   const [activeTab, setActiveTab] = useState('home');
@@ -150,91 +151,121 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
         />
       </div>
       <div className='login'>
-        {getStoredUser() ?
-          <div className='login'>
-            <Popconfirm
-              title={t.LogOut}
-              description={t.LogOutMessageModal}
-              // title="Are you sure?"
-              icon={<></>}
-              placement='topLeft'
-              okType='danger'
-              okText={t.okText}
-              cancelText={t.cancelText}
-              onConfirm={() => {
-                clearStoredUser();
-                dispatch(setCurrentUser(null));
-                navigate('/login');
-                message.success(t.LogOutMessage);
-              }}
-              onCancel={() => {
-                message.info(t.popupCanceledMessage);
-              }}
-              // okText="Yes"
-              // cancelText="No"
-            >
-              <Link
-                to='/profile'
-                title='Profile'
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '5px',
-                  marginRight: '5px'
+        {
+          getStoredUser() ?
+            // Log Out Tab
+            <div className='login'>
+              <Popconfirm
+                title={t.LogOut}
+                description={t.LogOutMessageModal}
+                // title="Are you sure?"
+                icon={<></>}
+                placement='topLeft'
+                okType='danger'
+                okText={t.okText}
+                cancelText={t.cancelText}
+                onConfirm={() => {
+                  clearStoredUser();
+                  dispatch(setCurrentUser(null));
+                  navigate('/login');
+                  message.success(t.LogOutMessage);
                 }}
+                onCancel={() => {
+                  message.info(t.popupCanceledMessage);
+                }}
+                // okText="Yes"
+                // cancelText="No"
               >
                 <Button
                   type='text'
                   danger
                   size='small'
+                  className='btn-ant-custom-hover-styles-logOut'
                   style={{
                     fontSize: '16px',
                     fontWeight: '600',
-                    color: '#ff7d7d'
+                    color: '#ff7d7d',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '5px'
                   }}
                 >
                   {t.LogOut}
-                  <UserOutlined />
+                  <GoSignOut />
                   {/* <Image src={img} preview={false} width={18} /> */}
                 </Button>
-              </Link>
-            </Popconfirm>
-          </div>
-        : <Link
-            to='/login'
+              </Popconfirm>
+            </div>
+            // Log In Tab
+          : <Link
+              to='/login'
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '5px',
+                paddingRight: '10px'
+              }}
+            >
+              {/* <Image src={img} preview={false} width={18} /> */}
+              {t.LogIn}
+              <HiOutlineLogin />
+            </Link>
+
+        }
+
+        {/* Profile Tab*/}
+        <Link
+          to='/profile'
+          title='Profile'
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '5px',
+            marginRight: '5px'
+          }}
+        >
+          <Button
+            type='text'
+            danger
+            size='small'
+            className='btn-ant-custom-hover-styles'
             style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '5px',
-              paddingRight: '10px'
+              fontSize: '16px',
+              fontWeight: '600',
+              color: 'white'
             }}
           >
+            {t.profileTab}
+            <UserOutlined />
             {/* <Image src={img} preview={false} width={18} /> */}
-            {t.LogIn}
-            <HiOutlineLogin />
-          </Link>
-        }
+          </Button>
+        </Link>
+
+        {/* Language Tab */}
         <Dropdown
           arrow={{ pointAtCenter: true }}
           // trigger={['click']}
           trigger={['hover']}
           menu={{ items: items, onClick: chanageLang }}
         >
-          <span
+          {/* <Image src={img2} preview={false} width={18} /> */}
+          <Button
+            type='text'
+            danger
+            size='small'
+            className='btn-ant-custom-hover-styles'
             style={{
-              cursor: 'pointer',
               fontSize: '16px',
               fontWeight: '600',
+              color: 'white',
               display: 'flex',
               alignItems: 'center',
-              gap: '5px',
-              color: 'white'
+              gap: '5px'
             }}
           >
-            {/* <Image src={img2} preview={false} width={18} /> */}
             {t.Language}
             <MdLanguage />
-          </span>
+          </Button>
         </Dropdown>
       </div>
     </div>
