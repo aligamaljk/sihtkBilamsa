@@ -128,7 +128,7 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
                 (
                   activeTab === 'BMR' ||
                   activeTab === 'calories' ||
-                  activeTab === 'blogs'
+                  activeTab === 'articles'
                 ) ?
                   '#ff7d7d'
                 : 'white',

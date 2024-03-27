@@ -1,8 +1,9 @@
+@import '../../styles/variables';
+
 .layout {
   min-height: 100vh;
   .main-header {
-    // background-color: $black-800;
-    background-color: #15171a;
+    background-color: $black-800;
     left: 0;
     position: fixed;
     right: 0;
@@ -18,18 +19,16 @@
         font-size: 24px;
         font-weight: 700;
         a {
-        //   color: $white;
-          color: #fff;
+          color: $white;
         }
-    }
-    .links {
+      }
+      .links {
         display: flex;
         align-items: center;
         gap: 20px;
-    }
-    a {
-          color: #fff;
-        // color: $white;
+      }
+      a {
+        color: $white;
         font-size: 18px;
         letter-spacing: 0.14px;
         text-transform: capitalize;
