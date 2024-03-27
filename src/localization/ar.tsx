@@ -3,6 +3,7 @@ export default {
   logo: 'الصحه',
   OwnNotFound: 'إرجع للصفحة الرئيسية',
   homeTab: 'الرئيسية',
+  profileTab: 'حسابك',
   contactUs: 'اتصل بنا',
   articles: 'مقالات',
   blogs: 'المدونات',
