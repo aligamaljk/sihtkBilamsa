@@ -17,3 +17,19 @@
 .overlay-services-dropdown .ant-dropdown-menu-submenu-title {
   padding: 0 !important;
 }
+
+.btn-ant-custom-hover-styles-logOut {
+  border-width: 2px;
+  border-style: solid;
+}
+
+.btn-ant-custom-hover-styles-logOut:hover {
+  border-color: $primary-color;
+  background-color: transparent !important;
+}
+
+.btn-ant-custom-hover-styles:hover {
+  color: $black-800 !important;
+  background-color: $white !important;
+  translate: color 0.3s;
+}

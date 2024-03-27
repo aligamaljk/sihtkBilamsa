@@ -10,7 +10,16 @@ const Home = ({ t }: ITranslation) => {
           <h1>{t.homePage?.hero?.h1_1}</h1>
           <h1 className='second-heading'>{t.homePage?.hero?.h1_2}</h1>
           <p>{t.homePage?.hero?.p}</p>
-          <Btn size='lg' onClick={() => console.log('clicked')}>
+
+          <Btn
+            size='lg'
+            to='/contact'
+            onClick={(e) => {
+              if (e) {
+                e.preventDefault();
+              }
+            }}
+          >
             {t.homePage?.hero?.btn}
           </Btn>
         </div>

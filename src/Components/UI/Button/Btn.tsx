@@ -1,9 +1,13 @@
 import React from 'react';
 import './Btn.scss';
+import { Link } from 'react-router-dom';
 
 interface BtnPropsType {
   children: React.ReactNode;
-  onClick?: () => void;
+  to?: string;
+  onClick?: (
+    e?: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => void;
   size?: 'sm' | 'md' | 'lg';
   styles?: { [key: string]: string };
 }
@@ -11,6 +15,7 @@ interface BtnPropsType {
 function Btn({
   children,
   onClick,
+  to,
   size = 'md',
   styles
 }: BtnPropsType) {
@@ -25,6 +30,19 @@ function Btn({
     color: 'white',
     ...styles
   };
+
+  if (to) {
+    return (
+      <Link
+        to={to}
+        className={`btn ${sizes[size]}`}
+        style={btnStyles}
+      >
+        {' '}
+        {children}
+      </Link>
+    );
+  }
 
   return (
     <button

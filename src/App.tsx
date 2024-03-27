@@ -51,10 +51,10 @@ function App() {
             // linearBg: "linear-gradient(270deg, #8A4CF5 0%, #595FBC 100%)",
             // secBtnBorderColor: "#C7BBF9",
             // colorPrimaryBgHover: "#595FBC",
-            // colorPrimaryHover: "#595FBC",
+            // colorPrimaryHover: '#595FBC',
             // colorTextDescription: "#6D29F6",
             // colorPrimaryActive: "#6D29F6",
-            // colorPrimaryText: "#6D29F6",
+            // colorPrimaryText: '#6D29F6',
             // colorPrimaryTextActive: "#6D29F6",
             // colorPrimaryTextHover: "#6D29F6",
             // colorLink: "#6D29F6",
@@ -85,6 +85,7 @@ function App() {
             borderRadiusSM: 4,
             borderRadiusLG: 12,
             borderRadiusXS: 4
+
             // colorBgLayout: "#F0F1F2",
             // colorBgContainer: "#ffffff",
             // colorBgElevated: "#ffffff",
