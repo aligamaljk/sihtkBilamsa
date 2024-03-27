@@ -114,6 +114,7 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
           arrow={{ pointAtCenter: true }}
           trigger={['hover']}
           menu={{ items: itemsLink }}
+          overlayClassName='overlay-services-dropdown'
         >
           <span
             style={{
