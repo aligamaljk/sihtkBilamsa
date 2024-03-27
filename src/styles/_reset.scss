@@ -347,7 +347,7 @@ $breakpoints: (
   'md': 768px,
   'lg': 992px,
   'xl': 1201px,
-  'xxl': 1601px
+  'xxl': 1401px
 );
 
 @mixin mq($width, $type: max) {
@@ -370,10 +370,10 @@ $breakpoints: (
   width: 100%;
 
   @include mq('xxl', min) {
-    max-width: 1427px;
+    max-width: 1320px;
   }
   @include mq('xxl') {
-    max-width: 1127px;
+    max-width: 1137px;
   }
   @include mq('xl') {
     max-width: 933px;

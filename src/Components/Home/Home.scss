@@ -1,7 +1,59 @@
+@import '../../styles/variables';
+
 .home {
-  background-image: url('/hero-img.jpg');
-  background-position: center;
-  background-size: cover;
-  transform: scaleX(-1);
   min-height: calc(100vh - 80px);
+  position: relative;
+  z-index: 1;
+  color: $white;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    transform: scaleX(-1);
+
+    background-image: url('/hero-img2.jpg');
+    // background-position: center;
+    // background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: $black;
+  }
+
+  .container {
+    position: relative;
+  }
+
+  // Section info and text
+  .section-info {
+    position: absolute;
+    top: 0;
+    left: 140px;
+    z-index: 20;
+    height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform: translateY(0px);
+    align-items: start;
+
+    h1 {
+      font-size: 5rem;
+      font-weight: 700;
+      line-height: 5.5rem;
+      text-transform: uppercase;
+      color: $white;
+    }
+    .second-heading {
+      // color: white;
+      color: $primary-color;
+    }
+    p {
+      font-size: 2rem;
+      font-weight: 400;
+      max-width: 480px;
+      margin: 15px 0px 30px;
+    }
+  }
 }

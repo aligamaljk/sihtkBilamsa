@@ -4,7 +4,7 @@ export default {
   OwnNotFound: 'Go Back To The Homepage',
   product: 'Products',
   cart: 'Cart',
-  home: 'Home',
+  homeTab: 'Home',
   contactUs: 'Contact Us',
   articles: 'Articles',
   blogs: 'Blogs',
@@ -109,6 +109,14 @@ export default {
   okText: 'Ok',
   cancelText: 'Cancel',
   websiteName: 'Sihtk Bilamsa',
+  homePage: {
+    hero: {
+      h1_1: 'Build a perfect',
+      h1_2: 'Health growth',
+      p: 'A no brainer solution to achieving your dream physique and optimizing your health',
+      btn: 'Join us now !'
+    }
+  },
   aboutPage: {
     about: 'About',
     aboutDescriptionP1:

@@ -2,7 +2,7 @@ export default {
   greeting: 'مرحبا',
   logo: 'الصحه',
   OwnNotFound: 'إرجع للصفحة الرئيسية',
-  home: 'الرئيسية',
+  homeTab: 'الرئيسية',
   contactUs: 'اتصل بنا',
   articles: 'مقالات',
   blogs: 'المدونات',
@@ -104,6 +104,14 @@ export default {
   okText: 'نعم',
   cancelText: 'لا',
   websiteName: 'صحتك بِلَمسة',
+  homePage: {
+    hero: {
+      h1_1: 'بناء نمو',
+      h1_2: 'صحي مثالي',
+      p: 'حل لا يحتاج إلى التفكير لتحقيق اللياقة البدنية التي تحلم بها وتحسين صحتك',
+      btn: 'انضم إلينا الآن !'
+    }
+  },
   aboutPage: {
     about: 'عن',
     aboutDescriptionP1:

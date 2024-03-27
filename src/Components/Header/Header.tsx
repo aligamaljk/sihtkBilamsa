@@ -100,7 +100,7 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
           onClick={() => setActiveTab('home')}
           classNameTab='home'
           state={activeTab}
-          linkText={t.home}
+          linkText={t.homeTab}
         />
         {/* <Link to='/about'>{t.aboutUs}</Link> */}
         <ActiveLinkTab
