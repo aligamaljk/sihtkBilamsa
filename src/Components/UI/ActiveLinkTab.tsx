@@ -18,10 +18,18 @@ function ActiveLinkTab({
   linkText
 }: ActiveLinkTabPropsType) {
   return (
-    <button onClick={onClick}>
+    <button
+      onClick={onClick}
+      style={{ display: 'block', width: '100%' }}
+    >
       <Link
         to={to}
         className={`${state === classNameTab ? 'active link-tab' : 'link-tab'} ${className}`}
+        style={{
+          padding: '8px 10px',
+          display: 'block',
+          width: '100%'
+        }}
       >
         {linkText}
       </Link>

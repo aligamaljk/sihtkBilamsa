@@ -11,3 +11,9 @@
     color: $primary-color;
   }
 }
+
+:where(.css-dev-only-do-not-override-mib3gt).ant-dropdown
+  .ant-dropdown-menu
+  .ant-dropdown-menu-item {
+  padding: 0px;
+}
