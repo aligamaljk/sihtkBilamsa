@@ -1,8 +1,8 @@
 // import { TeactComponent as Logo } from '../../assets/logo.svg?react';
 import logo from '../../assets/logo.svg';
 
-function Logo() {
-  return <img src={logo} alt='logo' height='60' />;
+function Logo({ height = 45 }: { height?: number }) {
+  return <img src={logo} alt='logo' height={height} />;
 }
 
 export default Logo;

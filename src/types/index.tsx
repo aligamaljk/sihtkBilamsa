@@ -121,6 +121,7 @@ export interface ITranslation {
       teamSectionTitlePart1?: string;
       teamSectionTitlePart2?: string;
     };
+    popupCanceledMessage?: string;
   };
 }
 

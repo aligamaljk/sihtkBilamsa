@@ -31,11 +31,11 @@ export default {
   requiredCategory: 'Please select a sports!',
   requiredBurn: 'Please Select your burn rate!',
   requiredExercise: 'Please Select your exercise rate!',
-  LogIn: 'LogIn',
-  successLog: 'Success LogIn',
-  errorLog: 'Error LogIn',
-  LogOutMessage: 'LogOut successfully',
-  LogOut: 'LogOut',
+  LogIn: 'Log In',
+  successLog: 'Logged In Successfully',
+  errorLog: 'Error Logging In',
+  LogOutMessage: 'Logged Out Successfully',
+  LogOut: 'Log Out',
   Language: 'Language',
   onError:
     'Please enter a valid email and password. Make sure your fields are not case-sensitive.',
@@ -117,5 +117,6 @@ export default {
       'Additionally, we endeavor to provide important data and statistics to help you monitor your progress and make better health decisions. Furthermore, we offer articles and educational resources on health to assist you in making informed and healthy choices.',
     teamSectionTitlePart1: 'Meet Our',
     teamSectionTitlePart2: 'Team'
-  }
+  },
+  popupCanceledMessage: 'Thank you for choosing to stay with us'
 };

@@ -1,0 +1,13 @@
+@import '../../styles/variables';
+
+.header {
+  a.link-tab.active {
+    color: $primary-color;
+  }
+}
+.servicesItem {
+  color: $black-500;
+  &.link-tab.active {
+    color: $primary-color;
+  }
+}
