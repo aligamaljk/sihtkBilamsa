@@ -8,7 +8,7 @@ export interface ITranslation {
     LogOut?: string;
     LogOutMessage?: string;
     Language?: string;
-    home?: string;
+    homeTab?: string;
     logInTitle?: string;
     logo?: string;
     username?: string;
@@ -114,6 +114,14 @@ export interface ITranslation {
     cancelText?: string;
     footer?: string;
     websiteName?: string;
+    homePage?: {
+      hero?: {
+        h1_1: string;
+        h1_2: string;
+        p: string;
+        btn: string;
+      };
+    };
     aboutPage?: {
       about?: string;
       aboutDescriptionP1?: string;
@@ -121,6 +129,7 @@ export interface ITranslation {
       teamSectionTitlePart1?: string;
       teamSectionTitlePart2?: string;
     };
+    popupCanceledMessage?: string;
   };
 }
 
