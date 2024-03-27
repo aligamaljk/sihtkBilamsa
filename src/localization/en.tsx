@@ -126,4 +126,5 @@ export default {
   stability:"Weight stability",
   quantity:"Quantity",
   quantityMess:"Write the quantity in (Grams)",
+  
   }
