@@ -1,6 +1,6 @@
 import './TwoLineShape.scss';
 function LineShap({
-  color = '#fd7304',
+  color,
   size
 }: {
   color?: string;
@@ -11,6 +11,11 @@ function LineShap({
     height: size?.height || defaultSize.height,
     width: size?.width || defaultSize.width
   };
+  let clr = color;
+  if (!clr) {
+    clr = '#fd7304';
+  }
+  console.log(clr);
   console.log(resSize);
   return (
     <div
@@ -18,7 +23,7 @@ function LineShap({
       style={{
         height: resSize.height,
         width: resSize.width,
-        backgroundColor: color
+        backgroundColor: clr
       }}
     ></div>
   );

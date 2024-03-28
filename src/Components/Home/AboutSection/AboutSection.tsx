@@ -3,61 +3,80 @@ import Btn from '../../UI/Button/Btn';
 import TwoLineShape from '../../UI/TwoLineShape/TwoLineShape';
 import img1 from '../../../assets/home-img1.jpg';
 import img2 from '../../../assets/home-img2.jpg';
+import './AboutSection.scss';
 
 function AboutSection({ t }: ITranslation) {
   return (
-    <section>
-      {/* 
-            ===================
-            Section for photos
-            ===================
-      */}
-      <div className='images'>
-        <div>
-          <img src={img1} alt='person-running-in-the-road' />
-        </div>
-        <div>
-          <img src={img2} alt='fruit on a plate with some oats' />
-        </div>
-      </div>
-
-      {/* 
-            ===================
-            Section Description 
-            ===================
-      */}
-      <div className='info'>
+    <section className='about-section'>
+      <div className='container'>
         {/* 
+            ==============
+            Photos Section
+            ==============
+      */}
+        <div className='images'>
+          <div>
+            <img
+              className='img one'
+              src={img1}
+              alt='person-running-in-the-road'
+            />
+          </div>
+          <div>
+            <img
+              className='img two'
+              src={img2}
+              alt='fruit on a plate with some oats'
+            />
+          </div>
+        </div>
+
+        {/* 
+          ===================
+          Section Description 
+          ===================
+      */}
+        <div className='info'>
+          {/* 
             =====
             Title 
             =====
       */}
-        <div>
-          <TwoLineShape />
-          <h2>{t.aboutUs}</h2>
-          <h3>Do Hard things</h3>
-        </div>
+          <div className='heading'>
+            <TwoLineShape
+              l1={{ width: '15%', height: '4px' }}
+              l2={{ width: '50%', height: '5px' }}
+              translateX='-38%'
+              translateY='-225%'
+              color='#ff7d7d'
+            />
+            <h2>{t.aboutUs}</h2>
+          </div>
+          <h3>{t.homePage?.about?.advice}</h3>
 
-        {/* 
+          {/* 
             =====
             Text 
             =====
         */}
-        <div className='text'>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            Iure, magnam aliquid officia molestiae odit cum et eum
-            placeat saepe accusamus hic, vero harum officiis, mollitia
-            fugit assumenda aperiam provident cumque.
-          </p>
+          <div className='text'>
+            <p>{t.homePage?.about?.p1}</p>
 
-          <p>
-            lorm odit cum et eum placeat saepe accusamus hic, vero
-            harum officiis, mollitia
-          </p>
+            <p>{t.homePage?.about?.p2}</p>
+          </div>
+
+          <Btn
+            to='/about'
+            styles={{
+              border: '2px solid #ff7d7d',
+              width: 'fit-content',
+              color: 'black',
+              margin: '10px 0px'
+            }}
+          >
+            {t.homePage?.about?.btn}
+          </Btn>
         </div>
-
-        <Btn to='/about'>read more</Btn>
       </div>
     </section>
   );

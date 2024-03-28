@@ -122,6 +122,24 @@ export interface ITranslation {
         p: string;
         btn: string;
       };
+      about?: {
+        advice: string;
+        p1: string;
+        p2: string;
+        btn: string;
+      };
+      services?: {
+        titleH2: string;
+        titleH3: string;
+        titleH4Box1: string;
+        box1Text: string;
+        titleH4Box2: string;
+        box2Text: string;
+        titleH4Box3: string;
+        box3Text: string;
+        titleH4Box4: string;
+        box4Text: string;
+      };
     };
     aboutPage?: {
       about?: string;

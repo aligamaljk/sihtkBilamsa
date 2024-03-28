@@ -18,6 +18,7 @@ function HeroSection({ t }: ITranslation) {
           <Btn
             size='lg'
             to='/contact'
+            styles={{ border: '2px solid #fd7304' }}
             onClick={(e) => {
               if (e) {
                 e.preventDefault();

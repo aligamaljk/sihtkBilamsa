@@ -203,7 +203,8 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
                 display: 'flex',
                 alignItems: 'center',
                 gap: '5px',
-                paddingRight: '10px'
+                paddingRight: '10px',
+                color: '#ff7d7d'
               }}
             >
               {/* <Image src={img} preview={false} width={18} /> */}

@@ -33,11 +33,11 @@ export default {
   requiredBurn: 'Please Select your burn rate!',
   requiredExercise: 'Please Select your exercise rate!',
   requiredGoal: 'Please Select your goal!',
-  LogIn: 'LogIn',
-  successLog: 'Success LogIn',
-  errorLog: 'Error LogIn',
-  LogOutMessage: 'LogOut successfully',
-  LogOut: 'LogOut',
+  LogIn: 'Log In',
+  successLog: 'Success Log In',
+  errorLog: 'Error Log In',
+  LogOutMessage: 'Sign Out successfully',
+  LogOut: 'Sign out',
   Language: 'Language',
   onError:
     'Please enter a valid email and password. Make sure your fields are not case-sensitive.',
@@ -92,7 +92,7 @@ export default {
   totalCalories: 'Total Calories',
   caloriesMore: 'calories more than',
   caloriesLess: 'calories less than',
-  caloriesStability : 'Calories stability',
+  caloriesStability: 'Calories stability',
   bodyShape: 'Body shape',
   skinny: 'Slim ',
   normal: 'normal weight',
@@ -118,6 +118,28 @@ export default {
       h1_2: 'Health growth',
       p: 'A no brainer solution to achieving your dream physique and optimizing your health',
       btn: 'Join us now !'
+    },
+    about: {
+      advice: 'Do Hard Things!',
+      p1: 'Welcome to our platform dedicated to enhancing your health and well-being. Discover tools to track your activity and set goals.',
+      p2: 'Explore vital data to monitor progress and make informed decisions. Dive into our articles and resources for valuable insights into leading a healthier lifestyle.',
+      btn: 'read more'
+    },
+    services: {
+      titleH2: 'Our Services',
+      titleH3: 'We aim to boost your abilities',
+      titleH4Box1: 'Sports Activity Tracking',
+      box1Text:
+        'Allows users to record and track various sports activities such as walking, running, cycling, and more.',
+      titleH4Box2: 'Setting Health Goals',
+      box2Text:
+        'Users can set personal health goals and track their progress towards achieving these goals.',
+      titleH4Box3: 'Providing Health Tips and Resources',
+      box3Text:
+        'Offering articles and educational resources on health and wellness to help users make better health decisions.',
+      titleH4Box4: 'Reminders and Scheduling',
+      box4Text:
+        'Ability to set reminders for meals, water intake, and exercise sessions to help users adhere to a healthy routine.'
     }
   },
   aboutPage: {
@@ -126,15 +148,15 @@ export default {
       'We aim to provide a comprehensive platform to promote health and well-being, striving to assist you in improving your healthy lifestyle. We offer a range of tools and features to help you track your physical activity and set healthy goals.',
     aboutDescriptionP2:
       'Additionally, we endeavor to provide important data and statistics to help you monitor your progress and make better health decisions. Furthermore, we offer articles and educational resources on health to assist you in making informed and healthy choices.',
-      teamSectionTitlePart1: 'Meet Our',
-      teamSectionTitlePart2: 'Team'
+    teamSectionTitlePart1: 'Meet Our',
+    teamSectionTitlePart2: 'Team'
   },
   popupCanceledMessage: 'Thank you for choosing to stay with us',
 
-  goal:"Goal",
-  moreCal:" gain weight",
-  lessCal:" lose weight",
-  stability:"Weight stability",
-  quantity:"Quantity",
-  quantityMess:"Write the quantity in (Grams)",
-  }
+  goal: 'Goal',
+  moreCal: ' gain weight',
+  lessCal: ' lose weight',
+  stability: 'Weight stability',
+  quantity: 'Quantity',
+  quantityMess: 'Write the quantity in (Grams)'
+};
