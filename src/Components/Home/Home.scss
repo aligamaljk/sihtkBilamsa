@@ -38,6 +38,10 @@
     transform: translateY(0px);
     align-items: start;
 
+    .info {
+      position: relative;
+    }
+
     h1 {
       font-size: 5rem;
       font-weight: 700;

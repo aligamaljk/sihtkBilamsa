@@ -1,5 +1,6 @@
 import { ITranslation } from '../../types';
 import Btn from '../UI/Button/Btn';
+import TwoLineShape from '../UI/TwoLineShape/TwoLineShape';
 import './Home.scss';
 
 const Home = ({ t }: ITranslation) => {
@@ -7,7 +8,10 @@ const Home = ({ t }: ITranslation) => {
     <section className='home'>
       <div className='container'>
         <div className='section-info'>
-          <h1>{t.homePage?.hero?.h1_1}</h1>
+          <div className='info'>
+            <TwoLineShape l1={{ height: '4px', width: '50%' }} />
+            <h1>{t.homePage?.hero?.h1_1}</h1>
+          </div>
           <h1 className='second-heading'>{t.homePage?.hero?.h1_2}</h1>
           <p>{t.homePage?.hero?.p}</p>
 
