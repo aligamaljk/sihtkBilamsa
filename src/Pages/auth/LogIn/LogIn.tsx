@@ -22,23 +22,6 @@ const LogIn: React.FC<ITranslation> = ({ t }) => {
     message.success(t.successLog + ' ' + values.name);
     navigate('/profile');
   };
-  // const { mutate: onAuthLogin, isLoading } = useMutation( authLogin , {
-  //   onSuccess: async (res : any) => {
-  //     // console.log('Login  res:', res);
-  //     if (!res || !res?.model) return message.error(t.onError);
-  //     const userData = res?.model;
-  //     setStoredToken(userData?.token);
-  //     setStoredUser(userData?.username);
-  //     dispatch(setCurrentUser(userData));
-  //     // dispatch(setUserData(userData));
-  //     message.success(`مرحباً بك ${userData?.userName || userData?.name}`);
-  //     navigate('/');
-  //   },
-  //   onError: (error : any) => {
-  //     console.log('Login  error:', error);
-  //     message.error(t.onError);
-  //   },
-  // });
 
   return (
     <div className="login">

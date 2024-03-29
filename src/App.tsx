@@ -5,7 +5,6 @@ import ar from './localization/ar';
 import { ConfigProvider, App as AntApp } from 'antd';
 import RoutesWrapper from './Route';
 import { useSelector } from 'react-redux';
-import QueryProvider from './services/react-query/index';
 import './styles/ant.scss';
 import { StoreType } from './types';
 import { setStoredAddSport } from './services/user-storage';
@@ -15,32 +14,6 @@ function App() {
     );
     // console.log(currentLang);
     const t = currentLang === 'en' ? en : ar;
-    // setStoredAddSport([
-    //         {
-    //           label: t.swimming,
-    //           value: 1,
-    //         },
-    //         {
-    //           label: t.running,
-    //           value: 2,
-    //         },
-    //         {
-    //           label: t.football,
-    //           value: 3,
-    //         },
-    //         {
-    //           label: t.basketball,
-    //           value: 4,
-    //         },
-    //         {
-    //           label: t.gym,
-    //           value: 5,
-    //         },
-    //         {
-    //           label: t.tennis,
-    //           value: 6,
-    //         },
-    //       ])
   useEffect(() => {
     if (currentLang) {
       document
@@ -50,7 +23,6 @@ function App() {
   }, [currentLang]);
 
   return (
-    <QueryProvider>
       <ConfigProvider
         direction={currentLang === 'en' ? 'ltr' : 'rtl'}
         theme={{
@@ -127,7 +99,6 @@ function App() {
           <RoutesWrapper t={t} />
         </AntApp>
       </ConfigProvider>
-    </QueryProvider>
   );
 }
 
