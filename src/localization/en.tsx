@@ -117,7 +117,7 @@ export default {
       h1_1: 'Build a perfect',
       h1_2: 'Health growth',
       p: 'A no brainer solution to achieving your dream physique and optimizing your health',
-      btn: 'Join us now !'
+      btn: 'Join us now!'
     },
     about: {
       advice: 'Do Hard Things!',
@@ -149,6 +149,20 @@ export default {
       h2: 'Build healthy habits',
       p: 'Achieve your fitness goals',
       btn: 'join us'
+    },
+    articlesSection: {
+      h2: 'Our Articles',
+      h3: 'Building a community of athletic',
+      link: 'Read more...',
+      article1: {
+        title: 'The Benefits of Regular Exercise'
+      },
+      article2: {
+        title: 'The Importance of Sleep for Health and Well-Being'
+      },
+      article3: {
+        title: 'The Role of Exercise in Mental Health'
+      }
     }
   },
   aboutPage: {

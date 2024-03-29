@@ -1,5 +1,6 @@
 import { ITranslation } from '../../types';
 import AboutSection from './AboutSection/AboutSection';
+import Articles from './Articles/Articles';
 import HeroSection from './HeroSection/HeroSection';
 import './Home.scss';
 import JoinUs from './JoinUs/JoinUs';
@@ -12,6 +13,7 @@ const Home = ({ t }: ITranslation) => {
       <HeroSection t={t} />
       <AboutSection t={t} />
       <ServicesSection t={t} />
+      <Articles t={t} />
       <VideoSection t={t} />
       <JoinUs t={t} />
     </section>

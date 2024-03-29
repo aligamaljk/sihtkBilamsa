@@ -35,12 +35,13 @@ function VideoSection({ t }: ITranslation) {
       */}
 
       <Modal
-        title='Introduction Video'
+        title={t.homePage?.videoSection?.h2}
         centered
         open={modalOpen}
-        onOk={() => setModalOpen(false)}
         onCancel={() => setModalOpen(false)}
         width={'fit-content'}
+        cancelButtonProps={{ style: { display: 'none' } }}
+        okButtonProps={{ style: { display: 'none' } }}
       >
         <div className='iframe-container'>
           <iframe

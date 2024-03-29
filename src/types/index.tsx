@@ -149,6 +149,20 @@ export interface ITranslation {
         p: string;
         btn: string;
       };
+      articlesSection?: {
+        h2: string;
+        h3: string;
+        link: string;
+        article1: {
+          title: string;
+        };
+        article2: {
+          title: string;
+        };
+        article3: {
+          title: string;
+        };
+      };
     };
     aboutPage?: {
       about?: string;
