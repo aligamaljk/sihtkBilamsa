@@ -1,54 +1,25 @@
-// import { Button, Dropdown, Image, message, Popconfirm } from 'antd';
-import { Button, Dropdown, message, Popconfirm } from 'antd';
+import { Button, Drawer, DrawerProps, Dropdown, message, Popconfirm } from 'antd';
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { ITranslation, StoreType } from '../../../types';
+import ActiveLinkTab from '../../UI/ActiveLinkTab';
+import "./HeaderRes.scss"
+import { RiMenuUnfoldFill } from "react-icons/ri";
 import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import {
-  setCurrentLang,
-  setCurrentUser
-} from '../../services/store/reducers/user';
-import {
-  clearStoredUser,
-  clearStoredUserProfile,
-  getStoredUser,
-  setLang
-} from '../../services/user-storage';
-import { ITranslation } from '../../types';
-// import img from '../../assets/download.png';
-// import img2 from '../../assets/translating.0144a3cdb7995b9cf71d492fe721e60b.svg';
+import { GoSignOut } from 'react-icons/go';
 import { IoIosArrowDown } from 'react-icons/io';
-import { MdLanguage } from 'react-icons/md';
 import { UserOutlined } from '@ant-design/icons';
 import { HiOutlineLogin } from 'react-icons/hi';
-import Logo from '../UI/Logo';
-import './Header.scss';
-import { useState } from 'react';
-import ActiveLinkTab from '../UI/ActiveLinkTab';
-import { GoSignOut } from 'react-icons/go';
-import HeaderRes from './HeaderRes/HeaderRes';
+import { clearStoredUser, clearStoredUserProfile, getStoredUser } from '../../../services/user-storage';
+import { setCurrentUser } from '../../../services/store/reducers/user';
 
-const HeaderApp: React.FC<ITranslation> = ({ t }) => {
-  const [activeTab, setActiveTab] = useState('home');
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const chanageLang = ({ key }: { key: string }) => {
-    dispatch(setCurrentLang(key));
-    setLang(key);
-    document
-      .getElementsByTagName('html')[0]
-      .setAttribute('lang', key);
-  };
-  const items = [
-    {
-      key: 'en',
-      label: 'English'
-    },
-    {
-      key: 'ar',
-      label: 'العربية'
-    }
-  ];
-
-  const itemsLink = [
+const HeaderRes : React.FC <ITranslation> = ({t}) => {
+     const { currentLang } = useSelector(
+    (state: StoreType) => state?.user
+    );
+      const [open, setOpen] = useState(false);
+        const [activeTab, setActiveTab] = useState('home');
+         const itemsLink = [
     {
       key: '1',
       label: (
@@ -67,11 +38,15 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
       label: (
         <ActiveLinkTab
           to='/calories'
-          onClick={() => setActiveTab('calories')}
+          onClick={() =>{
+             setActiveTab('calories')
+             setOpen(false)
+          }}
           classNameTab='calories'
           state={activeTab}
           linkText={t.calories}
           className='servicesItem'
+
         />
       )
     },
@@ -80,7 +55,10 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
       label: (
         <ActiveLinkTab
           to='/articles'
-          onClick={() => setActiveTab('articles')}
+          onClick={() => {
+            setActiveTab('articles')
+            setOpen(false)
+          } }
           classNameTab='articles'
           state={activeTab}
           linkText={t.articles}
@@ -93,7 +71,10 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
       label: (
         <ActiveLinkTab
           to='/activities'
-          onClick={() => setActiveTab('activities')}
+          onClick={() => {
+            setActiveTab('activities')
+            setOpen(false)
+          }}
           classNameTab='activities'
           state={activeTab}
           linkText={t.activities}
@@ -102,26 +83,46 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
       )
     }
   ];
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const showDrawer = () => {
+    setOpen(true);
+  };
+
+  const onClose = () => {
+    setOpen(false);
+  };
   return (
-    <div className='header'>
-      <div className='logo'>
-        <Link to='/'>
-          {/* <Link to='/'>{t.logo}</Link> */}
-          <Logo />
-        </Link>
-      </div>
-      <div className='links'>
+    <>
+        <span onClick={showDrawer}
+        className='menu'
+        >
+            <RiMenuUnfoldFill className='menu-icon' />
+        </span>
+        <Drawer
+        placement={currentLang === 'en' ? 'left' : 'right'}
+        onClose={onClose}
+        open={open}
+        className='drawer-header'
+      >
+      <div className='links-res'>
         <ActiveLinkTab
           to='/'
-          onClick={() => setActiveTab('home')}
+          onClick={() => {
+            setActiveTab('home')
+            setOpen(false)
+          }}
           classNameTab='home'
           state={activeTab}
           linkText={t.homeTab}
         />
-        {/* <Link to='/about'>{t.aboutUs}</Link> */}
         <ActiveLinkTab
           to='/about'
-          onClick={() => setActiveTab('About Us')}
+          onClick={() => {
+            setActiveTab('About Us')
+            setOpen(false)
+          }}
           classNameTab='About Us'
           state={activeTab}
           linkText={t.aboutUs}
@@ -156,17 +157,18 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
             {t.services} <IoIosArrowDown />
           </span>
         </Dropdown>
-        {/* <Link to="/blogs">{t.articles}</Link> */}
-        {/* <Link to='/contact'>{t.contactUs}</Link> */}
         <ActiveLinkTab
           to='/contact'
-          onClick={() => setActiveTab('Contact Us')}
+          onClick={() => {
+            setActiveTab('Contact Us')
+            setOpen(false)
+          }}
           classNameTab='Contact Us'
           state={activeTab}
           linkText={t.contactUs}
         />
       </div>
-      <div className='login' >
+        <div className='login-res' >
         {
           getStoredUser() ?
             // Log Out Tab
@@ -174,8 +176,6 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
               <Popconfirm
                 title={t.LogOut}
                 description={t.LogOutMessageModal}
-                // title="Are you sure?"
-                icon={<></>}
                 placement='topLeft'
                 okType='danger'
                 okText={t.okText}
@@ -186,12 +186,11 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
                   dispatch(setCurrentUser(null));
                   navigate('/login');
                   message.success(t.LogOutMessage);
+                  setOpen(false)
                 }}
                 onCancel={() => {
                   message.info(t.popupCanceledMessage);
                 }}
-                // okText="Yes"
-                // cancelText="No"
               >
                 <Button
                   type='text'
@@ -219,6 +218,9 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
           : <Link
               className='link-res'
               to='/login'
+              onClick={() => {
+                setOpen(false)
+              }}
               style={{
                 display: 'flex',
                 alignItems: 'center',
@@ -243,6 +245,9 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
             gap: '5px',
             marginRight: '5px'
           }}
+            onClick={() => {
+                setOpen(false)
+            }}
         >
           <Button
             type='text'
@@ -260,41 +265,10 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
             {/* <Image src={img} preview={false} width={18} /> */}
           </Button>
         </Link>
-        {/* Language Tab */}
-        <Dropdown
-          arrow={{ pointAtCenter: true }}
-          // trigger={['click']}
-          trigger={['hover']}
-          menu={{ items: items, onClick: chanageLang }}
-        >
-          {/* <Image src={img2} preview={false} width={18} /> */}
-          <Button
-            type='text'
-            danger
-            size='small'
-            className='btn-ant-custom-hover-styles'
-            style={{
-              fontSize: '16px',
-              fontWeight: '600',
-              color: 'white',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '5px'
-            }}
-          >
-            <span className='text-header'>
-            {t.Language}
-            </span>
-            <MdLanguage />
-          </Button>
-        </Dropdown>
-        <div className="mobile">
-          <HeaderRes t={t} />
-        </div>
       </div>
+      </Drawer>
+    </>
+  )
+}
 
-    </div>
-  );
-};
-
-export default HeaderApp;
+export default HeaderRes

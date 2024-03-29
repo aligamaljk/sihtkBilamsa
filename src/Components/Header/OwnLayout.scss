@@ -46,9 +46,17 @@
       }
     }
   }
-  @media screen and (max-width: 800px) {
+  .mobile{
+    display: none;
+  }
+  @media screen and (max-width: 992px) {
+    .mobile{
+      display: block;
+      margin: 0 5px;
+    }
     .main-header {
       .header {
+        .link-res,
         .links {
           display: none;
         }

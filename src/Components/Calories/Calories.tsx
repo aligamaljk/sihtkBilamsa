@@ -10,6 +10,7 @@ const Calories : React.FC <ITranslation> = ({t}) => {
       const getLocalProfile = getStoredUserProfile()
   const [form] = Form.useForm();
   const [bmr,setBmr] = useState<number>(0)
+  const [bmrLess,setBmLess] = useState<number>(0)
   const [more,setMore] = useState<string | undefined>(undefined)
   const [caloriesMor,setCaloriesMor] = useState <any>({
     fat: 0,
@@ -33,23 +34,25 @@ const Calories : React.FC <ITranslation> = ({t}) => {
     setMore(more)
     setBmr(((10 * weight) + (6.25 * height) - (5 * age) ) * exercise) 
     
+    const bmrless = more === "less" ?  bmr - 500 : bmr
+    setBmLess(bmrless)
     if(burn === "more" || burn === "week"){
       setCaloriesMor({
-        carbs: (bmr * 25) / 100 / 4,
-        protein: (bmr * 40) / 100 / 4,
-        fat: (bmr * 35) / 100 / 9
+        carbs: (bmrless * 25) / 100 / 4,
+        protein: (bmrless * 40) / 100 / 4,
+        fat: (bmrless * 35) / 100 / 9
       })
-    } else if(burn === "medium"){
+    } else if(burn === "medium" || burn === "less"){
       setCaloriesMed({
-        carbs: (bmr * 40) / 100 / 4,
-        protein: (bmr * 30) / 100 / 4,
-        fat: (bmr * 30 ) / 100 / 9
+        carbs: (bmrless * 40) / 100 / 4,
+        protein: (bmrless * 30) / 100 / 4,
+        fat: (bmrless * 30 ) / 100 / 9
       })
-    } else if(burn === "high"){
+    } else if(burn === "high" || burn === "stability"){
       setCaloriesHigh({
-        carbs:( bmr * 55) / 100 / 4,
-        protein: (bmr * 20) / 100 / 4,
-        fat: (bmr * 25) / 100 / 9
+        carbs:( bmrless * 55) / 100 / 4,
+        protein: (bmrless * 20) / 100 / 4,
+        fat: (bmrless * 25) / 100 / 9
       })
     }
   }
@@ -184,7 +187,7 @@ const Calories : React.FC <ITranslation> = ({t}) => {
                   </div>
                   <div className="calories-foot-item">
                     <h3 className="total-calories">{t.totalCalories}:</h3>
-                    <div className="calories-foot-item-desc"> {bmr.toFixed(2)}g</div>
+                    <div className="calories-foot-item-desc"> {bmrLess.toFixed(2)}g</div>
                   </div>
                 </div>
                     
@@ -210,7 +213,7 @@ const Calories : React.FC <ITranslation> = ({t}) => {
                   </div>
                   <div className="calories-foot-item">
                     <h3 className="total-calories">{t.totalCalories}:</h3>
-                    <div className="calories-foot-item-desc"> {bmr.toFixed(2)} </div>
+                    <div className="calories-foot-item-desc"> {bmrLess.toFixed(2)} </div>
                   </div>
                 </div>
                   ) : (
@@ -232,7 +235,7 @@ const Calories : React.FC <ITranslation> = ({t}) => {
                   </div>
                   <div className="calories-foot-item">
                     <h3 className="total-calories">{t.totalCalories}:</h3>
-                    <div className="calories-foot-item-desc"> {bmr.toFixed(2)} </div>
+                    <div className="calories-foot-item-desc"> {bmrLess.toFixed(2)} </div>
                   </div>
                 </div>
                     )

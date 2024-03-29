@@ -1,6 +1,6 @@
 import React from 'react'
 import { ITranslation, StoreType } from '../../types'
-import { Card, Image, Pagination } from 'antd'
+import { Card, Image, Pagination, Skeleton } from 'antd'
 import "./Articles.scss"
 import img from "../../assets/94f2b7445db34d4b86e9a7111ed9b4ee.jpg"
 import { Link, useNavigate } from 'react-router-dom'
@@ -25,7 +25,21 @@ const Articles : React.FC <ITranslation> = ({t}) => {
         </div>
         <div className="container">
           <div className="cards">
-          {(currentLang === "en" ?  articlesEn : articlesAr )?.map((item) => (
+             {/* {[1, 2, 3, 4, 5, 6]?.map((product) => (
+                    <div className="card" key={product}>
+                      <Card
+                        hoverable
+                        loading
+                        cover={
+                          <Skeleton.Image
+                            active
+                            style={{ width: "100% !important" }}
+                          />
+                        }
+                      />
+                    </div>
+                  ))} */}
+          {( (currentLang === "en" ?  articlesEn : articlesAr )  )?.map((item) => (
             <Card key={item?.id} className="card"
               onClick={()=>navget(`/articles/${item?.id}`)}
               hoverable

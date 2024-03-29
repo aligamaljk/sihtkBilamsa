@@ -1,0 +1,50 @@
+  .drawer-header{
+    .ant-drawer-header{
+      background-color: #15171a;
+      border-bottom: none;
+      .ant-drawer-header-title{
+          justify-content: end;
+      }
+      .anticon{
+        color: #fff;
+      }
+    }
+    .ant-drawer-body{
+      background-color: #15171a;
+    }
+    .links-res{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        flex-direction: column;
+        a{
+            color: #fff !important;
+            font-size: 20px;
+            font-weight: 700;
+        }
+    }
+    .login-res{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        margin-top: 30px;
+        a{
+            color: #fff !important;
+            font-size: 20px;
+            font-weight: 700;
+        }
+    }
+  }
+
+  .menu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .menu-icon{
+        color: #fff;
+        font-size: 30px;
+        cursor: pointer;
+    }
+  }
