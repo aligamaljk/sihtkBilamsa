@@ -191,4 +191,5 @@ export default {
       activities:"الانشطه",
       author:"المؤلف",
       date:"التاريخ",
+      titphone:"تليفون",
   }

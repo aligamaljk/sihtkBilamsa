@@ -190,6 +190,8 @@ export interface ITranslation {
     activities?: string;
     date?: string;
     author?: string;
+    titphone?: string;
+    requiredProtein?: string;
   };
 }
 

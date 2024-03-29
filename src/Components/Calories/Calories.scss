@@ -100,7 +100,7 @@
             }
         }
         .container-food{
-            margin-top: 50px;
+            margin-top: 30px;
             .title-card{
                 font-size: 30px;
                 font-weight: 700;
@@ -120,19 +120,19 @@
             align-items: center;
             width: 100%;
         }
-        .container-food{
+        .calories-foot-item{
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 20px;
-            flex-direction: column;
+            gap: 10px;
+            .ant-form-item{
+                width: 50%;
+            }
+        }
+        .container-food{
             padding: 10px 20px;
-            max-width: 1000px;
+            width: 90%;
             .col-form{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 20px;
                 .title-form{
                     font-size: 18px;
                     font-weight: 700;
@@ -153,24 +153,6 @@
                 .content-right{
                     width: 100%;
                     min-height: 400px;
-                }
-            }
-        }
-        .card-food{
-            .container-food{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 20px;
-                flex-direction: column;
-                padding: 10px 20px;
-                .col-form{
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    gap: 20px;
-                    flex-direction: column;
-                    text-align: center;
                 }
             }
         }

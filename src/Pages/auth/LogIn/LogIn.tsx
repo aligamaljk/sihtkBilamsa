@@ -16,7 +16,7 @@ const LogIn: React.FC<ITranslation> = ({ t }) => {
   const dispatch = useDispatch();
   const { message } = App.useApp();
   const onAuthLogin = (values: any) => {
-    console.log('Success:', values);
+    // console.log('Success:', values);
     dispatch(setCurrentUser(values));
     setStoredUser(values.name);
     message.success(t.successLog + ' ' + values.name);
@@ -65,7 +65,7 @@ const LogIn: React.FC<ITranslation> = ({ t }) => {
               label={t.name}
               rules={[{ required: true, message: t.requiredName }]}
             >
-              <Input placeholder={t.name} type='text' />
+              <Input placeholder={t.name} type='text' min={3} max={10} />
             </Form.Item>
             <Form.Item
               name="email"
@@ -79,7 +79,7 @@ const LogIn: React.FC<ITranslation> = ({ t }) => {
               label={t.password}
               rules={[{ required: true, message: t.requiredPassword }]}
             >
-              <Input.Password />
+              <Input.Password min={3} max={15} placeholder={t.password}  />
             </Form.Item>
             <p className="account-register-row">
               <Link

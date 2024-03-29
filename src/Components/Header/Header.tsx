@@ -1,7 +1,7 @@
 // import { Button, Dropdown, Image, message, Popconfirm } from 'antd';
-import { Button, Dropdown, message, Popconfirm } from 'antd';
+import { Button, Dropdown, Image, message, Popconfirm } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   setCurrentLang,
   setCurrentUser
@@ -12,7 +12,7 @@ import {
   getStoredUser,
   setLang
 } from '../../services/user-storage';
-import { ITranslation } from '../../types';
+import { ITranslation, StoreType } from '../../types';
 // import img from '../../assets/download.png';
 // import img2 from '../../assets/translating.0144a3cdb7995b9cf71d492fe721e60b.svg';
 import { IoIosArrowDown } from 'react-icons/io';
@@ -25,8 +25,11 @@ import { useState } from 'react';
 import ActiveLinkTab from '../UI/ActiveLinkTab';
 import { GoSignOut } from 'react-icons/go';
 import HeaderRes from './HeaderRes/HeaderRes';
-
+import logAr from '../../assets/logo-ar.svg';
 const HeaderApp: React.FC<ITranslation> = ({ t }) => {
+  const { currentLang } = useSelector(
+    (state: StoreType) => state?.user
+    );
   const [activeTab, setActiveTab] = useState('home');
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -107,7 +110,10 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
       <div className='logo'>
         <Link to='/'>
           {/* <Link to='/'>{t.logo}</Link> */}
-          <Logo />
+          {currentLang === "en" ? <Logo /> :
+            <img  src={logAr} alt="logo" height={45} style={{ maxWidth: 'unset' }} />
+          }
+          
         </Link>
       </div>
       <div className='links'>

@@ -195,4 +195,5 @@ export default {
       activities:"Activities",
       author:"Author",
       date:"Date",
+      titphone:"Phone",
   }
