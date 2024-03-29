@@ -192,6 +192,7 @@ export interface ITranslation {
     author?: string;
     titphone?: string;
     requiredProtein?: string;
+    weightTarget?: string;
   };
 }
 

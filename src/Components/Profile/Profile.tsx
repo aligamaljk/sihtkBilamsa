@@ -7,7 +7,7 @@ import { Button, Card, Checkbox, Col, Form, Input, message, Select, Upload } fro
 import { TbUpload } from "react-icons/tb";
 import { getStoredAddSport, getStoredUserProfile, setStoredAddSport, setStoredUserProfile } from '../../services/user-storage';
 import AddSport from '../AddSport/AddSport';
-// localStorage.removeItem("user-data")
+// localStorage.removeItem("add-sport")
 const Profile : React.FC <ITranslation> = ({t}) => {
   const navigate = useNavigate()
     const [ form ] = Form.useForm();
@@ -15,6 +15,7 @@ const Profile : React.FC <ITranslation> = ({t}) => {
     console.log(getLocalProfile);
     const [fileList, setFileList] = useState<any[]>([]);
     const [sports, setSports] = useState<any[]>(getStoredAddSport())
+    // const [sports, setSports] = useState<any[]>([])
 
     console.log(fileList,"fileList");
     const [values,setValues] = useState<any[]>([]) 
@@ -30,11 +31,19 @@ const Profile : React.FC <ITranslation> = ({t}) => {
             thumbUrl: item?.imageURL || item?.thumbUrl,
             originFileObj: item?.originFileObj,
             id: item?.id,
+            key: item?.key
           };
         })
       );
       }
+      // setStoredAddSport()
+
     },[])
+    useEffect(()=>{
+      setStoredAddSport(
+        sports
+      )
+    },[sports])
 
 
       const beforeUpload = (file : any) => {
@@ -79,7 +88,7 @@ const Profile : React.FC <ITranslation> = ({t}) => {
         },
       ];
       
-      const check = (sports || check2)?.map((item : any)=> item )
+      const check = (sports || [])?.map((item : any)=> item )
       const onFinish = (values : any)=>{
         console.log(values,"values-profile");
         setStoredUserProfile(
@@ -211,6 +220,7 @@ const Profile : React.FC <ITranslation> = ({t}) => {
                   className="checkbox-list-wrapper"
                   rules={[{ required: true, message: t.requiredCategory }]}
                 >
+                  {sports && sports?.length > 0 ? (
                   <Checkbox.Group
                     onChange={(value) => {
                       // console.log(value);
@@ -228,6 +238,28 @@ const Profile : React.FC <ITranslation> = ({t}) => {
                       </Checkbox>
                     ))}
                   </Checkbox.Group>
+                    
+                  )  : (
+                    <div className="empty"
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        marginTop: '20px',
+                      }}
+                    >
+                      <h1
+                        style={{
+                          fontSize: '20px',
+                          fontWeight: 'bold',
+                          textAlign: 'center',
+                          color: '#999',
+                        }}
+                      >
+                        add your sports
+                      </h1>
+                    </div>
+                  )}
                 </Form.Item>
                   <AddSport setSports={setSports} sports={sports} t={t}/>
                 <Form.Item

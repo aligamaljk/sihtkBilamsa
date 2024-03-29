@@ -16,9 +16,9 @@ const AddSport = ({setSports,sports,t} : any) => {
   };
   const onFinish = (values : any)=>{
         console.log(values,"values");
-        setSports([...sports,{value:countSports.length + 1,label:values.sport}])
+        setSports([...sports || [],{value:(countSports?.length || 0) + 1,label:values.sport}])
         // setStoredAddSport([...sports,{value:countSports.length + 1,label:values.sport}])
-        setStoredAddSport([...sports,{value:countSports.length + 1,label:values.sport}])
+        // setStoredAddSport([...sports,{value:countSports.length + 1,label:values.sport}])
        
         setIsModalOpen(false);
         message.success(t.addSuccess)

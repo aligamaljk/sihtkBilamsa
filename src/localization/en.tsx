@@ -196,4 +196,5 @@ export default {
       author:"Author",
       date:"Date",
       titphone:"Phone",
+      weightTarget:"Weight Target",
   }

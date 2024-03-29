@@ -1,13 +1,96 @@
 import React from 'react'
 import { ITranslation } from '../../types'
-
+import { Link } from 'react-router-dom'
+import { IoIosArrowForward } from 'react-icons/io';
+import "./Activities.scss"
+import { Button, Card, Checkbox, Form, Input } from 'antd';
+import { clearStoredUserProfileGoal, getStoredAddSport, getStoredUserProfile, getStoredUserProfileGoal, setStoredUserProfileGoal } from '../../services/user-storage';
 const Activities : React.FC <ITranslation> = ({t}) => {
+  const [form] = Form.useForm();
+  const valeGoel = getStoredUserProfileGoal()
+  const getLocalProfile = getStoredAddSport()
+  const prof = getStoredUserProfile()
+  // const findSport2 = prof?.categoryProduct
+  const findSport2 = prof?.categoryProduct
+  // const findSport = getLocalProfile?.filter((item : any) => item.value === findSport2)
+  const findSport = getLocalProfile?.filter((item : any) => item.value === findSport2)
+
+console.log(findSport,findSport2);
+
+  const onFinish = (values: any) => {
+    console.log("Success:", values);
+    setStoredUserProfileGoal(values)
+  }
   return (
     <>
        <div className="activities">
-          <h1>
-            Activities
-          </h1>
+        <div className="section-header">
+          <h1 className="title">{t.activities}</h1>
+          <div className="link">
+            <Link to="/">{t.homeTab}</Link> <IoIosArrowForward />
+            {t.activities}
+          </div>
+        </div>
+            <div className="content">
+              <Card className="card-activities"
+               bordered={false}
+              >
+              <Form
+                layout="vertical"
+                name="activities"
+                className="form-activities"
+                onFinish={onFinish}
+                form={form}
+                initialValues={valeGoel}
+              >
+                <Form.Item 
+                name="goal" 
+                label={t.goal} 
+                rules={[{ required: true, message: t.requiredGoal }]}
+                >
+                  <Input type="text" placeholder={t.goal} />
+                </Form.Item>
+                <Form.Item name="weight"
+                label={t.weight}
+                >
+                  <Input type="number" placeholder={t.weight} />
+                </Form.Item>
+                <Form.Item name="weightTarget"
+                label={t.weightTarget}
+                >
+                  <Input type="number" placeholder={t.weightTarget} />
+                </Form.Item>
+                <Form.Item
+                  style={{
+                    width: '100%',
+                    textAlign: 'center',
+                  }}
+                >
+                  <Button type="primary" htmlType="submit" style={{marginLeft:"20px"}}>{t.save}</Button>
+                  <Button type="primary" danger style={{marginLeft:"20px"}}
+                    onClick={() => {
+                      form.resetFields();
+                      clearStoredUserProfileGoal();
+                    }}
+                  >delete</Button>
+                  
+                </Form.Item>
+              </Form>
+              </Card>
+              <div className="activities">
+                <Card bordered={false} className="card-sport" >
+                  <h3 className="title">sports Activities</h3>
+                  {[1,2,3]?.map((item) => (
+                    <div className="sport">
+                      <Checkbox value={item} key={item} className='check' >
+                        sport
+                        <div className="clos"> x </div>
+                      </Checkbox>
+                    </div>
+                  ))}
+                </Card>
+              </div>
+            </div>
        </div>
     </>
   )

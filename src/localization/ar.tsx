@@ -192,4 +192,5 @@ export default {
       author:"المؤلف",
       date:"التاريخ",
       titphone:"تليفون",
+      weightTarget:"الوزن المستهدف",
   }

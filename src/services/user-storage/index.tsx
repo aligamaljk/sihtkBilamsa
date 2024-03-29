@@ -3,6 +3,7 @@ const TOKEN_LOCALSTORAGE_KEY = "access-token";
 const LANG_LOCALSTORAGE_KEY = "lang";
 const PROFILE_USER = "profile"
 const ADD_SPORT = "add-sport"
+const PROFILE_Goel = "profile-goal"
 
 // Helper functions to manage user data in localStorage
 export function getStoredUser(): any | null {
@@ -31,6 +32,19 @@ export function setStoredUserProfile(profile: any): void {
 
 export function clearStoredUserProfile(): void {
   localStorage.removeItem(PROFILE_USER);
+}
+// Helper functions to manage  PROFILE_Goel data in localStorage
+export function getStoredUserProfileGoal(): any | null {
+  const storedUserProfile = localStorage.getItem(PROFILE_Goel);
+  return storedUserProfile ? JSON.parse(storedUserProfile) : null;
+}
+
+export function setStoredUserProfileGoal(profileGoal: any): void {
+  localStorage.setItem(PROFILE_Goel, JSON.stringify(profileGoal));
+}
+
+export function clearStoredUserProfileGoal(): void {
+  localStorage.removeItem(PROFILE_Goel);
 }
 // Helper functions to manage  ADD_SPORT data in localStorage
 export function getStoredAddSport(): any | null {

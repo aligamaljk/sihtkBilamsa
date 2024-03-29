@@ -3,50 +3,99 @@ import React, { useState } from 'react'
 import { ITranslation } from '../../types';
 const CalorieFood : React.FC <ITranslation> = ({t}) => {
   const [protein,setProtein] = useState<string | undefined>(undefined)
-  const [category,setCategory] = useState<string | undefined>(undefined)
+  const [category,setCategory] = useState<any | undefined>(undefined)
+  const [form] = Form.useForm();
     const optionsProtein : SelectProps['options']  = [
   {
-    value: 0.27,
+    value: "chicken",
     label: "chicken",
   },
   {
-    value: 0.22,
+    value: "Salmon",
     label: "Salmon",
   },
   {
-    value: 0.13,
+    value: "Eggs",
     label: "Eggs",
   },
   {
-    value: 0.26,
+    value: "Meat",
     label: "Meat",
   },
   {
-    value: 0.16,
+    value: "Oatmeal",
     label: "Oatmeal",
   },
+  {
+    value: " Rice",
+    label: " Rice",
+  },
+  {
+    value: "Peanuts",
+    label: "Peanuts",
+  },
+  {
+    value: "Cashew",
+    label: "Cashew",
+  }, 
+  
 ];
-const optionsCategory : SelectProps['options'] = [
-  {
-    value :'Protein',
-    label:"Protein"
-  },
-  {
-    value :'Carbs',
-    label:"Carbs"
-  },
-  {
-    value :'Fats',
-    label:"Fats"
-  },
-]
 const onFinishProtein = (values: any) => {
   console.log("Success:", values);
-  const result = values.protein * Number(values.quantity)  
-  setProtein(result.toString())
+  setCategory(values)
 }
 
-console.log(protein);
+console.log(protein,category);
+const calories = (category:string) => {
+  let pro : number = 0;
+  let carbs : number = 0;
+  let fat : number = 0;
+  switch (category) {
+    case "chicken":
+      pro = 0.27
+      carbs = 0
+      fat = 0.05
+      break
+    case "Salmon":
+      pro = 0.22
+      carbs = 0
+      fat = 0.09
+      break
+    case "Eggs":
+      pro = 0.13
+      carbs = 0.0078
+      fat = 0.1
+      break
+    case "Meat":
+      pro = 0.24
+      carbs = 0
+      fat = 0.15
+      break
+    case "Oatmeal":
+      pro = 0.17
+      carbs = 0.6627
+      fat = 0.07
+      break
+    case " Rice":
+      pro = 0.0202
+      carbs = 0.211
+      fat = 0.0019
+      break
+    case " Peanuts ":
+      pro = 0.258
+      carbs = 0.211
+      fat = 0.0429
+      break
+    case " Cashew ":
+      pro = 0.1822
+      carbs = 0.309
+      fat = 0.4385
+      break
+    default:
+      return 0
+  }
+  return {pro,carbs,fat}
+}
 
   return (
     <>
@@ -55,7 +104,7 @@ console.log(protein);
               <div className="container-food">
                 <Form onFinish={onFinishProtein} style={{width:'100%'}} className="col-form" layout="vertical" >
                   <Form.Item
-                    name="protein"
+                    name="food"
                     label={t.selectFood}
                     rules={[{ required: true, message: t.requiredProtein }]}
                   >
@@ -77,30 +126,62 @@ console.log(protein);
                     <Input type='number' placeholder="ex:100g" />
                   </Form.Item>
                   <Form.Item>
-                    {/* <Input type='number'  disabled  value={protein} /> */}
-                    <Typography.Text strong style={{fontWeight:'700',
-                   fontSize:'18px',
-                   lineHeight:'32px',
-                   letterSpacing:'1.5px',
-                   textAlign:'center',
-                   width:'100%',
-                   display:'block',
-                   }} >Chicken (100g) </Typography.Text>
+                    {
+                      category?.food && category?.quantity ? (
+                        <>
+                    <Typography.Text strong style={{
+                      fontWeight:'700',
+                      fontSize:'18px',
+                      lineHeight:'32px',
+                      letterSpacing:'1.5px',
+                      textAlign:'center',
+                      width:'100%',
+                      display:'block',
+                   }} >{category?.food} ({category?.quantity}g) </Typography.Text>
                     <div className="total-calories"
                       style={{width:'100%',display:'flex',justifyContent:'space-between',alignItems:'center',padding:'10px 0',gap:'10px',
                       marginTop:'20px',
                     }}
                     >
                       <div>
-                        {t.protein}:  <span style={{fontWeight:'700'}}>27g</span>
+                        {t.protein}:  <span style={{fontWeight:'700'}}>
+                          {(calories(category?.food).pro * Number(category?.quantity)).toFixed(2)}g
+                        </span>
                       </div>
                       <div>
-                        {t.carbs}: <span style={{fontWeight:'700'}}>2g</span>
+                        {t.carbs}: <span style={{fontWeight:'700'}}>
+                          {(calories(category?.food).carbs * Number(category?.quantity)).toFixed(2)}g
+                        </span>
                       </div>
                       <div>
-                        {t.fat}: <span style={{fontWeight:'700'}}>13g</span>
+                        {t.fat}: <span style={{fontWeight:'700'}}>
+                          {(calories(category?.food).fat * Number(category?.quantity)).toFixed(2)}g
+                        </span>
+                      </div>
+                      <div className="total">
+                        {t.calories}: <span style={{fontWeight:'700'}}>
+                          {(calories(category?.food).pro * Number(category?.quantity) * 4 + 
+                          calories(category?.food).carbs * Number(category?.quantity) * 4 + 
+                          calories(category?.food).fat * Number(category?.quantity) * 9 ).toFixed(2)}kcal
+                        </span>
                       </div>
                     </div>
+                        </>
+                      ) : (
+                        <>
+                          <Typography.Text strong style={{
+                            fontWeight:'700',
+                            fontSize:'18px',
+                            lineHeight:'32px',
+                            letterSpacing:'1.5px',
+                            textAlign:'center',
+                            width:'100%',
+                            display:'block',
+                         }} >{t.selectFood} </Typography.Text>
+                        </>
+                      )
+
+                    }
                   </Form.Item>
                   <Form.Item
                     style={{width:'100%',textAlign:'center'}}
