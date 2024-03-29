@@ -1,12 +1,18 @@
 import React from 'react'
-import { ITranslation } from '../../types'
-import { Card, Image } from 'antd'
+import { ITranslation, StoreType } from '../../types'
+import { Card, Image, Pagination } from 'antd'
 import "./Articles.scss"
 import img from "../../assets/94f2b7445db34d4b86e9a7111ed9b4ee.jpg"
 import { Link, useNavigate } from 'react-router-dom'
 import { IoIosArrowForward } from 'react-icons/io';
+import { useSelector } from 'react-redux'
+import { articlesAr, articlesEn, dataAr, dataEn } from '../../Data/Data'
 const Articles : React.FC <ITranslation> = ({t}) => {
   const navget = useNavigate()
+  const { currentLang } = useSelector(
+    (state: StoreType) => state?.user
+  );
+
   return (
     <>
       <div className="articles">
@@ -19,24 +25,36 @@ const Articles : React.FC <ITranslation> = ({t}) => {
         </div>
         <div className="container">
           <div className="cards">
-          {[1,2,3,4,5,6,7,8,9,10]?.map((item) => (
-            <Card key={item} className="card"
-              onClick={()=>navget("/articles/22")}
+          {(currentLang === "en" ?  articlesEn : articlesAr )?.map((item) => (
+            <Card key={item?.id} className="card"
+              onClick={()=>navget(`/articles/${item?.id}`)}
+              hoverable
             >
               <div className="img">
-                <Image  preview={false} src={img} />
+                <Image  preview={false} src={item?.image} />
               </div>
               <div className="title-card">
                 <h1>
-                  Health
+                  {item?.title}
                 </h1>
               </div>
+              
               <div className="desc">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium laborum nihil officia eius quisquam? Repudiandae.
+                {item?.desShow}
+                {/* {item?.content?.map((item : any)=>(
+                  <div key={item} dangerouslySetInnerHTML={{__html: item.slice(0,20)}} ></div>
+                ))} */}
               </div>
             </Card>
           ))}
           </div>
+          <Pagination 
+              responsive={true}
+              defaultCurrent={1}
+               total={10} 
+              //  onChange={(page)=>setIdPage(page)}
+              style={{justifyContent:"center",margin:"20px 0 50px",display:"flex",}}
+                />
         </div>
       </div>
     </>

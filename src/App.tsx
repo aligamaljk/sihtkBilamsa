@@ -8,12 +8,39 @@ import { useSelector } from 'react-redux';
 import QueryProvider from './services/react-query/index';
 import './styles/ant.scss';
 import { StoreType } from './types';
+import { setStoredAddSport } from './services/user-storage';
 function App() {
   const { currentLang } = useSelector(
     (state: StoreType) => state?.user
-  );
-  // console.log(currentLang);
-  const t = currentLang === 'en' ? en : ar;
+    );
+    // console.log(currentLang);
+    const t = currentLang === 'en' ? en : ar;
+    // setStoredAddSport([
+    //         {
+    //           label: t.swimming,
+    //           value: 1,
+    //         },
+    //         {
+    //           label: t.running,
+    //           value: 2,
+    //         },
+    //         {
+    //           label: t.football,
+    //           value: 3,
+    //         },
+    //         {
+    //           label: t.basketball,
+    //           value: 4,
+    //         },
+    //         {
+    //           label: t.gym,
+    //           value: 5,
+    //         },
+    //         {
+    //           label: t.tennis,
+    //           value: 6,
+    //         },
+    //       ])
   useEffect(() => {
     if (currentLang) {
       document

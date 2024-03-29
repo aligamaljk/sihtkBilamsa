@@ -1,0 +1,32 @@
+.ant-layout-footer{
+    padding: 0 !important;
+    color: #fff !important;
+    background: #000;
+}
+.footer{
+    .container-footer{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 50px;
+        padding: 50px 0;
+        .log-footer{
+            img{
+                width: 150px;
+            }
+        }
+        .links-footer{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            border-block:1px solid #fff ;
+            padding: 12px;
+            a{
+                color: #fff;
+            }
+        }
+    }
+}

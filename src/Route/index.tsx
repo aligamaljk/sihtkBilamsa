@@ -13,6 +13,8 @@ import Calories from '../Components/Calories/Calories';
 import AboutUs from '../Components/AboutUs/AboutUs';
 import Articles from '../Components/Blogs/Articles';
 import BlogsDetails from '../Components/Blogs/BlogsDetails/BlogsDetails';
+import Bmi from '../Components/Bmi/Bmi';
+import Activities from '../Components/Activities/Activities';
 
 const RoutesWrapper = ({ t }: { t: any }) => {
   const routes = useRoutes([
@@ -53,8 +55,12 @@ const RoutesWrapper = ({ t }: { t: any }) => {
           element: getStoredUser() ? <Calories t={t}/> : <Navigate to="/login" replace />,
         },
         {
-          path: 'bmr',
-          element: getStoredUser() ? <h1> bmr </h1> : <Navigate to="/login" replace />,
+          path: 'bmi',
+          element: getStoredUser() ?<Bmi t={t}/> : <Navigate to="/login" replace />,
+        },
+        {
+          path: 'activities',
+          element: getStoredUser() ?<Activities t={t}/> : <Navigate to="/login" replace />,
         },
         {
           path: 'profile',

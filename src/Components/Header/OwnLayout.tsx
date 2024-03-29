@@ -25,7 +25,7 @@ const OwnLayout = ({ t }: { t: any }) => {
       <Content
         style={{
           // padding: '0 50px',
-          marginTop: 80
+          margin: "80px 0",
         }}
       >
         <Outlet />

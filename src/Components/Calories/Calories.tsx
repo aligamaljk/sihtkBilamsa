@@ -5,9 +5,10 @@ import "./Calories.scss"
 import { Button, Card, Form, Input, Select, SelectProps } from "antd";
 import { useState } from "react";
 import CalorieFood from "./CalorieFood";
+import { getStoredUserProfile } from "../../services/user-storage";
 const Calories : React.FC <ITranslation> = ({t}) => {
+      const getLocalProfile = getStoredUserProfile()
   const [form] = Form.useForm();
-  const [bmi,setBmi] = useState<number>(0)
   const [bmr,setBmr] = useState<number>(0)
   const [more,setMore] = useState<string | undefined>(undefined)
   const [caloriesMor,setCaloriesMor] = useState <any>({
@@ -28,22 +29,9 @@ const Calories : React.FC <ITranslation> = ({t}) => {
   const onFinish = (values: any) => {
     console.log("Success:", values);
     const { weight, height, burn,more,age,gender,exercise } = values;
-    const bmi = weight / ((height / 100) * (height / 100));
-    const genType = gender === "male" ? 5 : -161
+    const genType = gender === 1  ? 5 : -161
     setMore(more)
-    setBmi(bmi)
-    setBmr(((10*weight) + (6.25*height) - (5*age) + genType) * exercise) 
-    // console.log({
-    //   genType,
-    //   bmr,
-    //   more,
-    //   exercise,
-    //   weight,
-    //   height,
-    //   age,
-    //   gender,
-    //   burn
-    // });
+    setBmr(((10 * weight) + (6.25 * height) - (5 * age) ) * exercise) 
     
     if(burn === "more" || burn === "week"){
       setCaloriesMor({
@@ -55,53 +43,17 @@ const Calories : React.FC <ITranslation> = ({t}) => {
       setCaloriesMed({
         carbs: (bmr * 40) / 100 / 4,
         protein: (bmr * 30) / 100 / 4,
-        fat: (bmr * 30)/100 / 9
+        fat: (bmr * 30 ) / 100 / 9
       })
     } else if(burn === "high"){
       setCaloriesHigh({
-        carbs: (bmr * 55) / 100 / 4,
+        carbs:( bmr * 55) / 100 / 4,
         protein: (bmr * 20) / 100 / 4,
         fat: (bmr * 25) / 100 / 9
       })
     }
   }
-  console.log('BMR:',bmr);
-  
-  console.log('BMI:',bmi);
-  const Bodyshape  = () => {
-   let valueShape ;
-   let des;
-  switch (true) {
-    case bmi < 18:
-      valueShape = t.skinny
-      des = t.des1
-      break;
-    case bmi >= 18 && bmi < 25:
-      valueShape = t.normal
-      des = t.des2
-      break;
-    case bmi >= 25 && bmi < 30:
-      valueShape = t.overweight
-      des = t.des3
-      break;
-    case bmi >= 30 && bmi < 35:
-      valueShape = t.firstDegree
-      des = t.des4
-      break;
-    case bmi >= 35 && bmi < 40:
-      valueShape = t.secondDegree
-      des = t.des5
-      break;
-    case bmi >= 40:
-      valueShape = t.dangerousObesity
-      des = t.des6
-      break;
-    default:
-      valueShape = t.dangerousObesity
-      break;
-  }
-  return {valueShape,des}
-}
+ 
   return (
     <>
       <div className="calories">
@@ -119,6 +71,12 @@ const Calories : React.FC <ITranslation> = ({t}) => {
             <Card className="content-left">
               <Form layout="vertical" name="calories" className="form-calories"
                 form={form} onFinish={onFinish}
+                initialValues={{
+                  age:getLocalProfile?.age,
+                  gender:getLocalProfile?.gender,
+                  height:getLocalProfile?.height,
+                  weight:getLocalProfile?.weight,
+                  }}
               >
                 <Form.Item
                   name="age"
@@ -133,8 +91,8 @@ const Calories : React.FC <ITranslation> = ({t}) => {
                   rules={[{ required: true, message: t.requiredGender }]}
                 >
                   <Select placeholder={t.requiredGender}>
-                    <Select.Option value="male">{t.male}</Select.Option>
-                    <Select.Option value="female">{t.female}</Select.Option>
+                    <Select.Option value={1} >{t.male}</Select.Option>
+                    <Select.Option value={2}>{t.female}</Select.Option>
                   </Select>
                 </Form.Item>
                 <Form.Item
@@ -205,7 +163,7 @@ const Calories : React.FC <ITranslation> = ({t}) => {
                 {t.calories} <span>( {bmr.toFixed(2)} cal)</span>
               </div>
               <div className="calories-container">
-                {more && bmi > 0 ? (
+                {more ? (
                   more == "more" ? (
                 <div className="calories-foot-wrapper-mor">
                   <div className="title-calories-mor">{t.caloriesMore}</div>
@@ -287,12 +245,6 @@ const Calories : React.FC <ITranslation> = ({t}) => {
                   </>
                 )}
               </div>
-              {more && bmi > 0 &&(
-              <div className="body-shape">
-                <h1>{t.bodyShape}: <span>{Bodyshape().valueShape}</span> </h1>
-                <p>{Bodyshape().des}</p>
-              </div>
-              ) }
             </Card>
           </div>
           </div>

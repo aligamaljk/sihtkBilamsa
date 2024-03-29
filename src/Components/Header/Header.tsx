@@ -8,6 +8,7 @@ import {
 } from '../../services/store/reducers/user';
 import {
   clearStoredUser,
+  clearStoredUserProfile,
   getStoredUser,
   setLang
 } from '../../services/user-storage';
@@ -51,11 +52,11 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
       key: '1',
       label: (
         <ActiveLinkTab
-          to='/bmr'
-          onClick={() => setActiveTab('BMR')}
-          classNameTab='BMR'
+          to='/bmi'
+          onClick={() => setActiveTab('BMI')}
+          classNameTab='BMI'
           state={activeTab}
-          linkText='BMR'
+          linkText='BMI'
           className='servicesItem'
         />
       )
@@ -82,6 +83,19 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
           classNameTab='articles'
           state={activeTab}
           linkText={t.articles}
+          className='servicesItem'
+        />
+      )
+    },
+    {
+      key: '3',
+      label: (
+        <ActiveLinkTab
+          to='/activities'
+          onClick={() => setActiveTab('activities')}
+          classNameTab='activities'
+          state={activeTab}
+          linkText={t.activities}
           className='servicesItem'
         />
       )
@@ -127,9 +141,10 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
               fontWeight: '400',
               color:
                 (
-                  activeTab === 'BMR' ||
+                  activeTab === 'BMI' ||
                   activeTab === 'calories' ||
-                  activeTab === 'articles'
+                  activeTab === 'articles' ||
+                  activeTab === 'activities'
                 ) ?
                   '#ff7d7d'
                 : 'white',
@@ -166,6 +181,7 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
                 cancelText={t.cancelText}
                 onConfirm={() => {
                   clearStoredUser();
+                  clearStoredUserProfile()
                   dispatch(setCurrentUser(null));
                   navigate('/login');
                   message.success(t.LogOutMessage);
@@ -240,7 +256,6 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
             {/* <Image src={img} preview={false} width={18} /> */}
           </Button>
         </Link>
-
         {/* Language Tab */}
         <Dropdown
           arrow={{ pointAtCenter: true }}

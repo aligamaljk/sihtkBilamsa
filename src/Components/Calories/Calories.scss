@@ -143,4 +143,36 @@
             }
         }
     }
+    @media screen and (max-width: 900px) {
+        .container-calories{
+            .content{
+                flex-direction: column;
+                .content-left{
+                    width: 100%;
+                }
+                .content-right{
+                    width: 100%;
+                    min-height: 400px;
+                }
+            }
+        }
+        .card-food{
+            .container-food{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 20px;
+                flex-direction: column;
+                padding: 10px 20px;
+                .col-form{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 20px;
+                    flex-direction: column;
+                    text-align: center;
+                }
+            }
+        }
+    }
 }

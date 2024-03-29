@@ -1,6 +1,8 @@
 const USER_LOCALSTORAGE_KEY = "user-data";
 const TOKEN_LOCALSTORAGE_KEY = "access-token";
 const LANG_LOCALSTORAGE_KEY = "lang";
+const PROFILE_USER = "profile"
+const ADD_SPORT = "add-sport"
 
 // Helper functions to manage user data in localStorage
 export function getStoredUser(): any | null {
@@ -14,6 +16,55 @@ export function setStoredUser(user: any): void {
 
 export function clearStoredUser(): void {
   localStorage.removeItem(USER_LOCALSTORAGE_KEY);
+}
+
+
+// Helper functions to manage  PROFILE_USER data in localStorage
+export function getStoredUserProfile(): any | null {
+  const storedUserProfile = localStorage.getItem(PROFILE_USER);
+  return storedUserProfile ? JSON.parse(storedUserProfile) : null;
+}
+
+export function setStoredUserProfile(profile: any): void {
+  localStorage.setItem(PROFILE_USER, JSON.stringify(profile));
+}
+
+export function clearStoredUserProfile(): void {
+  localStorage.removeItem(PROFILE_USER);
+}
+// Helper functions to manage  ADD_SPORT data in localStorage
+export function getStoredAddSport(): any | null {
+  const storedAddSport = localStorage.getItem(ADD_SPORT);
+  return storedAddSport ? JSON.parse(storedAddSport) : null;
+}
+
+export function setStoredAddSport(AddSport: any): void {
+  localStorage.setItem(ADD_SPORT, JSON.stringify(AddSport || [
+    {
+      label: "Swimming",
+      value: 1,
+    },
+    {
+      label: "Running",
+      value: 2,
+    },
+    {
+      label: "Football",
+      value: 3,
+    },
+    {
+      label: "Basketball",
+      value: 4,
+    },
+    {
+      label: "Gym",
+      value: 5,
+    },
+  ]));
+}
+
+export function clearStoredAddSport(): void {
+  localStorage.removeItem(ADD_SPORT);
 }
 
 // Helper functions to manage access token in localStorage

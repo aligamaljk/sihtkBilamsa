@@ -138,6 +138,17 @@ export interface ITranslation {
     popupCanceledMessage?: string;
     requiredGoal?: string;
     quantityMess?: string;
+    update?: string;
+    profileRegistered?: string;
+    myProfile?: string;
+    titleLogo?: string;
+    CopyrightsReservedFor?: string;
+    needHelp?: string;
+    help?: string;
+    addSuccess?: string;
+    activities?: string;
+    date?: string;
+    author?: string;
   };
 }
 

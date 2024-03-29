@@ -51,4 +51,22 @@
         box-shadow: none !important;
         height: 45px;
     }
+    @media screen and (max-width: 768px) {
+        .container{
+            flex-direction: column;
+            .content-left{
+                width: 100%;
+                text-align: center;
+                .title-contact{
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+            .content-right{
+                width: 100%;
+            }
+        }
+    }
 }

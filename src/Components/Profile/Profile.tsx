@@ -1,15 +1,42 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ITranslation } from '../../types'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { IoIosArrowForward } from 'react-icons/io';
 import "./Profile.scss"
 import { Button, Card, Checkbox, Col, Form, Input, message, Select, Upload } from 'antd';
 import { TbUpload } from "react-icons/tb";
-
+import { getStoredAddSport, getStoredUserProfile, setStoredAddSport, setStoredUserProfile } from '../../services/user-storage';
+import AddSport from '../AddSport/AddSport';
+// localStorage.removeItem("user-data")
 const Profile : React.FC <ITranslation> = ({t}) => {
+  const navigate = useNavigate()
     const [ form ] = Form.useForm();
+    const getLocalProfile = getStoredUserProfile()
+    console.log(getLocalProfile);
     const [fileList, setFileList] = useState<any[]>([]);
+    const [sports, setSports] = useState<any[]>(getStoredAddSport())
+
+    console.log(fileList,"fileList");
     const [values,setValues] = useState<any[]>([]) 
+  const imageList = Form.useWatch('ProductImages', form);
+    useEffect(()=>{
+      if(getLocalProfile){
+        setFileList(
+        getLocalProfile?.ProductImages?.fileList?.map((item : any) => {
+          return {
+            uid: item?.id,
+            name: item?.name,
+            status: 'done',
+            thumbUrl: item?.imageURL || item?.thumbUrl,
+            originFileObj: item?.originFileObj,
+            id: item?.id,
+          };
+        })
+      );
+      }
+    },[])
+
+
       const beforeUpload = (file : any) => {
         const isLt2M = file.size / 1024 / 1024 < 2;
         if (!isLt2M) {
@@ -24,7 +51,8 @@ const Profile : React.FC <ITranslation> = ({t}) => {
         }, 0);
       };
       const handleChange = ({ fileList: newFileList } : any) => setFileList(newFileList);
-      const check = [
+      const check2 = 
+      [
         {
           label: t.swimming,
           value: 1,
@@ -50,6 +78,25 @@ const Profile : React.FC <ITranslation> = ({t}) => {
           value: 6,
         },
       ];
+      
+      const check = (sports || check2)?.map((item : any)=> item )
+      const onFinish = (values : any)=>{
+        console.log(values,"values-profile");
+        setStoredUserProfile(
+          {
+            ProductImages:values.ProductImages,
+            name:values.name,
+            age:values.age,
+            categoryProduct:values.categoryProduct,
+            gender:values.gender,
+            height:values.height,
+            weight:values.weight,
+            description:values.description,
+          }
+        )
+        message.success(t.profileRegistered)
+        navigate("/")
+      }
   return (
     <>
       <div className="profile">
@@ -67,7 +114,18 @@ const Profile : React.FC <ITranslation> = ({t}) => {
               name="profile"
               layout="vertical"
               className="form-profile"
-              onFinish={(values) => console.log(values)}
+              onFinish={onFinish}
+              form={form}
+              initialValues={{
+                ProductImages:getLocalProfile?.ProductImages || null,
+                age:getLocalProfile?.age || null,
+                categoryProduct:getLocalProfile?.categoryProduct || null,
+                description:getLocalProfile?.description || null,
+                gender:getLocalProfile?.gender || null,
+                height:getLocalProfile?.height || null,
+                name:getLocalProfile?.name || null,
+                weight:getLocalProfile?.weight || null,
+              }}
             >
               <Col className="upload">
                 <Form.Item
@@ -124,8 +182,8 @@ const Profile : React.FC <ITranslation> = ({t}) => {
                   <Select
                     placeholder={t.gender}
                     options={[
-                      { value: 'male', label: t.male },
-                      { value: 'female', label: t.female },
+                      { value: 1, label: t.male },
+                      { value: 2, label: t.female },
                     ]}
                   />
                 </Form.Item>
@@ -140,8 +198,9 @@ const Profile : React.FC <ITranslation> = ({t}) => {
                   name="height"
                   label={t.height}
                   rules={[{ required: true, message: t.requiredHeight }]}
+                  
                 >
-                  <Input placeholder={t.height} />
+                  <Input placeholder="C/M" />
                 </Form.Item>
                 <Form.Item name="description" label={"description"}>
                   <Input.TextArea rows={4}  autoSize={{ minRows: 3, maxRows: 7 }}   placeholder={"description"} />
@@ -170,6 +229,7 @@ const Profile : React.FC <ITranslation> = ({t}) => {
                     ))}
                   </Checkbox.Group>
                 </Form.Item>
+                  <AddSport setSports={setSports} sports={sports} t={t}/>
                 <Form.Item
                   style={{
                     display: 'flex',
@@ -182,7 +242,8 @@ const Profile : React.FC <ITranslation> = ({t}) => {
                     htmlType="submit"
                     className="btn-submit"
                   >
-                    {t.save}
+                    {getLocalProfile ? t.update : t.save }
+                    {/* {t.save} */}
                   </Button>
                 </Form.Item>
               </Col>

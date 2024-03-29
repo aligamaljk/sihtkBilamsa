@@ -6,6 +6,7 @@ const slice = createSlice({
   initialState: {
     currentUser : null,
     currentLang : getLang(),
+    currentSports : [],
   },
   reducers: {
     setCurrentUser: (user, action) => {
@@ -15,12 +16,16 @@ const slice = createSlice({
     setCurrentLang: (user, action) => {
       user.currentLang = action.payload; 
     },
+    setCurrentSports: (user, action) => {
+      user.currentSports = action.payload; 
+    },
   },
 });
 
 export const {
   setCurrentUser,
   setCurrentLang,
+  setCurrentSports
 } = slice.actions;
 
 export default slice.reducer;

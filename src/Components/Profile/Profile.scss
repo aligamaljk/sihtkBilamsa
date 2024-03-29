@@ -37,7 +37,7 @@
                     .ant-row,
                     .ant-form-item{
                         width: 100%;
-                        height: 200px;
+                        // height: 200px;
                     }
                     .ant-upload-list{
                         align-items: center;
@@ -84,6 +84,36 @@
       color: var(--primary-text, #6d29f6);
       background-color: rgba(109, 41, 246, 0.1);
     }
+  }
+}
+@media (max-width: 768px) {
+  .form-profile {
+    flex-direction: column;
+    gap: 10px;
+    .upload {
+      width: 100% !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .ant-form-item{
+        width: 100%;
+        height: auto !important;
+      }
+      .ant-upload-list {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap-reverse;
+        justify-content: center;
+      }
+
+    }
+    .form-item {
+      width: 100%;
+    }
+    .btn-submit {
+      width: 100%;
+    }
+
   }
 }
 }
