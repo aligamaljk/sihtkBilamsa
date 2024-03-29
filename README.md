@@ -23,7 +23,7 @@ Check out the project Prototype video on YouTube [click here.](https://www.youtu
 
 ## See Project Final version!
 
-Check out the project final version video on YouTube [click here.]()
+Check out the project final version video on YouTube [click here.](https://youtu.be/s0m2t4efQms)
 
 ## Challenges
 
