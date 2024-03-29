@@ -6,7 +6,9 @@
 
 ## See Project Presentaion!
 
-Check out the project presentation video on YouTube [click here.](https://www.youtube.com/watch?v=3C7DECnkkzE)
+Check out the project presentation video on YouTube [click here.](https://youtu.be/GGssrN39jmo)
+
+Check Google Slides file [here.](https://docs.google.com/presentation/d/17OP82Dhsec3ett29xpu2pzpCXhG-RSTU4qhv18lgOv4/edit?usp=sharing)
 
 ## Features
 
@@ -18,6 +20,10 @@ Check out the project presentation video on YouTube [click here.](https://www.yo
 ## See Project Prototype!
 
 Check out the project Prototype video on YouTube [click here.](https://www.youtube.com/watch?v=3C7DECnkkzE)
+
+## See Project Final version!
+
+Check out the project final version video on YouTube [click here.]()
 
 ## Challenges
 
