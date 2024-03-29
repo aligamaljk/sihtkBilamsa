@@ -1,0 +1,33 @@
+@import '../../../styles/variables';
+
+.join-us {
+  background-image: url('../../../assets/pexels-li-sun-2294361.jpg');
+  background-size: cover;
+  background-position: 50% 60%;
+
+  .overlay {
+    background-color: rgba(238, 104, 104, 0.8);
+    padding: 100px 0px;
+    color: $white;
+
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+
+      h2 {
+        font-size: 4rem;
+        font-weight: 700;
+        line-height: 4.3rem;
+        text-transform: uppercase;
+      }
+      p {
+        font-size: 2rem;
+        text-transform: uppercase;
+        margin-top: 10px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}

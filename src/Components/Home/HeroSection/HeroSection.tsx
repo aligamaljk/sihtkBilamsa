@@ -9,7 +9,11 @@ function HeroSection({ t }: ITranslation) {
       <div className='container'>
         <div className='description'>
           <div className='info'>
-            <TwoLineShape translateX='-35%' translateY='-180%' />
+            <TwoLineShape
+              className='hero-shape'
+              translateX=''
+              translateY=''
+            />
             <h1>{t.homePage?.hero?.h1_1}</h1>
           </div>
           <h1 className='second-heading'>{t.homePage?.hero?.h1_2}</h1>

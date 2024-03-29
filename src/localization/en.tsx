@@ -144,6 +144,11 @@ export default {
     videoSection: {
       h2: 'Discover the Benefits of Our Health Platform',
       btn: 'Watch Now!'
+    },
+    joinUsSection: {
+      h2: 'Build healthy habits',
+      p: 'Achieve your fitness goals',
+      btn: 'join us'
     }
   },
   aboutPage: {

@@ -5,17 +5,19 @@ function TwoLineShape({
   translateY = '-130%',
   color,
   l1 = { height: '5px', width: '50%' },
-  l2 = { height: '6px' }
+  l2 = { height: '6px' },
+  className
 }: {
   translateX?: string;
   translateY?: string;
   color?: string;
   l1?: { height?: string; width?: string };
   l2?: { height?: string; width?: string };
+  className?: string;
 }) {
   return (
     <div
-      className='two-line-shape'
+      className={`two-line-shape ${className}`}
       style={{ transform: `translate(${translateX}, ${translateY})` }}
     >
       <LineShap size={l1} color={color} />

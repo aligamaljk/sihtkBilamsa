@@ -14,8 +14,6 @@
     transform: scaleX(-1);
 
     background-image: url('/hero-img2.jpg');
-    // background-position: center;
-    // background-size: cover;
     background-size: contain;
     background-repeat: no-repeat;
     background-color: $black;
@@ -29,7 +27,8 @@
   .description {
     position: absolute;
     top: 0;
-    left: 100px;
+    left: 0px;
+    padding-inline: 45px;
     z-index: 20;
     height: calc(100vh - 80px);
     display: flex;
@@ -37,6 +36,10 @@
     justify-content: center;
     transform: translateY(0px);
     align-items: start;
+    @media (max-width: 768px) {
+      text-align: center;
+      align-items: center;
+    }
 
     .info {
       position: relative;
@@ -46,11 +49,11 @@
       font-size: 5rem;
       font-weight: 700;
       line-height: 5.5rem;
+      width: fit-content;
       text-transform: uppercase;
       color: $white;
     }
     .second-heading {
-      // color: white;
       color: $red-500;
     }
     p {

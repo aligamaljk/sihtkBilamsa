@@ -144,6 +144,11 @@ export interface ITranslation {
         h2: string;
         btn: string;
       };
+      joinUsSection?: {
+        h2: string;
+        p: string;
+        btn: string;
+      };
     };
     aboutPage?: {
       about?: string;
