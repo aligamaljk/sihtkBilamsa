@@ -1,29 +1,21 @@
 import { ITranslation } from '../../types';
-import Btn from '../UI/Button/Btn';
+import AboutSection from './AboutSection/AboutSection';
+import Articles from './Articles/Articles';
+import HeroSection from './HeroSection/HeroSection';
 import './Home.scss';
+import JoinUs from './JoinUs/JoinUs';
+import ServicesSection from './ServicesSection/ServicesSection';
+import VideoSection from './VideoSection/VideoSection';
 
 const Home = ({ t }: ITranslation) => {
   return (
     <section className='home'>
-      <div className='container'>
-        <div className='section-info'>
-          <h1>{t.homePage?.hero?.h1_1}</h1>
-          <h1 className='second-heading'>{t.homePage?.hero?.h1_2}</h1>
-          <p>{t.homePage?.hero?.p}</p>
-
-          <Btn
-            size='lg'
-            to='/contact'
-            onClick={(e) => {
-              if (e) {
-                e.preventDefault();
-              }
-            }}
-          >
-            {t.homePage?.hero?.btn}
-          </Btn>
-        </div>
-      </div>
+      <HeroSection t={t} />
+      <AboutSection t={t} />
+      <ServicesSection t={t} />
+      <Articles t={t} />
+      <VideoSection t={t} />
+      <JoinUs t={t} />
     </section>
   );
 };

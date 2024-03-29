@@ -1,0 +1,63 @@
+@import '../../../styles/variables';
+
+.services-section {
+  padding: 100px 0px;
+  background-color: $black-900;
+  color: $white;
+
+  // =============
+  // Section Title
+  // =============
+  .title {
+    margin-bottom: 50px;
+    .heading-wrapper {
+      position: relative;
+      z-index: 1;
+      width: fit-content;
+
+      h2 {
+        font-size: 5rem;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+    }
+    h3 {
+      font-size: 2.5rem;
+      color: $black-500;
+      margin-top: 5px;
+      color: $red-100;
+      position: relative;
+      z-index: 10;
+    }
+  }
+
+  // ===================
+  // Section Description
+  // ===================
+  .info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 10px;
+
+    img {
+      width: 100px;
+    }
+
+    .box {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      h4 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        padding-top: 15px;
+        color: $white;
+      }
+      p {
+        font-size: 1.6rem;
+      }
+    }
+  }
+}

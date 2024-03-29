@@ -1,0 +1,80 @@
+@import '../../../styles/variables';
+
+.home-page-articles-section {
+  padding: 100px 0px;
+
+  // =======================
+  // Title & Heading section
+  // =======================
+  .heading {
+    margin-bottom: 50px;
+    text-align: end;
+    .title {
+      margin-left: auto;
+      position: relative;
+      z-index: 1;
+      width: fit-content;
+
+      h2 {
+        font-size: 5rem;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+    }
+    h3 {
+      font-size: 2.5rem;
+      color: $black-500;
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 768px) {
+      text-align: left;
+    }
+  }
+
+  // ==========================
+  // Content & Articles section
+  // ==========================
+
+  .content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+
+    .box {
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      gap: 20px;
+
+      img {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        object-position: 80% 0%;
+        border-radius: 5px;
+      }
+
+      .footer {
+        min-height: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 10px;
+
+        h4 {
+          font-size: 3rem;
+          // text-align: center;
+          font-weight: 400;
+          color: $black-500;
+        }
+        .articlesLink {
+          color: $secondary-color;
+          font-size: 2rem;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}

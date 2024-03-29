@@ -1,0 +1,43 @@
+@import '../../../styles/variables';
+
+.video-section {
+  background-image: url('bgVideoSection.jpg');
+  background-position: 0% 30%;
+  padding-block: 100px;
+  color: $white;
+
+  .video-overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+
+    .play-btn {
+      border-radius: 50%;
+      padding: 30px 20px;
+      background-color: $secondary-color;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h2 {
+      font-size: 3rem;
+      padding-inline: 45px;
+    }
+  }
+}
+
+.iframe-container {
+  min-width: 300px;
+  width: 40vw;
+
+  iframe {
+    max-width: 800px;
+    aspect-ratio: 16 / 8;
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+  }
+}

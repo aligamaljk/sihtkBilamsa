@@ -1,0 +1,82 @@
+@import '../../../styles/variables';
+
+.about-section {
+  background-color: $white;
+  padding: 50px 0px;
+
+  .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    // ==============
+    // Photos Section
+    // ==============
+
+    .images {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      .img {
+        min-height: 620px;
+        max-width: 280px;
+        object-fit: cover;
+        @media (max-width: 768px) {
+          display: none;
+        }
+      }
+      .img.one {
+        object-position: 90% 100%;
+      }
+    }
+
+    // ===================
+    // Section Description
+    // ===================
+    .info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 50px 100px;
+
+      @media (max-width: 768px) {
+        padding: 50px 0px;
+      }
+
+      .heading {
+        position: relative;
+        z-index: 1;
+        width: fit-content;
+        margin: 20px 0px 10px;
+
+        h2 {
+          font-size: 5rem;
+          font-weight: 700;
+          color: $black-500;
+          text-transform: uppercase;
+        }
+      }
+      h3 {
+        font-size: 2.5rem;
+        font-weight: 400;
+        color: $black-500;
+        position: relative;
+        z-index: 10;
+      }
+      .text {
+        max-width: 500px;
+        p {
+          margin: 8px 0;
+          font-size: 1.7rem;
+        }
+      }
+    }
+  }
+}
+
+.hero-shape {
+  transform: translate(-35%, -180%);
+  @media (max-width: 768px) {
+    transform: translate(-10%, -10%);
+  }
+}

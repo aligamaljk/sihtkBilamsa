@@ -1,0 +1,66 @@
+@import '../../../styles/variables';
+
+.hero-section {
+  min-height: calc(100vh - 80px);
+  position: relative;
+  z-index: 1;
+  color: $white;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    transform: scaleX(-1);
+
+    background-image: url('/hero-img2.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: $black;
+  }
+
+  .container {
+    position: relative;
+  }
+
+  // Desctiption text of the Section
+  .description {
+    position: absolute;
+    top: 0;
+    left: 0px;
+    padding-inline: 45px;
+    z-index: 20;
+    height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform: translateY(0px);
+    align-items: start;
+    @media (max-width: 768px) {
+      text-align: center;
+      align-items: center;
+    }
+
+    .info {
+      position: relative;
+    }
+
+    h1 {
+      font-size: 5rem;
+      font-weight: 700;
+      line-height: 5.5rem;
+      width: fit-content;
+      text-transform: uppercase;
+      color: $white;
+    }
+    .second-heading {
+      color: $red-500;
+    }
+    p {
+      font-size: 2rem;
+      font-weight: 400;
+      max-width: 480px;
+      margin: 15px 0px 30px;
+    }
+  }
+}
