@@ -3,6 +3,7 @@ import AboutSection from './AboutSection/AboutSection';
 import HeroSection from './HeroSection/HeroSection';
 import './Home.scss';
 import ServicesSection from './ServicesSection/ServicesSection';
+import VideoSection from './VideoSection/VideoSection';
 
 const Home = ({ t }: ITranslation) => {
   return (
@@ -10,6 +11,7 @@ const Home = ({ t }: ITranslation) => {
       <HeroSection t={t} />
       <AboutSection t={t} />
       <ServicesSection t={t} />
+      <VideoSection t={t} />
     </section>
   );
 };

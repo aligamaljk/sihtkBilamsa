@@ -140,6 +140,10 @@ export interface ITranslation {
         titleH4Box4: string;
         box4Text: string;
       };
+      videoSection?: {
+        h2: string;
+        btn: string;
+      };
     };
     aboutPage?: {
       about?: string;

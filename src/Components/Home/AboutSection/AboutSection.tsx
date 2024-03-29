@@ -44,10 +44,8 @@ function AboutSection({ t }: ITranslation) {
       */}
           <div className='heading'>
             <TwoLineShape
-              l1={{ width: '15%', height: '4px' }}
-              l2={{ width: '50%', height: '5px' }}
-              translateX='-38%'
-              translateY='-225%'
+              translateX='-35%'
+              translateY='-60%'
               color='#ff7d7d'
             />
             <h2>{t.aboutUs}</h2>

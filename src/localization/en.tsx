@@ -140,6 +140,10 @@ export default {
       titleH4Box4: 'Reminders and Scheduling',
       box4Text:
         'Ability to set reminders for meals, water intake, and exercise sessions to help users adhere to a healthy routine.'
+    },
+    videoSection: {
+      h2: 'Discover the Benefits of Our Health Platform',
+      btn: 'Watch Now!'
     }
   },
   aboutPage: {
