@@ -25,19 +25,18 @@ const Profile : React.FC <ITranslation> = ({t}) => {
         setFileList(
         getLocalProfile?.ProductImages?.fileList?.map((item : any) => {
           return {
-            uid: item?.id,
-            name: item?.name,
-            status: 'done',
-            thumbUrl: item?.imageURL || item?.thumbUrl,
-            originFileObj: item?.originFileObj,
-            id: item?.id,
-            key: item?.key
+            // uid: item?.id,
+            // name: item?.name,
+            // status: 'done',
+            thumbUrl: item?.thumbUrl,
+            // originFileObj: item?.originFileObj,
+            // id: item?.id,
+            // key: item?.key
           };
         })
       );
       }
       // setStoredAddSport()
-
     },[])
     useEffect(()=>{
       setStoredAddSport(
@@ -148,19 +147,14 @@ const Profile : React.FC <ITranslation> = ({t}) => {
                   ]}
                 >
                   <Upload
-                    // listType="picture"
                     listType="picture-card"
                     fileList={fileList}
-                    // onPreview={() => setIsImageClicked(true)}
                     onChange={handleChange}
                     multiple
                     accept="image/*"
                     beforeUpload={beforeUpload}
                     customRequest={handleUpload}
                     maxCount={1}
-                    // onDownload={false}
-                    // onRemove={false}
-                    // onDrop={false}
                   >
                     <Button icon={<TbUpload />} type="text">
                       {t.uploadImage}

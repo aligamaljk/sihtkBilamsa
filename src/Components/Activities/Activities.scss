@@ -52,11 +52,75 @@
         }
         .sport{
             width: 100%;
-            border: 1px solid #ccc;
-            padding: 10px;
-            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+            .checkbox{
+                width: 75%;
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 10px;
+                border-radius: 10px;
+                border: 1px solid #ccc;
+                gap: 5px;
+                cursor: pointer;
+            }
             .ant-checkbox-wrapper{
+                position: relative;
                 width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                &::after{
+                    display: none;
+                }
+                &::before{
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 0%;
+                    height: 2px;
+                    border: 1px solid #ff7d7d;
+                    border-radius: 10px;
+                    z-index: 1;
+                }
+            }
+            .close{
+                // position: absolute;
+                // top: 2px;
+                // right: 2px;
+                width: 20px;
+                font-size: 18px;
+                transition: all 0.3s ease;
+                &:hover{
+                    color: #ff7d7d;
+                }
+            }
+            .ant-checkbox-wrapper-checked{
+                transition: all 0.3s ease;
+                &::before{
+                    width: 100%;
+                    transition: all 0.3s ease;
+                }
+                .ant-checkbox-checked{
+                    .ant-checkbox-inner{
+                            background: #ff7d7d;
+                            border-color: #ff7d7d;
+                            transition: all 0.3s ease;
+                    }
+                }
+            }
+            .ant-checkbox-inner{
+                &:hover{
+                    background: #ff7d7d;
+                    border-color: #ff7d7d;
+                    
+                }
             }
             .check{
                 width: 100%;
@@ -77,14 +141,21 @@
                     position: absolute;
                     right: 5px;
                     top: 1px;
-    
                 }
                 .ant-checkbox-wrapper{
                     width: 100%;
                     display: flex;
                     align-items: center;
                     justify-content: center;
+                    // gap: 50px;
                 }
+            }
+            .ant-checkbox-group{
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
             }
         }
     }

@@ -1,22 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { ITranslation } from '../../types'
 import { Link } from 'react-router-dom'
 import { IoIosArrowForward } from 'react-icons/io';
 import "./Activities.scss"
-import { Button, Card, Checkbox, Form, Input } from 'antd';
+import { Button, Card, Checkbox, Form, Input, message, Popconfirm } from 'antd';
+import { IoClose } from "react-icons/io5";
 import { clearStoredUserProfileGoal, getStoredAddSport, getStoredUserProfile, getStoredUserProfileGoal, setStoredUserProfileGoal } from '../../services/user-storage';
 const Activities : React.FC <ITranslation> = ({t}) => {
   const [form] = Form.useForm();
+  const [sports, setSports] = useState<any[]>(getStoredAddSport())
+  const check = (sports || [])?.map((item : any)=> item )
+
   const valeGoel = getStoredUserProfileGoal()
-  const getLocalProfile = getStoredAddSport()
   const prof = getStoredUserProfile()
-  // const findSport2 = prof?.categoryProduct
-  const findSport2 = prof?.categoryProduct
-  // const findSport = getLocalProfile?.filter((item : any) => item.value === findSport2)
-  const findSport = getLocalProfile?.filter((item : any) => item.value === findSport2)
-
-console.log(findSport,findSport2);
-
   const onFinish = (values: any) => {
     console.log("Success:", values);
     setStoredUserProfileGoal(values)
@@ -80,14 +76,39 @@ console.log(findSport,findSport2);
               <div className="activities">
                 <Card bordered={false} className="card-sport" >
                   <h3 className="title">sports Activities</h3>
-                  {[1,2,3]?.map((item) => (
+                  
                     <div className="sport">
-                      <Checkbox value={item} key={item} className='check' >
-                        sport
-                        <div className="clos"> x </div>
+                      <Checkbox.Group>
+                    {check?.map((item : any) => (
+                      <div className="checkbox">
+                      <Checkbox
+                        key={item.value}
+                        value={item.value}
+                        className="checkbox-sport"
+                      >
+                        {item.label}
                       </Checkbox>
+                        <Popconfirm
+                          title={t.LogOut}
+                          description={t.LogOutMessageModal}
+                          icon={<></>}
+                          placement='topLeft'
+                          okType='danger'
+                          okText={t.okText}
+                          cancelText={t.cancelText}
+                          onConfirm={() => {
+                            message.success(t.LogOutMessage);
+                          }}
+                          onCancel={() => {
+                            message.info(t.popupCanceledMessage);
+                          }}
+                        >
+                          <IoClose className="close" />
+                        </Popconfirm>
+                      </div>
+                    ))}
+                  </Checkbox.Group>
                     </div>
-                  ))}
                 </Card>
               </div>
             </div>

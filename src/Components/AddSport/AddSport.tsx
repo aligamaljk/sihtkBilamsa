@@ -29,7 +29,8 @@ const AddSport = ({setSports,sports,t} : any) => {
       <Button type="primary" onClick={showModal}>
         {t.AddSport}
       </Button>
-        <Modal title={t.AddSport} open={isModalOpen}
+        <Modal title={t.AddSport}
+        open={isModalOpen ? true : false}
         footer={false} onCancel={handleCancel}>
           <Form layout="vertical" name='add-sport' form={form}
             onFinish={onFinish}

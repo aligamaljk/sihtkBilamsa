@@ -145,9 +145,9 @@ const Calories : React.FC <ITranslation> = ({t}) => {
                   placeholder={t.requiredGoal}
                   onChange={(value) => setMore(value)}
                 >
-                  <Select.Option value={"more"}>{t.moreCal}</Select.Option>
-                  <Select.Option value={"less"}>{t.lessCal}</Select.Option>
-                  <Select.Option value={"stability"}>{t.stability}</Select.Option>
+                  <Select.Option value="more">{t.moreCal}</Select.Option>
+                  <Select.Option value="less">{t.lessCal}</Select.Option>
+                  <Select.Option value="stability">{t.stability}</Select.Option>
                 </Select> 
               </Form.Item>
                 <Form.Item>

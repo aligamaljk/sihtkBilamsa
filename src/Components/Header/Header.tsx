@@ -271,7 +271,7 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
           arrow={{ pointAtCenter: true }}
           // trigger={['click']}
           trigger={['hover']}
-          menu={{ items: items, onClick: chanageLang }}
+          menu={{ items: items, onClick:  chanageLang }}
         >
           {/* <Image src={img2} preview={false} width={18} /> */}
           <Button
