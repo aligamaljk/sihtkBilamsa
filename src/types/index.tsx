@@ -206,3 +206,47 @@ export interface StoreType {
     currentLang: LangsType;
   };
 }
+
+export interface ProfileGoal {
+  goal: string;
+  weight: number;
+  weightTarget: number;
+}
+
+export interface AddSportType {
+  label: string;
+  value: number;
+}
+
+// export interface fileType {
+//   imageURL?: string | undefined;
+//   lastModified?: number;
+//   percent?: number;
+//   size?: number;
+//   lastModifiedDate?: string;
+//   name?: string;
+//   response?: string;
+//   status?: string;
+//   thumbUrl?: string;
+//   type?: string;
+//   uid?: string;
+//   originFileObj?: { uid: string };
+//   id?: string;
+//   key?: string;
+// }
+
+// export interface ProductImagesType {
+//   file: fileType;
+//   fileList: fileType[];
+// }
+
+export interface userProfileType {
+  ProductImages: never;
+  age: string;
+  categoryProduct: number[];
+  description: string | null;
+  gender: number;
+  height: number;
+  name: string;
+  weight: number;
+}
