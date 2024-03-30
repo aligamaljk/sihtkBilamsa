@@ -1,4 +1,3 @@
-
 import { Navigate, useRoutes } from 'react-router-dom';
 import OwnNotFound from '../Pages/OwnNotFound/OwnNotFound';
 import Home from '../Components/Home/Home';
@@ -15,12 +14,13 @@ import Articles from '../Components/Blogs/Articles';
 import BlogsDetails from '../Components/Blogs/BlogsDetails/BlogsDetails';
 import Bmi from '../Components/Bmi/Bmi';
 import Activities from '../Components/Activities/Activities';
+import { ITranslation } from '../types';
 
-const RoutesWrapper = ({ t }: { t: any }) => {
+const RoutesWrapper = ({ t }: ITranslation) => {
   const routes = useRoutes([
     {
       path: '*',
-      element: <OwnNotFound t={t} />,
+      element: <OwnNotFound t={t} />
     },
     {
       path: '/',
@@ -28,58 +28,66 @@ const RoutesWrapper = ({ t }: { t: any }) => {
       children: [
         {
           index: true,
-          element: <Home t={t} />,
+          element: <Home t={t} />
         },
         {
           path: 'about',
-          element: <AboutUs t={t}/>,
+          element: <AboutUs t={t} />
         },
         {
           path: 'contact',
-          element: <Contact t={t} />,
+          element: <Contact t={t} />
         },
         {
           path: 'articles',
-          element: getStoredUser() ? (
-            <Articles t={t} />
-          ) : (
-            <Navigate to="/login" replace />
-          ),
+          element:
+            getStoredUser() ?
+              <Articles t={t} />
+            : <Navigate to='/login' replace />
         },
         {
           path: 'articles/:id',
-          element:<BlogsDetails t={t} />
+          element: <BlogsDetails t={t} />
         },
         {
           path: 'calories',
-          element: getStoredUser() ? <Calories t={t}/> : <Navigate to="/login" replace />,
+          element:
+            getStoredUser() ?
+              <Calories t={t} />
+            : <Navigate to='/login' replace />
         },
         {
           path: 'bmi',
-          element: getStoredUser() ?<Bmi t={t}/> : <Navigate to="/login" replace />,
+          element:
+            getStoredUser() ?
+              <Bmi t={t} />
+            : <Navigate to='/login' replace />
         },
         {
           path: 'activities',
-          element: getStoredUser() ?<Activities t={t}/> : <Navigate to="/login" replace />,
+          element:
+            getStoredUser() ?
+              <Activities t={t} />
+            : <Navigate to='/login' replace />
         },
         {
           path: 'profile',
-          element: <Profile t={t} />,
+          element: <Profile t={t} />
         },
         {
           path: '/login',
-          element: <LogIn t={t} />,
+          element: <LogIn t={t} />
         },
         {
           path: '/forgot-password',
-          element: <ForgotPassword t={t} />,
+          element: <ForgotPassword t={t} />
         },
         {
           path: '/register',
-          element: <SignUp t={t} />,
-        },
-      ],
-    },
+          element: <SignUp t={t} />
+        }
+      ]
+    }
   ]);
   return routes;
 };
