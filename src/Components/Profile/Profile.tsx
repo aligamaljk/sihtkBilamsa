@@ -50,7 +50,7 @@ const Profile: React.FC<ITranslation> = ({ t }) => {
       );
     }
     // setStoredAddSport()
-  }, [getLocalProfile]);
+  }, []);
   useEffect(() => {
     setStoredAddSport(sports);
   }, [sports]);
