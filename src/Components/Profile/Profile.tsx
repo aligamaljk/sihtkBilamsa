@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { ITranslation } from '../../types'
+import { AddSportType, ITranslation } from '../../types'
 import { Link, useNavigate } from 'react-router-dom';
 import { IoIosArrowForward } from 'react-icons/io';
 import "./Profile.scss"
@@ -11,15 +11,10 @@ import AddSport from '../AddSport/AddSport';
 const Profile : React.FC <ITranslation> = ({t}) => {
   const navigate = useNavigate()
     const [ form ] = Form.useForm();
-    const getLocalProfile = getStoredUserProfile()
+    const getLocalProfile: any = getStoredUserProfile()
     console.log(getLocalProfile);
     const [fileList, setFileList] = useState<any[]>([]);
-    const [sports, setSports] = useState<any[]>(getStoredAddSport())
-    // const [sports, setSports] = useState<any[]>([])
-
-    console.log(fileList,"fileList");
-    const [values,setValues] = useState<any[]>([]) 
-  const imageList = Form.useWatch('ProductImages', form);
+    const [sports, setSports] = useState<AddSportType[] | undefined >(getStoredAddSport())
     useEffect(()=>{
       if(getLocalProfile){
         setFileList(
@@ -36,11 +31,10 @@ const Profile : React.FC <ITranslation> = ({t}) => {
         })
       );
       }
-      // setStoredAddSport()
     },[])
     useEffect(()=>{
       setStoredAddSport(
-        sports
+        sports || []
       )
     },[sports])
 
@@ -58,49 +52,14 @@ const Profile : React.FC <ITranslation> = ({t}) => {
           onSuccess('ok');
         }, 0);
       };
-      const handleChange = ({ fileList: newFileList } : any) => setFileList(newFileList);
-      const check2 = 
-      [
-        {
-          label: t.swimming,
-          value: 1,
-        },
-        {
-          label: t.running,
-          value: 2,
-        },
-        {
-          label: t.football,
-          value: 3,
-        },
-        {
-          label: t.basketball,
-          value: 4,
-        },
-        {
-          label: t.gym,
-          value: 5,
-        },
-        {
-          label: t.tennis,
-          value: 6,
-        },
-      ];
+      // const handleChange = ({ fileList: newFileList } : any) => setFileList(newFileList);
+      const handleChange = ({ fileList: newFileList } : { fileList: any }) => setFileList(newFileList);
       
       const check = (sports || [])?.map((item : any)=> item )
       const onFinish = (values : any)=>{
-        console.log(values,"values-profile");
+        // console.log(values,"values-profile");
         setStoredUserProfile(
-          {
-            ProductImages:values.ProductImages,
-            name:values.name,
-            age:values.age,
-            categoryProduct:values.categoryProduct,
-            gender:values.gender,
-            height:values.height,
-            weight:values.weight,
-            description:values.description,
-          }
+          values
         )
         message.success(t.profileRegistered)
         navigate("/")
@@ -215,13 +174,7 @@ const Profile : React.FC <ITranslation> = ({t}) => {
                   rules={[{ required: true, message: t.requiredCategory }]}
                 >
                   {sports && sports?.length > 0 ? (
-                  <Checkbox.Group
-                    onChange={(value) => {
-                      // console.log(value);
-                      setValues(value);
-                    }}
-                    // defaultValue={checked}
-                  >
+                  <Checkbox.Group>
                     {check.map((item) => (
                       <Checkbox
                         key={item.value}

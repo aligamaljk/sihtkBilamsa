@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { ITranslation } from '../../types'
+import { AddSportType, ITranslation } from '../../types'
 import { Link } from 'react-router-dom'
 import { IoIosArrowForward } from 'react-icons/io';
 import "./Activities.scss"
@@ -8,7 +8,7 @@ import { IoClose } from "react-icons/io5";
 import { clearStoredUserProfileGoal, getStoredAddSport, getStoredUserProfile, getStoredUserProfileGoal, setStoredUserProfileGoal } from '../../services/user-storage';
 const Activities : React.FC <ITranslation> = ({t}) => {
   const [form] = Form.useForm();
-  const [sports, setSports] = useState<any[]>(getStoredAddSport())
+  const [sports, setSports] = useState<AddSportType[] | undefined >(getStoredAddSport())
   const check = (sports || [])?.map((item : any)=> item )
 
   const valeGoel = getStoredUserProfileGoal()

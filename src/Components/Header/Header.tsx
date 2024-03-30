@@ -1,5 +1,5 @@
 // import { Button, Dropdown, Image, message, Popconfirm } from 'antd';
-import { Button, Dropdown, Image, message, Popconfirm } from 'antd';
+import { Button, Dropdown, message, Popconfirm } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -13,8 +13,6 @@ import {
   setLang
 } from '../../services/user-storage';
 import { ITranslation, StoreType } from '../../types';
-// import img from '../../assets/download.png';
-// import img2 from '../../assets/translating.0144a3cdb7995b9cf71d492fe721e60b.svg';
 import { IoIosArrowDown } from 'react-icons/io';
 import { MdLanguage } from 'react-icons/md';
 import { UserOutlined } from '@ant-design/icons';
@@ -25,14 +23,17 @@ import { useState } from 'react';
 import ActiveLinkTab from '../UI/ActiveLinkTab';
 import { GoSignOut } from 'react-icons/go';
 import HeaderRes from './HeaderRes/HeaderRes';
-import logAr from '../../assets/logo-ar.svg';
+import logoAr from '../../assets/logo-ar.svg';
+import logoEn from '../../assets/logo.svg';
+
 const HeaderApp: React.FC<ITranslation> = ({ t }) => {
   const { currentLang } = useSelector(
     (state: StoreType) => state?.user
-    );
+  );
   const [activeTab, setActiveTab] = useState('home');
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const chanageLang = ({ key }: { key: string }) => {
     dispatch(setCurrentLang(key));
     setLang(key);
@@ -92,7 +93,7 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
       )
     },
     {
-      key: '3',
+      key: '4',
       label: (
         <ActiveLinkTab
           to='/activities'
@@ -109,11 +110,20 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
     <div className='header'>
       <div className='logo'>
         <Link to='/'>
-          {/* <Link to='/'>{t.logo}</Link> */}
-          {currentLang === "en" ? <Logo /> :
-            <img  src={logAr} alt="logo" height={45} style={{ maxWidth: 'unset' }} />
+          {currentLang === 'en' ?
+            <Logo
+              src={logoEn}
+              alt='logo'
+              height={45}
+              style={{ maxWidth: 'unset' }}
+            />
+          : <Logo
+              src={logoAr}
+              alt='logo'
+              height={45}
+              style={{ maxWidth: 'unset' }}
+            />
           }
-          
         </Link>
       </div>
       <div className='links'>
@@ -124,7 +134,6 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
           state={activeTab}
           linkText={t.homeTab}
         />
-        {/* <Link to='/about'>{t.aboutUs}</Link> */}
         <ActiveLinkTab
           to='/about'
           onClick={() => setActiveTab('About Us')}
@@ -162,8 +171,6 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
             {t.services} <IoIosArrowDown />
           </span>
         </Dropdown>
-        {/* <Link to="/blogs">{t.articles}</Link> */}
-        {/* <Link to='/contact'>{t.contactUs}</Link> */}
         <ActiveLinkTab
           to='/contact'
           onClick={() => setActiveTab('Contact Us')}
@@ -172,11 +179,11 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
           linkText={t.contactUs}
         />
       </div>
-      <div className='login' >
+      <div className='login'>
         {
           getStoredUser() ?
             // Log Out Tab
-            <div className='login link-res' >
+            <div className='login link-res'>
               <Popconfirm
                 title={t.LogOut}
                 description={t.LogOutMessageModal}
@@ -188,7 +195,7 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
                 cancelText={t.cancelText}
                 onConfirm={() => {
                   clearStoredUser();
-                  clearStoredUserProfile()
+                  clearStoredUserProfile();
                   dispatch(setCurrentUser(null));
                   navigate('/login');
                   message.success(t.LogOutMessage);
@@ -213,11 +220,8 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
                     gap: '5px'
                   }}
                 >
-                  <span className='text-header'>
-                  {t.LogOut}
-                  </span>
+                  <span className='text-header'>{t.LogOut}</span>
                   <GoSignOut />
-                  {/* <Image src={img} preview={false} width={18} /> */}
                 </Button>
               </Popconfirm>
             </div>
@@ -263,7 +267,6 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
           >
             {t.profileTab}
             <UserOutlined />
-            {/* <Image src={img} preview={false} width={18} /> */}
           </Button>
         </Link>
         {/* Language Tab */}
@@ -273,7 +276,6 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
           trigger={['hover']}
           menu={{ items: items, onClick:  chanageLang }}
         >
-          {/* <Image src={img2} preview={false} width={18} /> */}
           <Button
             type='text'
             danger
@@ -288,17 +290,14 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
               gap: '5px'
             }}
           >
-            <span className='text-header'>
-            {t.Language}
-            </span>
+            <span className='text-header'>{t.Language}</span>
             <MdLanguage />
           </Button>
         </Dropdown>
-        <div className="mobile">
+        <div className='mobile'>
           <HeaderRes t={t} />
         </div>
       </div>
-
     </div>
   );
 };
