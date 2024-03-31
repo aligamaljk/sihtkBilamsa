@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { ITranslation } from '../../types';
+import {
+  AddSportType,
+  ITranslation,
+  fileType,
+  fileUploadType,
+  userProfileType
+} from '../../types';
 import { Link, useNavigate } from 'react-router-dom';
 import { IoIosArrowForward } from 'react-icons/io';
 import './Profile.scss';
@@ -27,35 +33,36 @@ const Profile: React.FC<ITranslation> = ({ t }) => {
   const navigate = useNavigate();
   const [form] = Form.useForm();
   const getLocalProfile = getStoredUserProfile();
-  const [fileList, setFileList] = useState([]);
+  const [fileList, setFileList] = useState<fileType[] | []>([]);
   const [sports, setSports] = useState(getStoredAddSport());
-  // const [sports, setSports] = useState<any[]>([])
 
-  console.log(fileList, 'fileList');
-  // const imageList = Form.useWatch('ProductImages', form);
+  // console.log('=============');
+  // console.log('getLocalProfile');
+  // console.log(getLocalProfile);
+  // console.log('sports');
+  // console.log(sports);
+
+  // console.log(fileList, 'fileList');
+
   useEffect(() => {
     if (getLocalProfile) {
       setFileList(
-        getLocalProfile?.ProductImages?.fileList?.map((item: any) => {
-          return {
-            uid: item?.id,
-            name: item?.name,
-            status: 'done',
-            thumbUrl: item?.imageURL || item?.thumbUrl,
-            originFileObj: item?.originFileObj,
-            id: item?.id,
-            key: item?.key
-          };
-        })
+        getLocalProfile.ProductImages.fileList.map(
+          (item: fileType) => {
+            return item;
+          }
+        )
       );
     }
-    // setStoredAddSport()
   }, []);
+
   useEffect(() => {
-    setStoredAddSport(sports);
+    if (sports) {
+      setStoredAddSport(sports);
+    }
   }, [sports]);
 
-  const beforeUpload = (file: any) => {
+  const beforeUpload = (file: fileUploadType) => {
     const isLt2M = file.size / 1024 / 1024 < 2;
     if (!isLt2M) {
       message.error('حجم الصورة يجب ان يكون اقل من 2 ميجا بايت');
@@ -63,42 +70,57 @@ const Profile: React.FC<ITranslation> = ({ t }) => {
     }
     return isLt2M;
   };
-  const handleUpload = async ({ file, onSuccess }: any) => {
+  const handleUpload = async ({
+    // file,
+    onSuccess
+  }: {
+    // file: fileUploadType;
+    onSuccess: (ret: string) => void;
+  }) => {
+    // console.log(file);
+    // console.log(onSuccess);
     setTimeout(() => {
       onSuccess('ok');
     }, 0);
   };
-  const handleChange = ({ fileList: newFileList }: any) =>
+  const handleChange = ({
+    fileList: newFileList
+  }: {
+    fileList: fileType[] | [];
+  }) => {
     setFileList(newFileList);
-  const check2 = [
-    {
-      label: t.swimming,
-      value: 1
-    },
-    {
-      label: t.running,
-      value: 2
-    },
-    {
-      label: t.football,
-      value: 3
-    },
-    {
-      label: t.basketball,
-      value: 4
-    },
-    {
-      label: t.gym,
-      value: 5
-    },
-    {
-      label: t.tennis,
-      value: 6
-    }
-  ];
+  };
 
-  const check = (sports || [])?.map((item: any) => item);
-  const onFinish = (values: any) => {
+  // const check2 = [
+  //   {
+  //     label: t.swimming,
+  //     value: 1
+  //   },
+  //   {
+  //     label: t.running,
+  //     value: 2
+  //   },
+  //   {
+  //     label: t.football,
+  //     value: 3
+  //   },
+  //   {
+  //     label: t.basketball,
+  //     value: 4
+  //   },
+  //   {
+  //     label: t.gym,
+  //     value: 5
+  //   },
+  //   {
+  //     label: t.tennis,
+  //     value: 6
+  //   }
+  // ];
+
+  const check = (sports || [])?.map((item: AddSportType) => item);
+
+  const onFinish = (values: userProfileType) => {
     console.log(values, 'values-profile');
     setStoredUserProfile({
       ProductImages: values.ProductImages,
@@ -156,19 +178,14 @@ const Profile: React.FC<ITranslation> = ({ t }) => {
                   ]}
                 >
                   <Upload
-                    // listType="picture"
                     listType='picture-card'
                     fileList={fileList}
-                    // onPreview={() => setIsImageClicked(true)}
                     onChange={handleChange}
                     multiple
                     accept='image/*'
                     beforeUpload={beforeUpload}
                     customRequest={handleUpload}
                     maxCount={1}
-                    // onDownload={false}
-                    // onRemove={false}
-                    // onDrop={false}
                   >
                     <Button icon={<TbUpload />} type='text'>
                       {t.uploadImage}
