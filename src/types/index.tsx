@@ -55,6 +55,7 @@ export interface ITranslation {
     contactSubmit?: string;
     name?: string;
     age?: string;
+    inputAge?: string;
     requiredAge?: string;
     gender?: string;
     requiredGender?: string;
