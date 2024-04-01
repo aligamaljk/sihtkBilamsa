@@ -1,0 +1,60 @@
+.admin{
+    padding: 30px;
+    margin-top: 50px;
+    // background: #fff;
+    .admin-form{
+        display: flex;
+        gap: 20px;
+        padding: 20px;
+        .upload{
+            width: 30%;
+            .ant-upload{
+                background: #fff;
+                border: none;
+                width: 100%;
+                height: 180px;
+                transition: all .3s;
+                &:hover{
+                    border: none;
+                    box-shadow: 0 0 0 1px #d9d9d9;
+                }
+            }
+            .ant-upload-list{
+                align-items: center;
+                display: flex;
+                flex-wrap: wrap-reverse;
+                justify-content: center;
+            }
+        }
+        .form-item{
+            background: #fff;
+            width: 60%;
+            padding: 20px;
+            border-radius: 10px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            .ant-form-item{
+                width: 100%;
+            }
+            .form-item-info{
+                display: flex;
+                gap: 20px;
+                width: 100%;
+                justify-content: space-between;
+            }
+            .btn-wrapper-admin{
+                width: 100%;
+                .add-btn{
+                    width: 100%;
+                    margin-top: 20px;
+                    margin-bottom: 20px;
+                    padding: 20px ;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+        }
+    }
+}

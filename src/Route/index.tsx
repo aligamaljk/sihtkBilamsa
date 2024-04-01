@@ -15,6 +15,7 @@ import BlogsDetails from '../Components/Blogs/BlogsDetails/BlogsDetails';
 import Bmi from '../Components/Bmi/Bmi';
 import Activities from '../Components/Activities/Activities';
 import { ITranslation } from '../types';
+import Admin from '../Pages/Admin/Admin';
 
 const RoutesWrapper = ({ t }: ITranslation) => {
   const routes = useRoutes([
@@ -73,6 +74,10 @@ const RoutesWrapper = ({ t }: ITranslation) => {
         {
           path: 'profile',
           element: <Profile t={t} />
+        },
+        {
+          path: 'admin',
+          element: <Admin t={t} />
         },
         {
           path: '/login',

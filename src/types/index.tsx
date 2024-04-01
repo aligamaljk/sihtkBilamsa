@@ -193,6 +193,9 @@ export interface ITranslation {
     titphone?: string;
     requiredProtein?: string;
     weightTarget?: string;
+    errorSin?: string;
+    errorSin2?: string;
+    checkEmail?: string;
   };
 }
 
@@ -249,4 +252,12 @@ export interface userProfileType {
   height: number;
   name: string;
   weight: number;
+}
+
+
+export interface UserInput {
+  email?: string;
+  password?: string;
+  name?: string;
+  // add other properties as needed
 }

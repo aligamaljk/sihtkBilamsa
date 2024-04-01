@@ -1,4 +1,4 @@
-import { useMutation } from '@tanstack/react-query';
+import React, { useState } from 'react';
 import { Form, Button, App, Input, Card } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -6,21 +6,50 @@ import { useDispatch } from 'react-redux';
 import { setStoredToken, setStoredUser } from '../../../services/user-storage';
 import './Login.scss';
 import { setCurrentUser } from '../../../services/store/reducers/user';
-import { authLogin } from '../../../network/auth';
-import { ITranslation } from '../../../types';
+import { ITranslation, UserInput } from '../../../types';
 import { IoIosArrowForward } from 'react-icons/io';
+import { doSignInWithEmailAndPassword, doSignInWithGoogle } from '../../../Firebase/auth';
 
 
 const LogIn: React.FC<ITranslation> = ({ t }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { message } = App.useApp();
-  const onAuthLogin = (values: any) => {
-    // console.log('Success:', values);
-    dispatch(setCurrentUser(values));
-    setStoredUser(values.name);
-    message.success(t.successLog + ' ' + values.name);
-    navigate('/profile');
+  const [loading, setLoading] = useState(false);
+  const [loadingGoogle, setLoadingGoogle] = useState(false);
+  const onAuthLogin = (values: UserInput) => {
+    setLoading(true);
+    doSignInWithEmailAndPassword(values.email, values.password).then((userCredential) => {
+      const user = userCredential.user;
+      setLoading(false);
+      console.log(user);
+      setStoredToken(user?.uid);
+      setStoredUser(values.name);
+      dispatch(setCurrentUser(values));
+      message.success(t.successLog + ' ' + values.name);
+      navigate('/profile');
+    }).catch((error) => {
+      setLoading(false);
+      console.log(error);
+    })
+  };
+  const authLoginWithGoogle = () => {
+    setLoadingGoogle(true);
+    doSignInWithGoogle().then((userCredential) => {
+      const user = userCredential.user;
+      console.log(user);
+      setStoredToken(user?.uid);
+      // setStoredUser(user?.displayName || undefined);
+      setStoredUser(user?.displayName || "");
+      dispatch(setCurrentUser(user?.displayName));
+      setLoadingGoogle(false);
+      message.success(t.successLog + ' ' + user?.displayName);
+      navigate('/profile');
+    }).catch((error) => {
+      console.log(error);
+      message.error(t.errorSin2);
+      setLoadingGoogle(false);
+    })
   };
 
   return (
@@ -82,9 +111,15 @@ const LogIn: React.FC<ITranslation> = ({ t }) => {
                 type="primary"
                 className="login-form-button"
                 htmlType="submit"
-                loading={false}
+                loading={loading}
               >
                 {t.LogIn}
+              </Button>
+              <Button type="primary" className="login-form-button-google" 
+                onClick={() => authLoginWithGoogle()}
+                loading={loadingGoogle}
+              >
+                log in with google
               </Button>
             </Form.Item>
             <p
