@@ -1,7 +1,7 @@
 @import '../../../styles/variables';
 
 .team-section {
-  margin: 4em 0px;
+  margin: 4em 0px 0px;
   h2 {
     display: flex;
     font-size: 3rem;
@@ -16,7 +16,7 @@
   }
 
   .team-images {
-    margin: 2em 1em;
+    margin: 2em 0px 0px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
