@@ -8,7 +8,7 @@
         rgba(0, 0, 0, 0.3),
         rgba(0, 0, 0, 0.3)
       ),
-      url(bgVideoSection.jpg);
+      url('/bgVideoSection.jpg');
     // background-image: linear-gradient(
     //     to right,
     //     rgba(0, 0, 0, 0.3),
@@ -67,8 +67,6 @@
           margin-bottom: 3rem;
           text-align: center;
           text-transform: capitalize;
-        }
-        .form-contact {
         }
       }
     }

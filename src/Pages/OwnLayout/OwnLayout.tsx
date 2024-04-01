@@ -1,8 +1,8 @@
 import { Layout } from 'antd';
 import { Outlet } from 'react-router';
 import './OwnLayout.scss';
-import HeaderApp from './Header';
-import FooterApp from '../Footer/Footer';
+import HeaderApp from '../../Components/Header/Header';
+import FooterApp from '../../Components/Footer/Footer';
 import { ITranslation } from '../../types';
 const { Content, Header, Footer } = Layout;
 
