@@ -8,9 +8,13 @@
   // =======================
   .heading {
     margin-bottom: 50px;
-    text-align: end;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+
     .title {
-      margin-left: auto;
+      // margin-left: auto;
+      // margin-right: auto;
       position: relative;
       z-index: 1;
       width: fit-content;

@@ -186,7 +186,7 @@ export default {
   update: 'update',
   profileRegistered: 'Profile registered successfully',
   myProfile: 'my profile',
-  titleLogo: ' health with a touch',
+  titleLogo: 'Sihtk Bilamsa',
   CopyrightsReservedFor: 'Copyrights Reserved for',
   needHelp: 'need help',
   help: 'Help',
