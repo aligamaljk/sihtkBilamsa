@@ -8,12 +8,14 @@ import store from './services/store/store.tsx';
 import { Analytics } from '@vercel/analytics/react';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </Provider>
+  <>
+    <React.StrictMode>
+      <Provider store={store}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Provider>
+    </React.StrictMode>
     <Analytics />
-  </React.StrictMode>
+  </>
 );
