@@ -1,55 +1,59 @@
 .logUp,
 .forgot-password,
-.login{
-    .login-form-container{
-        .section-header{
-        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../../assets/1588005650774.jpeg");
-        }
+.login {
+  .login-form-container {
+    .section-header {
+      background-image: linear-gradient(
+          rgba(0, 0, 0, 0.5),
+          rgba(0, 0, 0, 0.5)
+        ),
+        url('../../../assets/1588005650774.jpeg');
     }
-    .title-log{
-        text-align: center;
-        h1{
-            margin: 0;
-            font-size: 40px;
-            font-weight: 600;
-            color: #000;
-        }
+  }
+  .title-log {
+    text-align: center;
+    h1 {
+      margin: 0;
+      font-size: 40px;
+      font-weight: 600;
+      color: #000;
     }
-    .login-form{
-        background: #fff;
-        border-radius: 26px;
-        box-shadow: 0 0 50px rgba(0,0,0,.051);
-        max-width: 800px;
-        padding: 30px;
-        margin: 50px auto 0;
-        .login-form-body{
-        }
-        .title-form{
-            align-items: center;
-            color: #294151;
-            display: flex;
-            font-size: 30px;
-            font-weight: 600;
-            letter-spacing: .32px;
-            margin-bottom: 2rem;
-            span{
-                color: #8c4191;
-                margin-right: 10px;
-                margin-left: 5px;
-            }
-        }
-        .ant-form-item{
-            margin-bottom: 20px;
-        }
-        .login-form-button{
-            width: 100%;
-            margin: 10px 0;
-            border-radius: 30px;
-            height: 50px;
-            font-size: 23px;
-            font-weight: 600;
-            letter-spacing: .32px;
-            box-shadow: none !important;
-        }
+  }
+  .login-form {
+    background: #fff;
+    border-radius: 26px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.051);
+    max-width: 800px;
+    padding: 30px;
+    margin: 50px auto 50px;
+    .login-form-body {
     }
+    .title-form {
+      align-items: center;
+      color: #294151;
+      display: flex;
+      font-size: 30px;
+      font-weight: 600;
+      letter-spacing: 0.32px;
+      margin-bottom: 2rem;
+      span {
+        color: #8c4191;
+        margin-right: 10px;
+        margin-left: 5px;
+      }
+    }
+    .ant-form-item {
+      margin-bottom: 20px;
+    }
+    .login-form-button {
+      width: 100%;
+      margin: 10px 0;
+      border-radius: 30px;
+      height: 50px;
+      font-size: 23px;
+      font-weight: 600;
+      letter-spacing: 0.32px;
+      box-shadow: none !important;
+    }
+  }
 }

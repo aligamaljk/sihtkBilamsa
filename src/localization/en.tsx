@@ -1,6 +1,6 @@
 export default {
   greeting: 'Hello',
-  logo: 'Health',
+  logo: 'Sihtk Bilamsa',
   OwnNotFound: 'Go Back To The Homepage',
   product: 'Products',
   cart: 'Cart',
@@ -49,11 +49,11 @@ export default {
   phone: 'Forget password ?',
   ButForget: 'Send Verification Code',
   desForgot:
-    'Enter your account Phone to reset the password. Then you will want to receive a verification code. If you have any problem about password reset plase',
+    'Enter your account Phone to reset the password. Then you will receive a verification code. If you have any problem about password reset plase',
   sin: 'Do you have an account ? ',
   for: 'Forget',
   senUpMes: 'Sign up to ',
-  contactTitle: 'Contact Health',
+  contactTitle: 'Need Help',
   contactDesc:
     'Our team receives your inquiries and provides support 24/7.',
   contactName: 'Name',

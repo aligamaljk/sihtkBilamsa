@@ -4,8 +4,12 @@ import TwoLineShape from '../../UI/TwoLineShape/TwoLineShape';
 import img1 from '../../../assets/home-img1.jpg';
 import img2 from '../../../assets/home-img2.jpg';
 import './AboutSection.scss';
+import { getLang } from '../../../services/user-storage';
 
 function AboutSection({ t }: ITranslation) {
+  const lang = getLang();
+  console.log(lang);
+
   return (
     <section className='about-section'>
       <div className='container'>
@@ -43,11 +47,18 @@ function AboutSection({ t }: ITranslation) {
             =====
       */}
           <div className='heading'>
-            <TwoLineShape
-              translateX='-35%'
-              translateY='-60%'
-              color='#ff7d7d'
-            />
+            {lang === 'en' ?
+              <TwoLineShape
+                translateX='-35%'
+                translateY='-60%'
+                color='#ff7d7d'
+              />
+            : <TwoLineShape
+                translateX='-35%'
+                translateY='-180%'
+                color='#ff7d7d'
+              />
+            }
             <h2>{t.aboutUs}</h2>
           </div>
           <h3>{t.homePage?.about?.advice}</h3>

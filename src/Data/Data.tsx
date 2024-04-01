@@ -5,7 +5,7 @@ export const articlesEn = [
     author: 'Aisha Khan',
     date: '2024-04-15',
     desShow:
-      'Introduction Regular exercise Physical Health Exercise offers a Improved Weight M Enhanced Better S Boosted Mental Health Be In addition to it Reduced Improved Enhanced Increase Reduced Practical Tips f Getting started w Start Sl Find ActSet Real Make It Listen t Conclusion Regular exercise ...',
+      "Regular exercise is crucial for maintaining physical and mental well-being. In this article, we'll explore the numerous benefits of incorporating exercise into your daily routine and provide practical tips for getting started",
     image:
       'https://www.wellcurve.in/blog/wp-content/uploads/2021/06/Healthy-eatin-habits-fb-cover.jpg',
     content: [
@@ -58,7 +58,7 @@ export const articlesEn = [
     author: 'Yousef Mahmoud',
     date: '2024-04-18',
     desShow:
-      'Introduction Positive thinking The Science of P Positive thinking Reduced Improved Enhanced Better P Strategies for C Cultivating a pos Practice Challeng Surround Foster S Benefits of Posi Embracing a posit Improved Increase Enhanced Greater Conclusion Positive thinking ...',
+      "Positive thinking has the power to transform your life. In this article, we'll delve into the science behind positive thinking and provide actionable strategies for cultivating a more optimistic mindset.",
     image:
       'https://hips.hearstapps.com/hmg-prod/images/wh-web-whm110119feafitnesssexysix-003-1591127019.png?crop=1xw:0.6130790190735694xh;center,top&resize=1200:*',
     content: [
@@ -108,7 +108,7 @@ export const articlesEn = [
     author: 'Lina Ali',
     date: '2024-04-22',
     desShow:
-      "Introduction Sleep plays a cru The Benefits of Adequate sleep is Enhanced Improved Optimal Enhanced Understanding Sl Sleep is composed NREM Sle REM Slee Practical Tips f If you're struggl Establis Create a Avoid St Stick to Conclusion Quality sleep is ...",
+      "Sleep plays a crucial role in supporting overall health and well-being, yet it's often overlooked in today's fast-paced world. In this article, we'll explore the importance of sleep, its impact on physical and mental health, and practical tips for improving sleep quality.",
     image:
       'https://organictraditions.com/cdn/shop/articles/New_blog_post_covers_UPDATED_2c72de26-9652-49e9-bf17-35fd5cb13c48.png?v=1584459287',
     content: [
@@ -155,32 +155,7 @@ export const articlesEn = [
     title: 'The Role of Exercise in Mental Health',
     author: 'Karim Hassan',
     date: '2024-04-25',
-    desShow: `Introduction
-Exercise is not j
-
-Benefits of Exer
-Regular exercise
-
-Reduced
-Improved
-Enhanced
-Better S
-Types of Exercis
-Any form of physi
-
-Aerobic
-Strength
-Yoga and
-Team Spo
-Practical Strate
-Integrating exerc
-
-Find Act
-Start Sm
-Make it
-Be Consi
-Conclusion
-Exercise is a pow ...`,
+    desShow: `Exercise is not just essential for physical fitness but also plays a significant role in promoting mental health and well-being. In this article, we'll explore the connection between exercise and mental health, highlighting its benefits and practical strategies for incorporating physical activity into your routine.`,
     image:
       'https://lifestylemedicine.org/wp-content/uploads/2023/02/WFPB-series-banner-2-04.png',
     content: [
@@ -229,25 +204,7 @@ Exercise is a pow ...`,
     title: 'The Power of Mindfulness for Stress Reduction',
     author: 'Sara Khalid',
     date: '2024-04-28',
-    desShow: `Introduction
-Mindfulness, the
-
-The Benefits of
-Mindfulness has b
-
-Stress R
-Increase
-Improved
-Enhanced
-Practical Techni
-Incorporating min
-
-Deep Bre
-Body Sca
-Mindful
-Guided M
-Conclusion
-Mindfulness is a ...`,
+    desShow: `Mindfulness, the practice of being present and fully engaged in the moment, has gained significant attention for its ability to reduce stress and enhance well-being. In this article, we'll explore the power of mindfulness for stress reduction, its benefits, and practical techniques to incorporate mindfulness into your daily life.`,
     image:
       'https://www.nutritionsolutions.ca/wp-content/uploads/02-Nutrition-Tip-of-the-Month-Twitter-Post-stay-hydrated.jpg',
     content: [
@@ -285,35 +242,7 @@ Mindfulness is a ...`,
 export const articlesAr = [
   {
     id: 1,
-    desShow: `المقدمة
-تعتبر ممارسة التم
-
-فوائد الصحة البد
-توفر ممارسة التما
-
-تحسين صح
-إدارة ال
-زيادة ال
-نوم أفضل
-تعزيز ال
-فوائد الصحة العق
-بالإضافة إلى فوائ
-
-تقليل ال
-تحسين ال
-تعزيز ال
-زيادة ال
-تقليل خط
-نصائح عملية للبد
-يمكن أن يكون البد
-
-ابدأ ببط
-ابحث عن
-حدد أهدا
-اجعله اج
-استمع إل
-الختام
-تقدم ممارسة التما ...`,
+    desShow: `ممارسة التمارين الرياضية بانتظام أمر بالغ الأهمية للحفاظ على الصحة البدنية والعقلية. في هذه المقالة، سنستكشف الفوائد العديدة لدمج التمارين الرياضية في روتينك اليومي ونقدم لك نصائح عملية للبدء.`,
     title: 'فوائد ممارسة التمارين الرياضية بانتظام',
     author: 'عائشة خان',
     date: '2024-04-15',
@@ -367,32 +296,7 @@ export const articlesAr = [
     id: 2,
     title: 'قوة التفكير الإيجابي',
     author: 'يوسف محمود',
-    desShow: `المقدمة
-يمتلك التفكير الإ
-
-علم التفكير الإي
-التفكير الإيجابي
-
-تقليل ال
-زيادة ال
-تعزيز ال
-صحة بدني
-استراتيجيات لتنم
-تنمية عقلية إيجاب
-
-ممارسة ا
-تحدي الأ
-تحيط بنف
-تعزيز ال
-فوائد التفكير ال
-اعتماد تفكير إيجا
-
-تحسين ال
-زيادة ال
-تحسين ال
-زيادة ال
-الختام
-يمتلك التفكير الإ ...`,
+    desShow: `التفكير الإيجابي لديه القدرة على تغيير حياتك. في هذه المقالة، سوف نتعمق في العلم الكامن وراء التفكير الإيجابي ونقدم استراتيجيات قابلة للتنفيذ لتنمية عقلية أكثر تفاؤلاً.`,
     date: '2024-04-18',
     image:
       'https://hips.hearstapps.com/hmg-prod/images/wh-web-whm110119feafitnesssexysix-003-1591127019.png?crop=1xw:0.6130790190735694xh;center,top&resize=1200:*',
@@ -441,30 +345,7 @@ export const articlesAr = [
     id: 3,
     title: 'أهمية النوم للصحة والعافية',
     author: 'لينا علي',
-    desShow: `المقدمة
-يلعب النوم دورًا
-
-فوائد النوم الكا
-النوم الكافي ضرور
-
-تحسين ال
-تحسين ال
-الصحة ال
-تحسين ال
-فهم دورات النوم<
-يتكون النوم من عد
-
-النوم NR
-النوم RE
-نصائح عملية لتحس
-إذا كنت تعاني من
-
-تأسيس رو
-إنشاء بي
-تجنب الم
-التمسك ب
-الختام
-النوم عالي الجودة ...`,
+    desShow: `يلعب النوم دورًا حاسمًا في دعم الصحة العامة والعافية، على الرغم من أنه غالبًا ما يُغفل في عالمنا السريع الخطى. في هذا المقال، سنستكشف أهمية النوم، وتأثيره على الصحة البدنية والعقلية، ونقدم نصائح عملية لتحسين جودة النوم.`,
     date: '2024-04-22',
     image:
       'https://organictraditions.com/cdn/shop/articles/New_blog_post_covers_UPDATED_2c72de26-9652-49e9-bf17-35fd5cb13c48.png?v=1584459287',
@@ -512,33 +393,7 @@ export const articlesAr = [
     title: 'دور الرياضة في الصحة العقلية',
     author: 'كريم حسن',
     date: '2024-04-25',
-    desShow: `
-    المقدمة
-الرياضة ليست مهمة
-
-فوائد الرياضة لل
-أظهرت الدراسات أن
-
-تقليل ال
-تحسين ال
-تعزيز ال
-نوم أفضل
-أنواع التمارين ل
-يمكن أن يكون أي ن
-
-تمارين ا
-تمارين ا
-اليوغا و
-الرياضات
-الاستراتيجيات ال
-ليس من الضروري أن
-
-العثور ع
-البدء با
-جعلها اج
-الاستمرا
-الاستنتاج
-الرياضة هي أداة ق ...
+    desShow: `الرياضة ليست مهمة فقط للياقة البدنية ولكنها تلعب دورًا كبيرًا في تعزيز الصحة العقلية والعافية. في هذا المقال، سنستكشف العلاقة بين ممارسة الرياضة والصحة العقلية، مسلطين الضوء على فوائدها والاستراتيجيات العملية لدمج النشاط البدني في روتينك اليومي.
   `,
     image:
       'https://lifestylemedicine.org/wp-content/uploads/2023/02/WFPB-series-banner-2-04.png',
@@ -587,25 +442,7 @@ export const articlesAr = [
     id: 5,
     title: 'قوة الانتباه لتقليل التوتر',
     author: 'سارة خالد',
-    desShow: `المقدمة
-الانتباه، ممارسة
-
-فوائد الانتباه ل
-أظهرت الدراسات أن
-
-تقليل ال
-زيادة ال
-تحسين تن
-تعزيز ال
-التقنيات العملية
-لا يجب أن يكون دم
-
-التنفس ا
-فحص الجس
-المشي بو
-التأمل ا
-الاستنتاج
-الانتباه هو ممارس ...`,
+    desShow: `الانتباه، ممارسة الوجود والمشاركة الكاملة في اللحظة، قد حظيت بانتباه كبير بفضل قدرتها على تقليل التوتر وتعزيز العافية. في هذا المقال، سنستكشف قوة الانتباه لتقليل التوتر، فوائدها، والتقنيات العملية لدمج الانتباه في حياتك اليومية.`,
     date: '2024-04-28',
     image:
       'https://www.nutritionsolutions.ca/wp-content/uploads/02-Nutrition-Tip-of-the-Month-Twitter-Post-stay-hydrated.jpg',
