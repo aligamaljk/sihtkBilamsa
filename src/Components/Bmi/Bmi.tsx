@@ -58,64 +58,71 @@ const Bmi: React.FC<ITranslation> = ({ t }) => {
           Bmi
         </div>
       </div>
-      <div className='container-bmr'>
-        <div className='image-bmi'>
-          <Image src={img} preview={false} alt='image bmi' />
-        </div>
-        <Card className='card-bmi'>
-          <Form
-            layout='vertical'
-            name='bmi'
-            className='form-bmi'
-            form={form}
-            onFinish={onFinish}
-            initialValues={{
-              height: getLocalProfile?.height,
-              weight: getLocalProfile?.weight
-            }}
-          >
-            <Form.Item
-              name='weight'
-              label={t.weight}
-              rules={[{ required: true, message: t.requiredWeight }]}
-            >
-              <Input type='number' placeholder='K/G' />
-            </Form.Item>
-            <Form.Item
-              name='height'
-              label={t.height}
-              rules={[{ required: true, message: t.requiredHeight }]}
-            >
-              <Input type='number' placeholder='C/M' />
-            </Form.Item>
-            <Form.Item
-              style={{
-                width: '100%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
+
+      <div className='container'>
+        <div className='container-bmr'>
+          <div className='image-bmi'>
+            <Image src={img} preview={false} alt='image bmi' />
+          </div>
+          <Card className='card-bmi'>
+            <Form
+              layout='vertical'
+              name='bmi'
+              className='form-bmi'
+              form={form}
+              onFinish={onFinish}
+              initialValues={{
+                height: getLocalProfile?.height,
+                weight: getLocalProfile?.weight
               }}
             >
-              <Button
-                type='primary'
-                htmlType='submit'
-                className='bmr-form-button'
+              <Form.Item
+                name='weight'
+                label={t.weight}
+                rules={[
+                  { required: true, message: t.requiredWeight }
+                ]}
               >
-                {t.calculate}
-              </Button>
-            </Form.Item>
-          </Form>
-        </Card>
-      </div>
-      <div className='shape'>
-        {bmi > 0 && (
-          <div className='body-shape'>
-            <h1>
-              {t.bodyShape}: <span>{Bodyshape().valueShape}</span>{' '}
-            </h1>
-            <p>{Bodyshape().des}</p>
-          </div>
-        )}
+                <Input type='number' placeholder='K/G' />
+              </Form.Item>
+              <Form.Item
+                name='height'
+                label={t.height}
+                rules={[
+                  { required: true, message: t.requiredHeight }
+                ]}
+              >
+                <Input type='number' placeholder='C/M' />
+              </Form.Item>
+              <Form.Item
+                style={{
+                  width: '100%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+              >
+                <Button
+                  type='primary'
+                  htmlType='submit'
+                  className='bmr-form-button'
+                >
+                  {t.calculate}
+                </Button>
+              </Form.Item>
+            </Form>
+          </Card>
+        </div>
+        <div className='shape'>
+          {bmi > 0 && (
+            <div className='body-shape'>
+              <h1>
+                {t.bodyShape}: <span>{Bodyshape().valueShape}</span>{' '}
+              </h1>
+              <p>{Bodyshape().des}</p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

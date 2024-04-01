@@ -1,51 +1,57 @@
-.articles{
-    .section-header{
-        // background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../../assets/pexels-vlada-karpovich-4050347.jpg);
-        background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../../assets/pexels-lisa-fotios-1438190.jpg);
-        background-size: cover;
-        background-position: center center;
-    }
-    .container{
-    margin-left: auto ;
-    margin-right: auto ;
-    padding-left: 15px ;
-    padding-right: 15px ;
-    max-width: 1200px ;
+.articles {
+  .section-header {
+    // background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../../assets/pexels-vlada-karpovich-4050347.jpg);
+    background: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+      ),
+      url(../../assets/pexels-lisa-fotios-1438190.jpg);
+    background-size: cover;
+    background-position: center center;
+  }
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    max-width: 1200px;
     // width: 100%;
-        .cards{
-            grid-gap: 4rem;
-            display: grid;
-            gap: 4rem;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            padding: 100px 0;
-            .card{
-                cursor: pointer;
-                .img{
-                    width: 100%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    img{
-                        width: 100%;
-                        // height: 100%;
-                        height: 200px;
-                        object-fit: cover;
-                    }
-                }
-                .title-card{
-                    margin-top: 20px;
-                    h1{
-                        font-size: 20px;
-                        font-weight: 700;
-                    }
-                }
-                .desc{  
-                    font-size: 16px;
-                    font-weight: 400;
-                    line-height: 32px;
-                    letter-spacing: 1.5px;
-                }
-            }
+    .cards {
+      grid-gap: 4rem;
+      display: grid;
+      gap: 4rem;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      padding: 100px 0;
+      .card {
+        cursor: pointer;
+        .img {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          img {
+            width: 100%;
+            // height: 100%;
+            height: 200px;
+            object-fit: cover;
+          }
         }
+        .title-card {
+          margin-top: 20px;
+          h1 {
+            font-size: 20px;
+            font-weight: 700;
+          }
+        }
+        .desc {
+          margin-top: 10px;
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 32px;
+          letter-spacing: 1.5px;
+        }
+      }
     }
+  }
 }

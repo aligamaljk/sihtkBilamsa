@@ -55,6 +55,7 @@ export interface ITranslation {
     contactSubmit?: string;
     name?: string;
     age?: string;
+    inputAge?: string;
     requiredAge?: string;
     gender?: string;
     requiredGender?: string;
@@ -219,34 +220,81 @@ export interface AddSportType {
 }
 
 // export interface fileType {
-//   imageURL?: string | undefined;
-//   lastModified?: number;
-//   percent?: number;
-//   size?: number;
-//   lastModifiedDate?: string;
-//   name?: string;
-//   response?: string;
-//   status?: string;
-//   thumbUrl?: string;
-//   type?: string;
-//   uid?: string;
-//   originFileObj?: { uid: string };
-//   id?: string;
-//   key?: string;
+//   imageURL: string | undefined;
+//   lastModified: number;
+//   percent: number;
+//   size: number;
+//   lastModifiedDate: string;
+//   name: string;
+//   response: string;
+//   status: string;
+//   thumbUrl: string;
+//   type: string;
+//   uid: string;
+//   originFileObj: { uid: string };
+//   id: string;
+//   key: string;
+// }
+export interface fileType {
+  lastModified: number;
+  lastModifiedDate: Date;
+  name: string;
+  originFileObj: {
+    uid: string;
+  };
+  percent: number;
+  response?: string;
+  size: number;
+  status: string;
+  thumbUrl?: string;
+  type: string;
+  uid: string;
+}
+
+export interface fileUploadType {
+  uid: string;
+  lastModified: number;
+  lastModifiedDate: Date;
+  name: string;
+  size: number;
+  type: string;
+  webkitRelativePath: string;
+}
+
+// export interface fileListStateInProfilePageType {
+//   id: undefined;
+//   key: undefined;
+//   name: string;
+//   originFileObj: {
+//     uid: string;
+//   };
+//   status: string;
+//   thumbUrl: string;
+//   uid: string;
 // }
 
-// export interface ProductImagesType {
-//   file: fileType;
-//   fileList: fileType[];
-// }
+export interface ProductImagesType {
+  file: fileType;
+  fileList: fileType[];
+}
 
 export interface userProfileType {
-  ProductImages: never;
+  ProductImages: ProductImagesType;
   age: string;
   categoryProduct: number[];
   description: string | null;
   gender: number;
-  height: number;
+  height: string;
   name: string;
-  weight: number;
+  weight: string;
+}
+
+export interface ArticleType {
+  id: number;
+  title: string;
+  author: string;
+  date: string;
+  desShow: string;
+  image: string;
+  content: string[];
 }

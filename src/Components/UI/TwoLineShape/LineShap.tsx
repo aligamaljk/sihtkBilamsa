@@ -15,8 +15,6 @@ function LineShap({
   if (!clr) {
     clr = '#fd7304';
   }
-  console.log(clr);
-  console.log(resSize);
   return (
     <div
       className='line-shape'
