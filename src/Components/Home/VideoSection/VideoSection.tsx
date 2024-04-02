@@ -45,8 +45,8 @@ function VideoSection({ t }: ITranslation) {
       >
         <div className='iframe-container'>
           <iframe
-            src='https://www.youtube.com/embed/3C7DECnkkzE'
-            title='مشروع: صحتك بِلَمسة'
+            src='https://www.youtube.com/embed/s0m2t4efQms'
+            title='موقع صحتك بِلَمسة'
             allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
             referrerPolicy='strict-origin-when-cross-origin'
             allowFullScreen

@@ -1,10 +1,17 @@
 import { Button, Form, Input, message, Modal } from 'antd';
 import { useState } from 'react';
-import { getStoredAddSport } from '../../services/user-storage';
+import { AddSportType, ITranslation } from '../../types';
 
-const AddSport = ({ setSports, sports, t }: any) => {
+const AddSport = ({
+  setSports,
+  sports,
+  t
+}: {
+  t: ITranslation;
+  setSports: AddSportType[];
+  sports: AddSportType[];
+}) => {
   const [form] = Form.useForm();
-  const countSports = getStoredAddSport();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
@@ -16,10 +23,10 @@ const AddSport = ({ setSports, sports, t }: any) => {
   };
   const onFinish = (values: any) => {
     console.log(values, 'values');
-    setSports([
-      ...(sports || []),
-      { value: (countSports?.length || 0) + 1, label: values.sport }
-    ]);
+   setSports([
+     ...(sports || []),
+     { value: (sports?.length || 0) + 1, label: values.sport }
+   ]);
     // setStoredAddSport([...sports,{value:countSports.length + 1,label:values.sport}])
     // setStoredAddSport([...sports,{value:countSports.length + 1,label:values.sport}])
 
@@ -32,25 +39,32 @@ const AddSport = ({ setSports, sports, t }: any) => {
       <Button type='primary' onClick={showModal}>
         {t.AddSport}
       </Button>
-        <Modal title={t.AddSport} open={isModalOpen ? true : false}
-        footer={false} onCancel={handleCancel}>
-          <Form layout="vertical" name='add-sport' form={form}
-            onFinish={onFinish}
+      <Modal
+        title={t.AddSport}
+        open={isModalOpen ? true : false}
+        footer={false}
+        onCancel={handleCancel}
+      >
+        <Form
+          layout='vertical'
+          name='add-sport'
+          form={form}
+          onFinish={onFinish}
+        >
+          <Form.Item
+            name='sport'
+            label='Sports'
+            rules={[{ required: true, message: t.requiredAddSport }]}
           >
-            <Form.Item
-                name="sport"
-                label="Sports"
-                rules={[{ required: true, message: t.requiredAddSport }]}
-            >
-                <Input type='text' placeholder={t.requiredAddSport} />
-            </Form.Item>
-            <Form.Item>
-                <Button type="primary" htmlType="submit" >
-                    {t.AddSport}
-                </Button>
-            </Form.Item>
-          </Form>
-        </Modal>
+            <Input type='text' placeholder={t.requiredAddSport} />
+          </Form.Item>
+          <Form.Item>
+            <Button type='primary' htmlType='submit'>
+              {t.AddSport}
+            </Button>
+          </Form.Item>
+        </Form>
+      </Modal>
     </>
   );
 };

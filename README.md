@@ -40,7 +40,6 @@ Collaborating with unfamiliar team members within a restricted timeline presente
 -   react
 -   typeScript
 -   sass
--   react-query
 -   antd
 -   react-redux
 -   @reduxjs/toolkit

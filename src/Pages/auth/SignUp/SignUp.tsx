@@ -17,8 +17,8 @@ const SignUp : React.FC <ITranslation> = ({t}) => {
       doCreateUserWithEmailAndPassword(values.email, values.password)
         .then((userCredential) => {
           const user = userCredential.user;
-          console.log(user);
-          setStoredToken(user?.uid);
+          console.log(userCredential);
+          setStoredToken(user?.accessToken);
           setStoredUser(values.name);
           dispatch(setCurrentUser(values));
           message.success(t.successLog + ' ' + values.name);

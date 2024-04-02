@@ -35,9 +35,8 @@ export function getStoredUserProfile(): userProfileType | undefined {
 }
 
 export function setStoredUserProfile(profile: userProfileType): void {
-  localStorage.setItem(PROFILE_USER, JSON.stringify(profile));
+  localStorage.setItem(PROFILE_USER, JSON.stringify(profile) || '');
 }
-
 export function clearStoredUserProfile(): void {
   localStorage.removeItem(PROFILE_USER);
 }

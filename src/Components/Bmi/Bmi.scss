@@ -1,4 +1,5 @@
 .bmi {
+  background-color: white;
   .section-header {
     background: linear-gradient(
         0deg,
@@ -12,16 +13,19 @@
   .ant-image {
     width: 100%;
   }
+  .container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
   .container-bmr {
     display: flex;
     justify-content: center;
-    padding-top: 50px;
 
-    padding-bottom: 50px;
     background: #fff;
     .image-bmi {
       img {
         // width: 700px;
+        border-radius: 10px;
       }
     }
     .card-bmi {
@@ -37,10 +41,12 @@
       width: 100%;
     }
     .form-bmi {
-      padding: 0 20px;
+      padding: 20px;
       margin: 0 20px;
       // max-width: 1100px;
       width: 70%;
+      border: 1px solid #f0f0f0;
+      border-radius: 10px;
     }
   }
   .body-shape {
@@ -79,4 +85,8 @@
       }
     }
   }
+}
+
+:where(.css-dev-only-do-not-override-mib3gt).card-bmi {
+  border: none;
 }

@@ -1,10 +1,22 @@
 import { Button, Col, Form, Input, message, Upload } from "antd"
-import { ITranslation } from "../../types";
+import { fileType, fileUploadType, ITranslation, TypesArticle } from "../../types";
 import "./Admin.scss"
 import { useState } from "react";
+import {db, imgDB} from "../../Firebase/Firebase";
+import {v4} from "uuid";
+import { getDownloadURL, ref, uploadBytes} from "firebase/storage";
+import { addDoc, collection } from "firebase/firestore";
+import { useNavigate } from "react-router";
 const Admin = ({ t }: ITranslation) => {
-    const [fileList, setFileList] = useState<any[]>([]);
-          const beforeUpload = (file: any) => {
+    const navigate = useNavigate();
+  const [fileList, setFileList] = useState<fileType[] | []>(
+    []
+  );
+  console.log(fileList, "fileList");
+  
+  const [loading, setLoading] = useState<boolean>(false);
+  const [form] = Form.useForm();
+  const beforeUpload = (file: fileUploadType) => {
             const isLt2M = file.size / 1024 / 1024 < 2;
             if (!isLt2M) {
               message.error(
@@ -13,17 +25,68 @@ const Admin = ({ t }: ITranslation) => {
               return false;
             }
             return isLt2M;
-          };
-          const handleUpload = async ({ file, onSuccess }: any) => {
-            setTimeout(() => {
-              onSuccess('ok');
-            }, 0);
-          };
-    const handleChange = ({
-      fileList: newFileList
-    }: {
-      fileList: any;
-    }) => setFileList(newFileList);
+  };
+ const handleUpload = async ({
+   // file,
+   onSuccess
+ }: {
+   // file: fileUploadType;
+   onSuccess: (ret: string) => void;
+ }) => {
+   // console.log(file);
+   // console.log(onSuccess);
+   setTimeout(() => {
+     onSuccess('ok');
+   }, 0);
+ };
+ const handleChange = ({
+   fileList: newFileList
+ }: {
+   fileList: fileType[] | [];
+ }) => {
+   setFileList(newFileList);
+ };
+ const onFinish = async (values: TypesArticle) => {
+   setLoading(true);
+      console.log(values);
+   const {
+     image,
+     titleEn,
+     titleAr,
+     descriptionEn,
+     descriptionAr,
+     authorAr,
+     authorEn
+   } = values;
+   const imgs = ref(imgDB, `images/${v4()}`);
+   uploadBytes(imgs, image?.fileList[0]?.originFileObj)
+     .then((snapshot) => {
+       console.log(snapshot);
+       getDownloadURL(snapshot.ref).then((url) => {
+        //  console.log(url);
+        const colle = collection(db, 'articles');
+         addDoc(colle, {
+          image: url,
+          titleEn: titleEn,
+          titleAr: titleAr,
+          descriptionEn: descriptionEn,
+          descriptionAr: descriptionAr,
+          authorEn: authorEn,
+          authorAr: authorAr
+        });
+        message.success(t.addArticleSuccess);
+        form.resetFields();
+        setFileList([]);
+        navigate('/articles');
+       });
+       setLoading(false);
+     })
+     .catch((error) => {
+       console.log(error);
+       setLoading(false);
+       message.error(error.message);
+    });
+ };
   return (
     <>
       <div className='admin'>
@@ -31,15 +94,17 @@ const Admin = ({ t }: ITranslation) => {
           name='admin-form'
           layout='vertical'
           className='admin-form'
+          onFinish={onFinish}
+          form={form}
         >
           <Col className='upload'>
             <Form.Item
               name='image'
-              label='Image'
+              label={t.image}
               rules={[
                 {
                   required: true,
-                  message: 'Please input your image!'
+                  message: t.pleaseUpload
                 }
               ]}
             >
@@ -53,7 +118,7 @@ const Admin = ({ t }: ITranslation) => {
                 customRequest={handleUpload}
                 maxCount={1}
               >
-                upload
+                {t.uploadImage}
               </Upload>
             </Form.Item>
           </Col>
@@ -61,85 +126,85 @@ const Admin = ({ t }: ITranslation) => {
             <Col className='form-item-info'>
               <Form.Item
                 name='titleEn'
-                label='TitleEn'
+                label={t.titleEn}
                 rules={[
                   {
                     required: true,
-                    message: 'Please input your title English!'
+                    message: t.titleEnRequired
                   }
                 ]}
               >
-                <Input placeholder='titleEn' type='text' />
+                <Input placeholder={t.titleEn} type='text' />
               </Form.Item>
               <Form.Item
                 name='titleAr'
-                label='TitleAr'
+                label={t.titleAr}
                 rules={[
                   {
                     required: true,
-                    message: 'Please input your title Arabic!'
+                    message: t.titleArRequired
                   }
                 ]}
               >
-                <Input placeholder='titleAr' type='text' />
+                <Input placeholder={t.titleAr} type='text' />
               </Form.Item>
             </Col>
             <Col className='form-item-info'>
               <Form.Item
                 name='authorEn'
-                label='AuthorEn'
+                label={t.authorEn}
                 rules={[
                   {
                     required: true,
-                    message: 'Please input your author English!'
+                    message: t.authorEnRequired
                   }
                 ]}
               >
-                <Input placeholder='author English' type='text' />
+                <Input placeholder={t.authorEn} type='text' />
               </Form.Item>
               <Form.Item
                 name='authorAr'
-                label='AuthorAr'
+                label={t.authorAr}
                 rules={[
                   {
                     required: true,
-                    message: 'Please input your author Arabic!'
+                    message: t.authorArRequired
                   }
                 ]}
               >
-                <Input placeholder='author Arabic' type='text' />
+                <Input placeholder={t.authorAr} type='text' />
               </Form.Item>
             </Col>
             <Form.Item
               name='descriptionEn'
-              label='DescriptionEn'
+              label={t.addArticleEn}
               rules={[
                 {
                   required: true,
-                  message: 'Please input your description English!'
+                  message: t.addArticleEnRequired
                 }
               ]}
             >
               <Input.TextArea
                 rows={4}
-                autoSize={{ minRows: 3, maxRows: 7 }}
-                placeholder={'description English'}
+                autoSize={{ minRows: 6, maxRows: 8 }}
+                placeholder={t.addArticleEn}
               />
             </Form.Item>
             <Form.Item
               name='descriptionAr'
-              label='DescriptionAr'
+              label={t.addArticleAr}
               rules={[
                 {
                   required: true,
-                  message: 'Please input your description Arabic!'
+                  message: t.addArticleArRequired
                 }
               ]}
             >
               <Input.TextArea
                 rows={4}
-                autoSize={{ minRows: 3, maxRows: 7 }}
-                placeholder={'description Arabic'}
+                autoSize={{ minRows: 6, maxRows: 8 }}
+                placeholder={t.addArticleAr}
               />
             </Form.Item>
             <Form.Item className='btn-wrapper-admin'>
@@ -147,8 +212,9 @@ const Admin = ({ t }: ITranslation) => {
                 type='primary'
                 htmlType='submit'
                 className='add-btn'
+                loading={loading}
               >
-                Submit
+                {t.addArticle}
               </Button>
             </Form.Item>
           </Col>

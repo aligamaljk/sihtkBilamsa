@@ -1,119 +1,118 @@
-.profile{
-    .section-header{
-        background-image: url("../../assets/about-chauffeur.5cda81cdee5f57afd531.png");
-    }
-    .container{
-        .card-profile{
-            margin-top: 80px;
-            .title-card{
-                align-items: center;
-                color: #294151;
-                display: flex;
-                font-size: 4rem;
-                font-weight: 600;
-                gap: 12px;
-                justify-content: center;
-                letter-spacing: .48px;
-                line-height: 1.63;
-                margin-bottom: 3rem;
-                text-align: center;
-                text-transform: capitalize;
-            }
-            .form-profile{
-                margin: 0 30px;
-                padding: 0 30px;
-                display: flex;
-                gap: 20px;
-                justify-content: center;
-                position: relative;
-                .upload{
-                    width: 300px;
-                    .ant-upload,
+.profile {
+  .section-header {
+    background-image: url('../../assets/about-chauffeur.5cda81cdee5f57afd531.png');
+  }
+  .container {
+    .card-profile {
+      margin-top: 80px;
+      margin-bottom: 80px;
+      .title-card {
+        align-items: center;
+        color: #294151;
+        display: flex;
+        font-size: 4rem;
+        font-weight: 600;
+        gap: 12px;
+        justify-content: center;
+        letter-spacing: 0.48px;
+        line-height: 1.63;
+        margin-bottom: 3rem;
+        text-align: center;
+        text-transform: capitalize;
+      }
+      .form-profile {
+        margin: 0 30px;
+        padding: 0 30px;
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        position: relative;
+        .upload {
+          width: 300px;
+          .ant-upload,
                     // .ant-upload-list ,
                     // .ant-upload-wrapper,
                     // .ant-form-item-control-input-content,
                     // .ant-form-item-control-input,
                     .ant-col,
                     .ant-row,
-                    .ant-form-item{
-                        width: 100%;
-                        // height: 200px;
-                    }
-                    .ant-upload-list{
-                        align-items: center;
-                        display: flex;
-                        flex-wrap: wrap-reverse;
-                        justify-content: center;
-                    }
-                }
-                .form-item{
-                    width: 100%;
-                }
-            }
+                    .ant-form-item {
+            width: 100%;
+            // height: 200px;
+          }
+          .ant-upload-list {
+            align-items: center;
+            display: flex;
+            flex-wrap: wrap-reverse;
+            justify-content: center;
+          }
         }
-    }
-    .btn-submit{
-        width: 250px;
-        height: 45px;
-        margin: 20px auto;
-        box-shadow: none !important;
-    }
-.checkbox-list-wrapper {
-  .ant-checkbox-group {
-    gap: 12px;
-  }
-  .ant-checkbox-wrapper {
-    height: 35px;
-    padding: 7px 12px 8px 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 4px;
-    background: var(--system-bg, #f5f6f7);
-    color: var(--primary-dark-grey, #484c52);
-    font-size: 14px;
-    font-weight: 700;
-    gap: 8px;
-    line-height: 12px;
-    position: relative;
-    .ant-checkbox-inner {
-      display: none;
-    }
-    &.ant-checkbox-wrapper-checked {
-      // font-weight: 700;
-      color: var(--primary-text, #6d29f6);
-      background-color: rgba(109, 41, 246, 0.1);
+        .form-item {
+          width: 100%;
+        }
+      }
     }
   }
-}
-@media (max-width: 768px) {
-  .form-profile {
-    flex-direction: column;
-    gap: 10px;
-    .upload {
-      width: 100% !important;
+  .btn-submit {
+    width: 250px;
+    height: 45px;
+    margin: 20px auto;
+    box-shadow: none !important;
+  }
+  .checkbox-list-wrapper {
+    .ant-checkbox-group {
+      gap: 12px;
+    }
+    .ant-checkbox-wrapper {
+      height: 35px;
+      padding: 7px 12px 8px 12px;
       display: flex;
       justify-content: center;
       align-items: center;
-      .ant-form-item{
-        width: 100%;
-        height: auto !important;
+      border-radius: 4px;
+      background: var(--system-bg, #f5f6f7);
+      color: var(--primary-dark-grey, #484c52);
+      font-size: 14px;
+      font-weight: 700;
+      gap: 8px;
+      line-height: 12px;
+      position: relative;
+      .ant-checkbox-inner {
+        display: none;
       }
-      .ant-upload-list {
-        align-items: center;
-        display: flex;
-        flex-wrap: wrap-reverse;
-        justify-content: center;
+      &.ant-checkbox-wrapper-checked {
+        // font-weight: 700;
+        color: var(--primary-text, #6d29f6);
+        background-color: rgba(109, 41, 246, 0.1);
       }
-
     }
-    .form-item {
-      width: 100%;
-    }
-    .btn-submit {
-      width: 100%;
-    }
-
   }
-}
+  @media (max-width: 768px) {
+    .form-profile {
+      flex-direction: column;
+      gap: 10px;
+      .upload {
+        width: 100% !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .ant-form-item {
+          width: 100%;
+          height: auto !important;
+        }
+        .ant-upload-list {
+          align-items: center;
+          display: flex;
+          flex-wrap: wrap-reverse;
+          justify-content: center;
+        }
+      }
+      .form-item {
+        width: 100%;
+      }
+      .btn-submit {
+        width: 100%;
+      }
+    }
+  }
 }

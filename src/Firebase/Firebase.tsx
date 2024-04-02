@@ -2,10 +2,9 @@
 import { initializeApp } from 'firebase/app';
 // import { getAnalytics } from 'firebase/analytics';
 import { getAuth } from 'firebase/auth';
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getStorage } from 'firebase/storage';
+import { getFirestore } from 'firebase/firestore';
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
   authDomain: import.meta.env.VIT_AUTH_DOMAIN,
@@ -20,3 +19,5 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
 export const auth = getAuth(app);
+export const imgDB = getStorage(app);
+export const db = getFirestore(app);

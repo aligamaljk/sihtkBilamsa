@@ -55,6 +55,7 @@ export interface ITranslation {
     contactSubmit?: string;
     name?: string;
     age?: string;
+    inputAge?: string;
     requiredAge?: string;
     gender?: string;
     requiredGender?: string;
@@ -196,7 +197,28 @@ export interface ITranslation {
     errorSin?: string;
     errorSin2?: string;
     checkEmail?: string;
+    addArticleSuccess?: string;
+    image?: string;
+    pleaseUpload?: string;
+    titleEn?: string;
+    titleEnRequired?: string;
+    titleAr?: string;
+    titleArRequired?: string;
+    authorEn?: string;
+    authorEnRequired?: string;
+    authorAr?: string;
+    authorArRequired?: string;
+    addArticleEn?: string;
+    addArticleAr?: string;
+    requiredAddArticleEn?: string;
+    addArticleEnRequired?: string;
+    addArticleArRequired?: string;
+    addArticle?: string;
+    requiredImage?: string;
   };
+  AddSport?: string;
+  requiredAddSport?: string;
+  addSuccess?: string;
 }
 
 export enum LangsType {
@@ -222,36 +244,88 @@ export interface AddSportType {
 }
 
 // export interface fileType {
-//   imageURL?: string | undefined;
-//   lastModified?: number;
-//   percent?: number;
-//   size?: number;
-//   lastModifiedDate?: string;
-//   name?: string;
-//   response?: string;
-//   status?: string;
-//   thumbUrl?: string;
-//   type?: string;
-//   uid?: string;
-//   originFileObj?: { uid: string };
-//   id?: string;
-//   key?: string;
+//   imageURL: string | undefined;
+//   lastModified: number;
+//   percent: number;
+//   size: number;
+//   lastModifiedDate: string;
+//   name: string;
+//   response: string;
+//   status: string;
+//   thumbUrl: string;
+//   type: string;
+//   uid: string;
+//   originFileObj: { uid: string };
+//   id: string;
+//   key: string;
+// }
+export interface fileType {
+  lastModified: number;
+  lastModifiedDate: Date;
+  name: string;
+  originFileObj: {
+    uid: string;
+  };
+  percent: number;
+  response?: string;
+  size: number;
+  status: string;
+  thumbUrl?: string;
+  type: string;
+  uid: string;
+}
+
+export interface fileUploadType {
+  originFileObj: Blob | Uint8Array | ArrayBuffer;
+  fileList: fileUploadType[];
+  uid: string;
+  lastModified: number;
+  lastModifiedDate: Date;
+  name: string;
+  size: number;
+  type: string;
+  webkitRelativePath: string;
+}
+
+// export interface fileListStateInProfilePageType {
+//   id: undefined;
+//   key: undefined;
+//   name: string;
+//   originFileObj: {
+//     uid: string;
+//   };
+//   status: string;
+//   thumbUrl: string;
+//   uid: string;
 // }
 
-// export interface ProductImagesType {
-//   file: fileType;
-//   fileList: fileType[];
-// }
+export interface ProductImagesType {
+  file: fileType;
+  fileList: fileType[];
+}
 
 export interface userProfileType {
-  ProductImages: never;
-  age: string;
-  categoryProduct: number[];
-  description: string | null;
-  gender: number;
-  height: number;
-  name: string;
-  weight: number;
+  id: string;
+  image?: ProductImagesType | undefined;
+  ProductImages?: ProductImagesType;
+  userImages?: ProductImagesType | undefined;
+  age?: string;
+  categoryProduct?: number[];
+  description?: string | null;
+  gender?: number;
+  height?: string;
+  name?: string;
+  weight?: string;
+}
+
+export interface ArticleType {
+  id: number;
+  title: string;
+  author: string;
+  date: string;
+  desShow: string;
+  image: string;
+  content: string[];
 }
 
 
@@ -260,4 +334,13 @@ export interface UserInput {
   password?: string;
   name?: string;
   // add other properties as needed
+}
+export interface TypesArticle {
+  image: fileUploadType;
+  titleEn: string;
+  titleAr: string;
+  descriptionEn: string;
+  descriptionAr: string;
+  authorEn: string;
+  authorAr: string;
 }

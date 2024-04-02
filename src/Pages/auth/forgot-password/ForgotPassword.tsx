@@ -1,16 +1,16 @@
-import React from 'react'
-import { Form, Button,  Input, Card, message } from 'antd';
-import { Link, useNavigate } from 'react-router-dom';
-import "../LogIn/Login.scss"
+import React from 'react';
+import { Form, Button, Input, Card, message } from 'antd';
+import { Link } from 'react-router-dom';
+import '../LogIn/Login.scss';
 import { ITranslation, UserInput } from '../../../types';
 import { IoIosArrowForward } from 'react-icons/io';
-import { useDispatch } from 'react-redux';
-import { setCurrentUser } from '../../../services/store/reducers/user';
-import { setStoredUser } from '../../../services/user-storage';
+// import { useDispatch } from 'react-redux';
+// import { setCurrentUser } from '../../../services/store/reducers/user';
+// import { setStoredUser } from '../../../services/user-storage';
 import { doForgetPassword } from '../../../Firebase/auth';
-const ForgotPassword : React.FC <ITranslation> = ({t}) => {
-    const navigate = useNavigate();
-  const dispatch = useDispatch();
+const ForgotPassword: React.FC<ITranslation> = ({ t }) => {
+  // const navigate = useNavigate();
+  // const dispatch = useDispatch();
 
     const onAuthForgotPassword = (values: UserInput) => {
        const email = values?.email || '';
@@ -67,11 +67,16 @@ const ForgotPassword : React.FC <ITranslation> = ({t}) => {
               className='login-form-body'
             >
               {/* <Form.Item
-              name="name"
-              label={t.name}
-              rules={[{ required: true, message: t.requiredName }]}
-            >
-              <Input placeholder={t.name} type='text' min={3} max={10} />
+                name='name'
+                label={t.name}
+                rules={[{ required: true, message: t.requiredName }]}
+              >
+                <Input
+                  placeholder={t.name}
+                  type='text'
+                  min={3}
+                  max={10}
+                />
             </Form.Item>
              */}
               <Form.Item
@@ -80,7 +85,7 @@ const ForgotPassword : React.FC <ITranslation> = ({t}) => {
                 rules={[{ required: true, message: t.requiredEmail }]}
               >
                 <Input placeholder={t.email} type='email' />
-              </Form.Item>
+                </Form.Item>
               <Form.Item
                 name='phone'
                 label={t.titphone}
@@ -125,6 +130,6 @@ const ForgotPassword : React.FC <ITranslation> = ({t}) => {
       </div>
     </>
   );
-}
+};
 
-export default ForgotPassword
+export default ForgotPassword;

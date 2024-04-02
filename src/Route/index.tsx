@@ -3,7 +3,7 @@ import OwnNotFound from '../Pages/OwnNotFound/OwnNotFound';
 import Home from '../Components/Home/Home';
 import OwnLayout from '../Components/Header/OwnLayout';
 import LogIn from '../Pages/auth/LogIn/LogIn';
-import { getStoredUser } from '../services/user-storage';
+import { getStoredToken } from '../services/user-storage';
 import ForgotPassword from '../Pages/auth/forgot-password/ForgotPassword';
 import SignUp from '../Pages/auth/SignUp/SignUp';
 import Contact from '../Components/Contact/Contact';
@@ -42,7 +42,7 @@ const RoutesWrapper = ({ t }: ITranslation) => {
         {
           path: 'articles',
           element:
-            getStoredUser() ?
+            getStoredToken() ?
               <Articles t={t} />
             : <Navigate to='/login' replace />
         },
@@ -53,21 +53,21 @@ const RoutesWrapper = ({ t }: ITranslation) => {
         {
           path: 'calories',
           element:
-            getStoredUser() ?
+            getStoredToken() ?
               <Calories t={t} />
             : <Navigate to='/login' replace />
         },
         {
           path: 'bmi',
           element:
-            getStoredUser() ?
+            getStoredToken() ?
               <Bmi t={t} />
             : <Navigate to='/login' replace />
         },
         {
           path: 'activities',
           element:
-            getStoredUser() ?
+            getStoredToken() ?
               <Activities t={t} />
             : <Navigate to='/login' replace />
         },

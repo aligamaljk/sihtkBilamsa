@@ -27,6 +27,7 @@ import HeaderRes from './HeaderRes/HeaderRes';
 import logoAr from '../../assets/logo-ar.svg';
 import logoEn from '../../assets/logo.svg';
 import { doSignOut } from '../../Firebase/auth';
+// clearStoredUserProfile()
 const HeaderApp: React.FC<ITranslation> = ({ t }) => {
   const { currentLang } = useSelector(
     (state: StoreType) => state?.user
@@ -113,7 +114,7 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
       clearStoredUser();
       clearStoredUserProfile();
       dispatch(setCurrentUser(null));
-      navigate('/');
+      navigate('/login');
       message.success(t.LogOutMessage);
     }).catch((error) => {
       console.log(error);
@@ -140,6 +141,7 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
           }
         </Link>
       </div>
+
       <div className='links'>
         <ActiveLinkTab
           to='/'
@@ -208,7 +210,7 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
                 okText={t.okText}
                 cancelText={t.cancelText}
                 onConfirm={() => {
-                  logOut()
+                  logOut();
                 }}
                 onCancel={() => {
                   message.info(t.popupCanceledMessage);
@@ -279,12 +281,18 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
             <UserOutlined />
           </Button>
         </Link>
+        {/* admin */}
+        {getStoredUser() === 'admin' &&
+        (
+          <Link to='/admin'>Admin</Link>
+        )}
+        {/* admin */}
         {/* Language Tab */}
         <Dropdown
           arrow={{ pointAtCenter: true }}
           // trigger={['click']}
           trigger={['hover']}
-          menu={{ items: items, onClick:  chanageLang }}
+          menu={{ items: items, onClick: chanageLang }}
         >
           <Button
             type='text'
@@ -308,7 +316,6 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
           <HeaderRes t={t} />
         </div>
       </div>
-      <Link to='/admin'>Admin</Link>
     </div>
   );
 };
