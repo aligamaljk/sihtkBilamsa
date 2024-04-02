@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ITranslation, StoreType } from '../../types';
 import { Card, Image, Pagination } from 'antd';
 import './Articles.scss';
@@ -6,11 +6,25 @@ import { Link, useNavigate } from 'react-router-dom';
 import { IoIosArrowForward } from 'react-icons/io';
 import { useSelector } from 'react-redux';
 import { articlesAr, articlesEn } from '../../Data/Data';
+import { getBlogs } from '../../services/Strapi/getBlogs';
+import { useQuery } from '@tanstack/react-query';
+
 const Articles: React.FC<ITranslation> = ({ t }) => {
-  const navget = useNavigate();
+  const { data: articlesData, isLoading } = useQuery({
+    queryKey: ['articles'],
+    queryFn: getBlogs
+  });
+
+  const navigate = useNavigate();
   const { currentLang } = useSelector(
     (state: StoreType) => state?.user
   );
+  console.log(articlesData);
+  console.log(isLoading);
+
+  // useEffect(() => {
+  //   getBlogs();
+  // }, []);
 
   return (
     <>
@@ -24,26 +38,12 @@ const Articles: React.FC<ITranslation> = ({ t }) => {
         </div>
         <div className='container'>
           <div className='cards'>
-            {/* {[1, 2, 3, 4, 5, 6]?.map((product) => (
-                    <div className="card" key={product}>
-                      <Card
-                        hoverable
-                        loading
-                        cover={
-                          <Skeleton.Image
-                            active
-                            style={{ width: "100% !important" }}
-                          />
-                        }
-                      />
-                    </div>
-                  ))} */}
             {(currentLang === 'en' ? articlesEn : articlesAr)?.map(
               (item) => (
                 <Card
                   key={item?.id}
                   className='card'
-                  onClick={() => navget(`/articles/${item?.id}`)}
+                  onClick={() => navigate(`/articles/${item?.id}`)}
                   hoverable
                 >
                   <div className='img'>
