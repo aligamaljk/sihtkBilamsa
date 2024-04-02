@@ -91,7 +91,6 @@ const Articles: React.FC<ITranslation> = ({ t }) => {
                   <div className='title-card'>
                     <h1>{item?.title}</h1>
                   </div>
-
                   <div className='desc'>
                     {item?.desShow
                       .split(' ')
