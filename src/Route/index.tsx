@@ -1,7 +1,7 @@
 import { Navigate, useRoutes } from 'react-router-dom';
 import OwnNotFound from '../Pages/OwnNotFound/OwnNotFound';
 import Home from '../Components/Home/Home';
-import OwnLayout from '../Components/Header/OwnLayout';
+import OwnLayout from '../Pages/OwnLayout/OwnLayout';
 import LogIn from '../Pages/auth/LogIn/LogIn';
 import { getStoredToken } from '../services/user-storage';
 import ForgotPassword from '../Pages/auth/forgot-password/ForgotPassword';
