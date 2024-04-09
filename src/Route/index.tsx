@@ -15,7 +15,10 @@ import BlogsDetails from '../Components/Blogs/BlogsDetails/BlogsDetails';
 import Bmi from '../Components/Bmi/Bmi';
 import Activities from '../Components/Activities/Activities';
 import { ITranslation } from '../types';
-import Admin from '../Pages/Admin/Admin';
+import Admin from '../Pages/Admin/Admin';;
+import Sports from '../Components/Activities/Sports/Sports';
+import Exercises from '../Components/Activities/Exercises/Exercises';
+import Goal from '../Components/Activities/Gole/Goal';
 
 const RoutesWrapper = ({ t }: ITranslation) => {
   const routes = useRoutes([
@@ -69,7 +72,21 @@ const RoutesWrapper = ({ t }: ITranslation) => {
           element:
             getStoredToken() ?
               <Activities t={t} />
-            : <Navigate to='/login' replace />
+            : <Navigate to='/login' replace />,
+          children: [
+            {
+              index: true,
+              element: <Goal t={t} />
+            },
+            {
+              path: 'sports',
+              element: <Sports t={t} />
+            },
+            {
+              path: 'exercises',
+              element: <Exercises t={t} />
+            }
+          ]
         },
         {
           path: 'profile',

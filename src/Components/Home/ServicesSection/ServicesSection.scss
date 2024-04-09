@@ -61,3 +61,42 @@
     }
   }
 }
+@media screen and (max-width: 768px) {
+  .services-section{
+    padding: 50px 0px;
+
+    .title{
+    text-align: center;
+    .heading-wrapper{
+      margin: 0 auto;
+      .two-line-shape {
+        width: 40% ;
+        left: 5px ;
+      }
+    }
+  }
+    .info{
+      .box{
+        padding: 15px 10px;
+        img{
+          width: 85px !important;
+        }
+        p{
+          font-size: 1.2rem !important;
+          max-width: 300px !important;
+          text-align: center !important;
+          margin: 0 auto !important;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 460px) {
+  .services-section{
+    .two-line-shape{
+      width: 35% !important;
+      left: 100px !important;
+      top: 10px !important;
+    }
+  }
+}

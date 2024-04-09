@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ITranslation, StoreType } from '../../types';
+import { ArticleTypeTwo, ITranslation, StoreType } from '../../types';
 import { Card, Image, Pagination, Skeleton } from 'antd';
 import './Articles.scss';
 import { Link, useNavigate } from 'react-router-dom';
@@ -9,20 +9,11 @@ import { articlesAr, articlesEn } from '../../Data/Data';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../Firebase/Firebase';
 
-interface ArticleType {
-  id: string;
-  titleEn: string;
-  titleAr: string;
-  descriptionEn: string;
-  descriptionAr: string;
-  image: string;
-  authorEn: string;
-  authorAr: string;
-}
+
 const Articles: React.FC<ITranslation> = ({ t }) => {
   const navget = useNavigate();
   const [load, setLoad] = useState<boolean>(true);
-  const [articles, setArticles] = useState <ArticleType[]>([]);
+  const [articles, setArticles] = useState<ArticleTypeTwo[]>([]);
   const { currentLang } = useSelector(
     (state: StoreType) => state?.user
   );

@@ -1,7 +1,9 @@
 // eslint-disable-next-line react-refresh/only-export-components
-export default (callBack: (arg0: any) => Promise<any>) => {
-  return (...rest : any) =>
-    callBack(...rest as any ).catch(error => {
+export default (
+  callBack: (arg0: unknown, ...rest: unknown[]) => Promise<unknown>
+) => {
+  return (...rest: unknown[]) =>
+    callBack(undefined, ...rest).catch((error) => {
       console.log('error:', error);
       throw error;
     });

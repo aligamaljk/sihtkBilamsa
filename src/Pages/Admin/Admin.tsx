@@ -1,4 +1,4 @@
-import { Button, Col, Form, Input, message, Upload } from "antd"
+import { Button, Col, Form, Input, message, Upload, UploadFile, UploadProps } from "antd"
 import { fileType, fileUploadType, ITranslation, TypesArticle } from "../../types";
 import "./Admin.scss"
 import { useState } from "react";
@@ -9,22 +9,20 @@ import { addDoc, collection } from "firebase/firestore";
 import { useNavigate } from "react-router";
 const Admin = ({ t }: ITranslation) => {
     const navigate = useNavigate();
-  const [fileList, setFileList] = useState<fileType[] | []>(
-    []
-  );
+  const [fileList, setFileList] = useState<UploadFile<unknown>[]>([]);
   console.log(fileList, "fileList");
   
   const [loading, setLoading] = useState<boolean>(false);
   const [form] = Form.useForm();
   const beforeUpload = (file: fileUploadType) => {
-            const isLt2M = file.size / 1024 / 1024 < 2;
-            if (!isLt2M) {
-              message.error(
-                'حجم الصورة يجب ان يكون اقل من 2 ميجا بايت'
-              );
-              return false;
-            }
-            return isLt2M;
+    const isLt2M = file.size / 1024 / 1024 < 2;
+    if (!isLt2M) {
+      message.error(
+        'حجم الصورة يجب ان يكون اقل من 2 ميجا بايت'
+      );
+      return false;
+    }
+    return isLt2M;
   };
  const handleUpload = async ({
    // file,
@@ -44,7 +42,7 @@ const Admin = ({ t }: ITranslation) => {
  }: {
    fileList: fileType[] | [];
  }) => {
-   setFileList(newFileList);
+   setFileList(newFileList as UploadFile<unknown>[]);
  };
  const onFinish = async (values: TypesArticle) => {
    setLoading(true);
@@ -87,9 +85,21 @@ const Admin = ({ t }: ITranslation) => {
        message.error(error.message);
     });
  };
+ const props: UploadProps = {
+   name: 'file',
+   //  beforeUpload,
+  //  onUpload: handleUpload,
+   onChange: handleChange as any,
+   accept: 'image/*',
+   fileList: fileList,
+   maxCount: 1,
+   listType: 'picture-card',
+  //  customRequest: handleUpload
+ };
   return (
     <>
       <div className='admin'>
+        <h1 className='title'> {t.addArticles} </h1>
         <Form
           name='admin-form'
           layout='vertical'
@@ -109,14 +119,7 @@ const Admin = ({ t }: ITranslation) => {
               ]}
             >
               <Upload
-                listType='picture-card'
-                fileList={fileList}
-                onChange={handleChange}
-                multiple
-                accept='image/*'
-                beforeUpload={beforeUpload}
-                customRequest={handleUpload}
-                maxCount={1}
+                {...props}
               >
                 {t.uploadImage}
               </Upload>

@@ -63,4 +63,22 @@
       margin: 15px 0px 30px;
     }
   }
+  @media screen and (max-width: 768px) {
+    .two-line-shape{
+      left: -60px !important;
+      width: 40% !important;
+    }
+  }
+  @media screen and (max-width: 520px) {
+    .info{
+      .two-line-shape{
+        left: 15px !important;
+        width: 30% !important;
+        top: -5px !important;
+      }
+      h1{
+        // font-size: 4rem !important;
+      }
+    }
+  }
 }

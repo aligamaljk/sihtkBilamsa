@@ -2,14 +2,10 @@ import { Button, Form, Input, message, Modal } from 'antd';
 import { useState } from 'react';
 import { AddSportType, ITranslation } from '../../types';
 
-const AddSport = ({
+const AddSport : React.FC< ITranslation & { setSports: (sports: AddSportType[]) => void, sports: AddSportType[] | undefined } >   = ({
+  t ,
   setSports,
-  sports,
-  t
-}: {
-  t: ITranslation;
-  setSports: AddSportType[];
-  sports: AddSportType[];
+  sports
 }) => {
   const [form] = Form.useForm();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,10 +19,13 @@ const AddSport = ({
   };
   const onFinish = (values: any) => {
     console.log(values, 'values');
-   setSports([
-     ...(sports || []),
-     { value: (sports?.length || 0) + 1, label: values.sport }
-   ]);
+    setSports([
+      ...((sports || []) as any[]),
+      {
+        value: (Array.isArray(sports) ? sports.length : 0) + 1,
+        label: values.sport
+      }
+    ]);
     // setStoredAddSport([...sports,{value:countSports.length + 1,label:values.sport}])
     // setStoredAddSport([...sports,{value:countSports.length + 1,label:values.sport}])
 
@@ -54,7 +53,7 @@ const AddSport = ({
           <Form.Item
             name='sport'
             label='Sports'
-            rules={[{ required: true, message: t.requiredAddSport }]}
+            rules={[{ required: true, message: t.requiredAddSport  }]}
           >
             <Input type='text' placeholder={t.requiredAddSport} />
           </Form.Item>

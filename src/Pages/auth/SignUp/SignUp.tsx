@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Form, Button,  Input, Card, message } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
 import '../LogIn/Login.scss';
-import { ITranslation, UserInput } from '../../../types';
+import { ITranslation, User, UserInput } from '../../../types';
 import { IoIosArrowForward } from 'react-icons/io';
 import { setCurrentUser } from '../../../services/store/reducers/user';
 import { setStoredToken, setStoredUser } from '../../../services/user-storage';
@@ -14,12 +14,15 @@ const SignUp : React.FC <ITranslation> = ({t}) => {
   const [loading, setLoading] = useState<boolean>(false);
     const onAuthLogUp = (values: UserInput) => {
       setLoading(true);
-      doCreateUserWithEmailAndPassword(values.email, values.password)
-        .then((userCredential) => {
-          const user = userCredential.user;
+      doCreateUserWithEmailAndPassword(
+        values.email as string,
+        values.password as unknown as string
+      )
+        .then((userCredential: { user: any; }) => {
+          const user : User = userCredential.user as User | any;
           console.log(userCredential);
-          setStoredToken(user?.accessToken);
-          setStoredUser(values.name);
+          setStoredToken(user?.accessToken as string);
+          setStoredUser(values.name as string);
           dispatch(setCurrentUser(values));
           message.success(t.successLog + ' ' + values.name);
           navigate('/profile');

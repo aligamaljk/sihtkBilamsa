@@ -7,7 +7,7 @@ export const articlesEn = [
     desShow:
       "Regular exercise is crucial for maintaining physical and mental well-being. In this article, we'll explore the numerous benefits of incorporating exercise into your daily routine and provide practical tips for getting started",
     image:
-      'https://www.wellcurve.in/blog/wp-content/uploads/2021/06/Healthy-eatin-habits-fb-cover.jpg',
+      'https://hips.hearstapps.com/hmg-prod/images/wh-web-whm110119feafitnesssexysix-003-1591127019.png?crop=1xw:0.6130790190735694xh;center,top&resize=1200:*',
     content: [
       '<section>',
       '<h2>Introduction</h2>',
@@ -247,7 +247,7 @@ export const articlesAr = [
     author: 'عائشة خان',
     date: '2024-04-15',
     image:
-      'https://www.wellcurve.in/blog/wp-content/uploads/2021/06/Healthy-eatin-habits-fb-cover.jpg',
+      'https://hips.hearstapps.com/hmg-prod/images/wh-web-whm110119feafitnesssexysix-003-1591127019.png?crop=1xw:0.6130790190735694xh;center,top&resize=1200:*',
     content: [
       '<section>',
       '<h2>المقدمة</h2>',

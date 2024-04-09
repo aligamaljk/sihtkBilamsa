@@ -23,69 +23,60 @@ const HeaderRes: React.FC<ITranslation> = ({ t }) => {
   );
   const [open, setOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('home');
-  const itemsLink = [
-    {
-      key: '1',
-      label: (
-        <ActiveLinkTab
-          to='/bmi'
-          onClick={() => setActiveTab('BMI')}
-          classNameTab='BMI'
-          state={activeTab}
-          linkText='BMI'
-          className='servicesItem'
-        />
-      )
-    },
-    {
-      key: '2',
-      label: (
-        <ActiveLinkTab
-          to='/calories'
-          onClick={() => {
-            setActiveTab('calories');
-            setOpen(false);
-          }}
-          classNameTab='calories'
-          state={activeTab}
-          linkText={t.calories}
-          className='servicesItem'
-        />
-      )
-    },
-    {
-      key: '3',
-      label: (
-        <ActiveLinkTab
-          to='/articles'
-          onClick={() => {
-            setActiveTab('articles');
-            setOpen(false);
-          }}
-          classNameTab='articles'
-          state={activeTab}
-          linkText={t.articles}
-          className='servicesItem'
-        />
-      )
-    },
-    {
-      key: '4',
-      label: (
-        <ActiveLinkTab
-          to='/activities'
-          onClick={() => {
-            setActiveTab('activities');
-            setOpen(false);
-          }}
-          classNameTab='activities'
-          state={activeTab}
-          linkText={t.activities}
-          className='servicesItem'
-        />
-      )
-    }
-  ];
+    const itemsLink = [
+      {
+        key: '1',
+        label: (
+          <ActiveLinkTab
+            to='/bmi'
+            onClick={() => setActiveTab('BMI')}
+            classNameTab='BMI'
+            state={activeTab}
+            linkText='BMI'
+            className='servicesItem'
+          />
+        )
+      },
+      {
+        key: '2',
+        label: (
+          <ActiveLinkTab
+            to='/calories'
+            onClick={() => setActiveTab('calories')}
+            classNameTab='calories'
+            state={activeTab}
+            linkText={t.calories}
+            className='servicesItem'
+          />
+        )
+      },
+      {
+        key: '3',
+        label: (
+          <ActiveLinkTab
+            to='/articles'
+            onClick={() => setActiveTab('articles')}
+            classNameTab='articles'
+            state={activeTab}
+            linkText={t.articles}
+            className='servicesItem'
+          />
+        )
+      },
+      {
+        key: '4',
+        label: (
+          <ActiveLinkTab
+            to='/activities'
+            onClick={() => setActiveTab('activities')}
+            classNameTab='activities'
+            state={activeTab}
+            linkText={t.activities}
+            className='servicesItem'
+          />
+        )
+      }
+    ];
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

@@ -58,7 +58,7 @@ const CalorieFood: React.FC<ITranslation> = ({ t }) => {
   };
 
   console.log(protein, category);
-  const calories = (category: string) => {
+  const calories = (category : string ) => {
     let pro: number = 0;
     let carbs: number = 0;
     let fat: number = 0;

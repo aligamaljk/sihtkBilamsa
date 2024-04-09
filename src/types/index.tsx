@@ -1,5 +1,9 @@
+import { ReactNode } from "react";
+
 export interface ITranslation {
   t: {
+    imageBefore: ReactNode;
+    imageAfter: ReactNode;
     LogIn?: string;
     onError?: string;
     requiredName?: string;
@@ -215,10 +219,28 @@ export interface ITranslation {
     addArticleArRequired?: string;
     addArticle?: string;
     requiredImage?: string;
+    placeGoal?: string;
+    delete?: string;
+    deleteConfirm?: string;
+    deleteConfirmText?: string;
+    deleteSuccess?: string;
+    actions?: string;
+    sportsSid?: string;
+    exercises?: string;
+    day?: string;
+    pleaseEnterDay?: string;
+    firstSport?: string;
+    requireSport?: string;
+    secondSport?: string;
+    exerciseTime?: string;
+    requireTime?: string;
+    addSports?: string;
+    deleteMessage?: string;
+    deleteMessageConfirm?: string;
+    addArticles?: string;
+    AddSport?: string;
+    requiredAddSport?: string;
   };
-  AddSport?: string;
-  requiredAddSport?: string;
-  addSuccess?: string;
 }
 
 export enum LangsType {
@@ -233,33 +255,19 @@ export interface StoreType {
 }
 
 export interface ProfileGoal {
-  goal: string;
-  weight: number;
-  weightTarget: number;
+  imageBefore?: any;
+  imageAfter?: any;
+  goal?: string;
+  weight?: number;
+  weightTarget?: number;
 }
 
 export interface AddSportType {
   label: string;
   value: number;
 }
-
-// export interface fileType {
-//   imageURL: string | undefined;
-//   lastModified: number;
-//   percent: number;
-//   size: number;
-//   lastModifiedDate: string;
-//   name: string;
-//   response: string;
-//   status: string;
-//   thumbUrl: string;
-//   type: string;
-//   uid: string;
-//   originFileObj: { uid: string };
-//   id: string;
-//   key: string;
-// }
 export interface fileType {
+  fileList: any;
   lastModified: number;
   lastModifiedDate: Date;
   name: string;
@@ -287,18 +295,6 @@ export interface fileUploadType {
   webkitRelativePath: string;
 }
 
-// export interface fileListStateInProfilePageType {
-//   id: undefined;
-//   key: undefined;
-//   name: string;
-//   originFileObj: {
-//     uid: string;
-//   };
-//   status: string;
-//   thumbUrl: string;
-//   uid: string;
-// }
-
 export interface ProductImagesType {
   file: fileType;
   fileList: fileType[];
@@ -307,6 +303,7 @@ export interface ProductImagesType {
 export interface userProfileType {
   id: string;
   image?: ProductImagesType | undefined;
+  // image?:UploadFile ;
   ProductImages?: ProductImagesType;
   userImages?: ProductImagesType | undefined;
   age?: string;
@@ -316,16 +313,28 @@ export interface userProfileType {
   height?: string;
   name?: string;
   weight?: string;
+  activity?: {
+    key: number;
+    label: string;
+  }[];
+
 }
 
 export interface ArticleType {
-  id: number;
-  title: string;
-  author: string;
-  date: string;
-  desShow: string;
-  image: string;
-  content: string[];
+  // id: number;
+  id?: string | number;
+  title?: string;
+  author?: string;
+  date?: string;
+  desShow?: string;
+  image?: string;
+  content?: string[];
+  titleEn?: string;
+  titleAr?: string;
+  descriptionEn?: string;
+  descriptionAr?: string;
+  authorEn?: string;
+  authorAr?: string;
 }
 
 
@@ -343,4 +352,37 @@ export interface TypesArticle {
   descriptionAr: string;
   authorEn: string;
   authorAr: string;
+}
+
+export interface ArticleTypeTwo {
+  id?: string;
+  titleEn?: string;
+  titleAr?: string;
+  descriptionEn?: string;
+  descriptionAr?: string;
+  image?: string;
+  authorEn?: string;
+  authorAr?: string;
+}
+
+export interface DataType {
+  key?: React.Key;
+  // id?: number;
+  id?: string;
+  day?: string;
+  token?: string;
+  firstSport?: string;
+  secondSport?: string;
+  exerciseTime?: string;
+  action?: string;
+  sports: any;
+}
+
+export interface User {
+  user: any;
+  name?: string;
+  email?: string;
+  password?: string;
+  accessToken?: string | null;
+  uid?: string;
 }

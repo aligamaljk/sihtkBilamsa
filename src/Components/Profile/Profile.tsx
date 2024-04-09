@@ -3,7 +3,6 @@ import {
   AddSportType,
   ITranslation,
   fileType,
-  fileUploadType,
   userProfileType
 } from '../../types';
 import { Link, useNavigate } from 'react-router-dom';
@@ -19,12 +18,13 @@ import {
   message,
   Select,
   Spin,
-  Upload
+  Upload,
+  UploadFile,
+  UploadProps
 } from 'antd';
 import { TbUpload } from 'react-icons/tb';
 import {
   clearStoredUserProfile,
-  // getStoredAddSport,
   getStoredToken,
   getStoredUserProfile,
   setStoredAddSport,
@@ -37,23 +37,20 @@ const Profile: React.FC<ITranslation> = ({ t }) => {
   const navigate = useNavigate();
   const [form] = Form.useForm();
   const getLocalProfile = getStoredUserProfile() || {};
-  const [fileList, setFileList] = useState<fileType[] | []>([]);
-  // console.log(fileList, "fileList");
-  
-  // const [sports, setSports] = useState(getStoredAddSport());
+  const [fileList, setFileList] = useState<UploadFile<unknown>[]>([]);
   const [sports, setSports] = useState<AddSportType[]>();
   const [load, setLoad] = useState<boolean>(false);
   const [loadGet, setLoadGet] = useState<boolean>(false);
   const [profile, setProfile] = useState<userProfileType>();
   console.log(profile, 'profile');  
   useEffect(() => {
-    if (getLocalProfile && getLocalProfile.image) {
-      setFileList(
-        getLocalProfile.image.fileList.map((item: fileType) => {
-          return item;
-        })
-      );
-    }
+      if (getLocalProfile && 'image' in getLocalProfile) {
+        setFileList(
+          (getLocalProfile.image as  fileType).fileList.map((item: fileType) => {
+            return item;
+          })
+        );
+      }
   }, []);
 
   useEffect(() => {
@@ -61,34 +58,12 @@ const Profile: React.FC<ITranslation> = ({ t }) => {
       setStoredAddSport(sports);
     }
   }, [sports]);
-
-  const beforeUpload = (file: fileUploadType) => {
-    const isLt2M = file.size / 1024 / 1024 < 2;
-    if (!isLt2M) {
-      message.error('حجم الصورة يجب ان يكون اقل من 2 ميجا بايت');
-      return false;
-    }
-    return isLt2M;
-  };
-  const handleUpload = async ({
-    // file,
-    onSuccess
-  }: {
-    // file: fileUploadType;
-    onSuccess: (ret: string) => void;
-  }) => {
-    // console.log(file);
-    // console.log(onSuccess);
-    setTimeout(() => {
-      onSuccess('ok');
-    }, 0);
-  };
   const handleChange = ({
     fileList: newFileList
   }: {
     fileList: fileType[] | [];
   }) => {
-    setFileList(newFileList);
+    setFileList(newFileList as UploadFile<unknown>[]);
   };
 ;
     const colleUser = collection(db, 'user');
@@ -168,7 +143,10 @@ const Profile: React.FC<ITranslation> = ({ t }) => {
     onSnapshot(colleUser, (querySnapshot) => {
       const data = querySnapshot.docs
         .map((doc) => ({ ...doc.data(), id: doc.id }))
-        ?.find((item) => item?.token === getStoredToken());
+        ?.find(
+          (item) =>
+            item && 'token' in item && item.token === getStoredToken()
+        );
       setProfile(data);
     });
     setTimeout(() => {
@@ -196,10 +174,9 @@ const Profile: React.FC<ITranslation> = ({ t }) => {
         message.error(error.message);
       });
   };
-    const check = (sports || profile?.activity)?.map(
-      (item: AddSportType) => item
-    );
-    // console.log(check, 'check');
+   const check = (sports || profile?.activity)?.map(
+     (item: AddSportType | any ) => item 
+   );
     
   if(loadGet){
     return (
@@ -217,6 +194,14 @@ const Profile: React.FC<ITranslation> = ({ t }) => {
       </div>
     );
   }
+  const props: UploadProps = {
+    listType: 'picture-card',
+    fileList: fileList,
+    onChange: handleChange as any,
+    // multiple: true,
+    accept: 'image/*',
+    maxCount: 1
+  };
   return (
     <div className='profile'>
       <div className='section-header'>
@@ -236,7 +221,10 @@ const Profile: React.FC<ITranslation> = ({ t }) => {
             onFinish={onFinish}
             form={form}
             initialValues={{
-              userImages: getLocalProfile?.image || null
+              userImages:
+                getLocalProfile && 'image' in getLocalProfile ?
+                  getLocalProfile.image
+                : null
             }}
           >
             <Col className='upload'>
@@ -250,16 +238,7 @@ const Profile: React.FC<ITranslation> = ({ t }) => {
                   }
                 ]}
               >
-                <Upload
-                  listType='picture-card'
-                  fileList={fileList}
-                  onChange={handleChange}
-                  multiple
-                  accept='image/*'
-                  beforeUpload={beforeUpload}
-                  customRequest={handleUpload}
-                  maxCount={1}
-                >
+                <Upload {...props}>
                   <Button icon={<TbUpload />} type='text'>
                     {t.uploadImage}
                   </Button>

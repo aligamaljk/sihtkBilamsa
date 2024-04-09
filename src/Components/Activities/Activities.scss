@@ -159,4 +159,159 @@
             }
         }
     }
+    .ant-layout-sider-zero-width-trigger{
+        top: 0px !important;
+    }
+    .ant-layout-sider-trigger{
+        // bottom: auto !important;
+        position: relative !important;
+    }
+    .ant-upload-list{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column-reverse;
+        gap: 10px;
+        .ant-upload-list-item{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border:none !important;
+            .ant-upload-list-item-thumbnail{
+                width: 80% !important;
+                height: 80% !important;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+    .sports{
+        width: 100%;
+        height: 100%;
+        // padding: 50px 0 0;
+        background: #fff;
+        .title{
+            padding-top: 50px;
+        }
+        .card-sport{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+            box-shadow: none !important;
+            border: none !important;
+            .title{
+                border: none;
+            }
+            .form-sport{
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 30px;
+                flex-wrap: wrap;
+                .form-item{
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 50px;
+                }
+            }
+        }
+        .content{
+            width: 100%;
+            text-align: center;
+            padding: 30px 20px;
+            .ant-pagination {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+    .title{
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 20px
+}
+.exercises{
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    .title{
+        padding-top: 50px;
+    }
+    .content{
+        padding: 30px 20px;
+        max-width: 1000px;
+        margin: 0 auto;
+        .cards{
+             display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-gap: 30px;
+            padding: 20px 0;
+            .card{
+                // display: flex;
+                // align-items: center;
+                // justify-content: center;
+                // flex-direction: column;
+                // gap: 10px;
+                .ant-card-body{
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 10px !important;
+                    gap: 20px;
+                }
+                .img{
+                    width: 50%;
+                    // height: 100%;
+                    height: 150px;
+                    .ant-image{
+                        width: 100%;
+                        height: 100%;
+                        
+                    }
+                    img{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+                .info{
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                    .title-info{
+                        font-size: 20px;
+                        font-weight: bold;
+                        text-align: center;
+                        width: 100%;
+                        padding: 10px 0 0;
+                    }
+                    .desc{
+                        width: 100%;
+                        text-align: start;
+                        padding: 10px 0;
+                        font-size: 15px;
+                        line-height: 1.5;   
+                    }
+                }
+            }
+        }
+    }
+}
 }

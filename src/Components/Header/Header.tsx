@@ -282,8 +282,7 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
           </Button>
         </Link>
         {/* admin */}
-        {getStoredUser() === 'admin' &&
-        (
+        {getStoredUser() === 'admin' && (
           <Link to='/admin'>Admin</Link>
         )}
         {/* admin */}
@@ -313,7 +312,7 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
           </Button>
         </Dropdown>
         <div className='mobile'>
-          <HeaderRes t={t} />
+          <HeaderRes t={t}  />
         </div>
       </div>
     </div>

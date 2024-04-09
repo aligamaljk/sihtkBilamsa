@@ -4,13 +4,8 @@ import { Link } from 'react-router-dom';
 import '../LogIn/Login.scss';
 import { ITranslation, UserInput } from '../../../types';
 import { IoIosArrowForward } from 'react-icons/io';
-// import { useDispatch } from 'react-redux';
-// import { setCurrentUser } from '../../../services/store/reducers/user';
-// import { setStoredUser } from '../../../services/user-storage';
 import { doForgetPassword } from '../../../Firebase/auth';
 const ForgotPassword: React.FC<ITranslation> = ({ t }) => {
-  // const navigate = useNavigate();
-  // const dispatch = useDispatch();
 
     const onAuthForgotPassword = (values: UserInput) => {
        const email = values?.email || '';
@@ -21,10 +16,6 @@ const ForgotPassword: React.FC<ITranslation> = ({ t }) => {
         .catch((error) => {
           console.log(error);
         });
-      // dispatch(setCurrentUser(values));
-      // setStoredUser(values.name);
-      // message.success(t.successLog + ' ' + values.name);
-      // navigate('/profile');
     };
 
   return (
@@ -66,19 +57,6 @@ const ForgotPassword: React.FC<ITranslation> = ({ t }) => {
               onFinish={onAuthForgotPassword}
               className='login-form-body'
             >
-              {/* <Form.Item
-                name='name'
-                label={t.name}
-                rules={[{ required: true, message: t.requiredName }]}
-              >
-                <Input
-                  placeholder={t.name}
-                  type='text'
-                  min={3}
-                  max={10}
-                />
-            </Form.Item>
-             */}
               <Form.Item
                 name='email'
                 label={t.email}
