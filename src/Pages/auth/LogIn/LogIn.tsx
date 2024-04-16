@@ -29,6 +29,7 @@ const LogIn: React.FC<ITranslation> = ({ t }) => {
       navigate('/profile');
     }).catch((error) => {
       setLoading(false);
+      message.error(error.message);
       console.log(error);
     })
   };
@@ -47,7 +48,6 @@ const LogIn: React.FC<ITranslation> = ({ t }) => {
     }).catch((error) => {
       console.log(error);
       message.error(error.message)
-      // message.error(t.errorSin2);
       setLoadingGoogle(false);
     })
   };

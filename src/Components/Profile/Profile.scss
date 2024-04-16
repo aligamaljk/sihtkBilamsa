@@ -2,6 +2,12 @@
   .section-header {
     background-image: url('../../assets/about-chauffeur.5cda81cdee5f57afd531.png');
   }
+    .ant-form-item-control-input-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+  }
   .container {
     .card-profile {
       margin-top: 80px;

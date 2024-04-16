@@ -22,7 +22,6 @@ import {
   UploadFile,
   UploadProps
 } from 'antd';
-import { TbUpload } from 'react-icons/tb';
 import {
   clearStoredUserProfile,
   getStoredToken,
@@ -38,6 +37,7 @@ const Profile: React.FC<ITranslation> = ({ t }) => {
   const [form] = Form.useForm();
   const getLocalProfile = getStoredUserProfile() || {};
   const [fileList, setFileList] = useState<UploadFile<unknown>[]>([]);
+  console.log(fileList, 'fileList');
   const [sports, setSports] = useState<AddSportType[]>();
   const [load, setLoad] = useState<boolean>(false);
   const [loadGet, setLoadGet] = useState<boolean>(false);
@@ -59,9 +59,9 @@ const Profile: React.FC<ITranslation> = ({ t }) => {
     }
   }, [sports]);
   const handleChange = ({
-    fileList: newFileList
+    fileList: newFileList,
   }: {
-    fileList: fileType[] | [];
+    fileList: fileType[] | [] 
   }) => {
     setFileList(newFileList as UploadFile<unknown>[]);
   };
@@ -200,6 +200,7 @@ const Profile: React.FC<ITranslation> = ({ t }) => {
     onChange: handleChange as any,
     // multiple: true,
     accept: 'image/*',
+    showUploadList: false,
     maxCount: 1
   };
   return (
@@ -239,9 +240,15 @@ const Profile: React.FC<ITranslation> = ({ t }) => {
                 ]}
               >
                 <Upload {...props}>
-                  <Button icon={<TbUpload />} type='text'>
-                    {t.uploadImage}
-                  </Button>
+                  {/* {t.uploadImage} */}
+                  {fileList ?
+                    // <img
+                    //   src={fileList[0].url}
+                    //   alt='avatar'
+                    //   style={{ width: '100%' }}
+                    // />
+                    t.uploadImage
+                  : t.uploadImage}
                 </Upload>
               </Form.Item>
             </Col>
@@ -368,16 +375,17 @@ const Profile: React.FC<ITranslation> = ({ t }) => {
                   loading={load}
                 >
                   {profile ? t.update : t.save}
-                  {/* {t.save} */}
                 </Button>
-                <Button
-                  type='primary'
-                  danger
-                  className='btn-submit'
-                  onClick={() => handleDelete()}
-                >
-                  Delete
-                </Button>
+                {profile && (
+                  <Button
+                    type='primary'
+                    danger
+                    className='btn-submit'
+                    onClick={() => handleDelete()}
+                  >
+                    Delete
+                  </Button>
+                )}
               </Form.Item>
             </Col>
           </Form>

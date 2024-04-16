@@ -53,7 +53,7 @@ Collaborating with unfamiliar team members within a restricted timeline presente
 1. Clone this repository.
 
     ```bash
-    git clone https://github.com/mahmoud-mohsen-dev/sihtk-bilamsa.git
+    git clone https://github.com/aligamaljk/sihtkBilamsa.git
     ```
 
 2. Navigate to the Project Directory:

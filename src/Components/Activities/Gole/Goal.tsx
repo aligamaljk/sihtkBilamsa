@@ -3,6 +3,7 @@ import {
   Card,
   Col,
   Form,
+  Image,
   Input,
   message,
   Popconfirm,
@@ -20,7 +21,9 @@ const Goal: React.FC<ITranslation> = ({ t }) => {
   );
   const check = (sports || [])?.map((item: any) => item);
   const [fileList, setFileList] = useState<UploadFile[]>([]);
+  console.log(fileList, 'fileList');
   const [fileList2, setFileList2] = useState<UploadFile[]>([]);
+  console.log(fileList2, 'fileList2');
   const valeGoal = getStoredUserProfileGoal();
   // const prof = getStoredUserProfile();
   useEffect(() => {
@@ -52,11 +55,7 @@ const Goal: React.FC<ITranslation> = ({ t }) => {
 
   return (
     <div className='content'>
-      <h1
-        className='title'
-      >
-        {t.placeGoal}
-      </h1>
+      <h1 className='title'>{t.placeGoal}</h1>
       <Card className='card-activities' bordered={false}>
         <Form
           layout='vertical'
@@ -98,8 +97,17 @@ const Goal: React.FC<ITranslation> = ({ t }) => {
                 fileList={fileList}
                 onChange={handleChange}
                 maxCount={1}
+                showUploadList={false}
               >
-                {t.uploadImage}
+                {fileList?.length > 0 ?
+                  <Image
+                    preview={false}
+                    src={
+                      fileList[0]?.thumbUrl ||
+                      'https://cdn-icons-png.flaticon.com/512/149/149071.png'
+                    }
+                  />
+                : t.uploadImage}
               </Upload>
             </Form.Item>
             <Form.Item
@@ -113,8 +121,17 @@ const Goal: React.FC<ITranslation> = ({ t }) => {
                 fileList={fileList2}
                 onChange={handleChange2}
                 maxCount={1}
+                showUploadList={false}
               >
-                {t.uploadImage}
+                {fileList2?.length > 0 ?
+                  <Image
+                    preview={false}
+                    src={
+                      fileList2[0]?.thumbUrl ||
+                      'https://cdn-icons-png.flaticon.com/512/149/149071.png'
+                    }
+                  />
+                : t.uploadImage}
               </Upload>
             </Form.Item>
           </Col>

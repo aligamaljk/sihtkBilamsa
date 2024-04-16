@@ -59,9 +59,9 @@ const CalorieFood: React.FC<ITranslation> = ({ t }) => {
 
   console.log(protein, category);
   const calories = (category : string ) => {
-    let pro: number = 0;
-    let carbs: number = 0;
-    let fat: number = 0;
+    let pro : number= 0;
+    let carbs : number = 0;
+    let fat : number = 0;
     switch (category) {
       case 'chicken':
         pro = 0.27;
@@ -175,7 +175,7 @@ const CalorieFood: React.FC<ITranslation> = ({ t }) => {
                       {t.protein}:{' '}
                       <span style={{ fontWeight: '700' }}>
                         {(
-                          calories(category?.food).pro *
+                          calories(category?.food).pro  *
                           Number(category?.quantity)
                         ).toFixed(2)}
                         g
@@ -185,7 +185,7 @@ const CalorieFood: React.FC<ITranslation> = ({ t }) => {
                       {t.carbs}:{' '}
                       <span style={{ fontWeight: '700' }}>
                         {(
-                          calories(category?.food).carbs *
+                          calories(category?.food)?.carbs *
                           Number(category?.quantity)
                         ).toFixed(2)}
                         g

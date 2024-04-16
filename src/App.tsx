@@ -10,7 +10,8 @@ import { StoreType } from './types';
 const tokenAnt = {
   token: {
     fontFamily: 'Cairo, sans-serif',
-    colorPrimary: '#8c4191',
+    // colorPrimary: '#8c4191',
+    colorPrimary: '#0d6064b1',
     contentFontSize: 20,
     fontWeight: 600,
     borderRadius: 8,
