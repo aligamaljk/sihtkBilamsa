@@ -11,13 +11,34 @@ const Sports : React.FC<ITranslation> = ({t}) => {
   const [form] = Form.useForm();
   const [dataForm, setDataForm] = useState<DataType[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const [idDelete, setIdDelete] = useState<string>('');
     const filter = dataForm?.filter(
       (item: any) => item?.token === getStoredToken()
     );
     const findToken = filter?.find(
       (item: any) => item?.token === getStoredToken()
     );
-    console.log(findToken, 'findToken');
+    // console.log(findToken, 'findToken');
+    const handelDelete = (idSport: string) => {
+      // console.log(idSport, 'idSport');
+      const filterDelete = findToken?.sports?.filter(
+        (item: any) => item?.idSport !== idSport
+      );
+      // console.log(filterDelete, 'filterDelete');
+      updateDoc(
+        doc(db, 'sports', findToken?.id as unknown as string),
+        {
+          sports: filterDelete
+        }
+      )
+        .then(() => {
+          message.success('تم حذف البيانات بنجاح');
+        })
+        .catch((error) => {
+          console.log(error);
+          message.error(error.message);
+        });
+    };
       const columns: TableColumnsType<DataType> = [
         {
           title: t.day,
@@ -39,11 +60,12 @@ const Sports : React.FC<ITranslation> = ({t}) => {
           title: t?.actions,
           dataIndex: 'action',
           render: ( record: any) => (
+            // console.log(record, 'record'),
             <Popconfirm
               title={t?.deleteMessage}
               description={t?.deleteMessageConfirm}
               onConfirm={() => {
-                handelDelete(record.idSport);
+                handelDelete(idDelete);
               }}
               okText={t.okText}
               cancelText={t.cancelText}
@@ -57,6 +79,8 @@ const Sports : React.FC<ITranslation> = ({t}) => {
       ];
   const dataCustomers: DataType[] = findToken?.sports?.map(
     (item: any) => {
+      // console.log(item, 'item');
+      
       return {
         ...item,
         key: item?.idSport
@@ -68,13 +92,13 @@ const Sports : React.FC<ITranslation> = ({t}) => {
   const onFinish = (values: any) => {
     if (findToken?.token === getStoredToken()) {
       const docRef = doc(db, "sports", findToken?.id as unknown as string);
-      console.log('updata');
+      // console.log('updata');
       setLoading(true);
       updateDoc(docRef,{
         sports: [...findToken?.sports,{...values,idSport : v4()}],
       }).then(() => {
         form.resetFields();
-        console.log('Document successfully written!');
+        // console.log('Document successfully written!');
         message.success('تمت العملية بنجاح');
         setLoading(false);
       }).catch((error) => {
@@ -83,7 +107,7 @@ const Sports : React.FC<ITranslation> = ({t}) => {
       })
     } else {
       setLoading(true);
-      console.log('add');
+      // console.log('add');
       addDoc(colSport, {
         sports: [{...values ,idSport : v4()}],
         token: getStoredToken()
@@ -92,7 +116,7 @@ const Sports : React.FC<ITranslation> = ({t}) => {
       )
         .then(() => {
           form.resetFields();
-          console.log('Document successfully written!');
+          // console.log('Document successfully written!');
           message.success('تمت العملية بنجاح');
           setLoading(false);
         })
@@ -111,19 +135,7 @@ const Sports : React.FC<ITranslation> = ({t}) => {
       setDataForm(data as unknown as DataType[]);
     });
   }
-  const handelDelete = (idSport : string) => {
-    console.log(idSport, 'idSport');
-    const filterDelete = findToken?.sports?.filter((item: any) => item?.idSport !== idSport);
-    console.log(filterDelete, 'filterDelete');    
-    updateDoc(doc(db, "sports", findToken?.id as unknown as string),{
-      sports : filterDelete
-    }).then(() => {
-      message.success('تم حذف البيانات بنجاح');
-    }).catch((error) => {
-      console.log(error);
-      message.error(error.message);
-    })
-  };
+  
   useEffect(() => {
     getData();
   },[]);
@@ -219,6 +231,12 @@ const Sports : React.FC<ITranslation> = ({t}) => {
               responsive: true,
               showSizeChanger: false
             }}
+            onRow={(record) => ({
+              onClick: () => {
+                // console.log(record?.key, 'record');
+                setIdDelete(record?.key as unknown as string);
+              }
+            })}
             scroll={{ x: 'max-content' }}
           />
         </div>

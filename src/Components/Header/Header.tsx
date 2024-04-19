@@ -1,6 +1,6 @@
 // import { Button, Dropdown, Image, message, Popconfirm } from 'antd';
 import { Button, Dropdown, message, Popconfirm } from 'antd';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   setCurrentLang,
@@ -246,25 +246,25 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
                 alignItems: 'center',
                 gap: '5px',
                 paddingRight: '10px',
-                color: '#ff7d7d'
+                color: '#37ebc7'
               }}
             >
               {t.LogIn}
-              <HiOutlineLogin />
+              <HiOutlineLogin
+                style={{
+                  transform: 'rotate(180deg)'
+                }}
+              />
             </Link>
 
         }
-
         {/* Profile Tab*/}
-        <Link
+        <NavLink
           to='/profile'
           title='Profile'
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '5px',
-            marginRight: '5px'
-          }}
+          className={({ isActive }) =>
+            isActive ? 'active-link-header' : 'link-res'
+          }
         >
           <Button
             type='text'
@@ -280,7 +280,7 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
             {t.profileTab}
             <UserOutlined />
           </Button>
-        </Link>
+        </NavLink>
         {/* admin */}
         {getStoredUser() === 'admin' && (
           <Link to='/admin'>Admin</Link>
@@ -312,7 +312,7 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
           </Button>
         </Dropdown>
         <div className='mobile'>
-          <HeaderRes t={t}  />
+          <HeaderRes t={t} />
         </div>
       </div>
     </div>

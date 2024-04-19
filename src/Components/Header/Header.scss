@@ -4,6 +4,19 @@
   a.link-tab.active {
     color: $primary-color;
   }
+  .active-link-header{
+    color: #000;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-radius: 8px;
+    button{
+      background: #fff;
+      color: #000 !important;
+    }
+  }
+  
 }
 
 .servicesItem {

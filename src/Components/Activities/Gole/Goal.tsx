@@ -11,29 +11,29 @@ import {
   UploadFile,
   UploadProps
 } from 'antd';
-import { clearStoredUserProfileGoal, getStoredAddSport, getStoredUserProfileGoal, setStoredUserProfileGoal } from '../../../services/user-storage';
+import { clearStoredUserProfileGoal, getStoredUserProfileGoal, setStoredUserProfileGoal } from '../../../services/user-storage';
 import { useEffect, useState } from 'react';
-import { AddSportType, fileType, ITranslation } from '../../../types';
+import {  fileType, ITranslation } from '../../../types';
 const Goal: React.FC<ITranslation> = ({ t }) => {
   const [form] = Form.useForm();
-  const [sports] = useState<AddSportType[] | undefined>(
-    getStoredAddSport()
-  );
-  const check = (sports || [])?.map((item: any) => item);
   const [fileList, setFileList] = useState<UploadFile[]>([]);
-  console.log(fileList, 'fileList');
+  // console.log(fileList, 'fileList');
   const [fileList2, setFileList2] = useState<UploadFile[]>([]);
-  console.log(fileList2, 'fileList2');
+  // console.log(fileList2, 'fileList2');
   const valeGoal = getStoredUserProfileGoal();
   // const prof = getStoredUserProfile();
   useEffect(() => {
     if (valeGoal) {
-      {
+      if(valeGoal?.imageAfter){
         setFileList(
-          valeGoal.imageAfter.fileList.map((item: fileType) => {
-            return item;
+          valeGoal?.imageAfter.fileList.map((item: fileType) => {
+            return item || undefined;
           })
         );
+      } else {
+        setFileList([]);
+      }
+      {
         setFileList2(
           valeGoal?.imageBefore.fileList.map((item: fileType) => {
             return item;
@@ -48,7 +48,7 @@ const Goal: React.FC<ITranslation> = ({ t }) => {
   };
   const handleChange: UploadProps['onChange'] = ({
     fileList: newFileList
-  }) => setFileList(newFileList);
+  }) => setFileList(newFileList || []);
   const handleChange2: UploadProps['onChange'] = ({
     fileList: newFileList
   }) => setFileList2(newFileList);
