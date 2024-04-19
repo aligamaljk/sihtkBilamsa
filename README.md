@@ -17,13 +17,6 @@ Check Google Slides file [here.](https://docs.google.com/presentation/d/17OP82Dh
 -   **Providing Health Tips and Resources:** Offering articles and educational resources on health and wellness to help users make better health decisions.
 -   **Reminders and Scheduling:** Ability to set reminders for meals, water intake, and exercise sessions to help users adhere to a healthy routine.
 
-## See Project Prototype!
-
-Check out the project Prototype video on YouTube [click here.](https://www.youtube.com/watch?v=3C7DECnkkzE)
-
-## See Project Final version!
-
-Check out the project final version video on YouTube [click here.](https://youtu.be/s0m2t4efQms)
 
 ## Challenges
 
@@ -60,7 +53,7 @@ Collaborating with unfamiliar team members within a restricted timeline presente
 
 2. Navigate to the Project Directory:
     ```bash
-    cd sihtk-bilamsa
+    cd sihtkBilamsa
     ```
 3. Install Dependencies:
 
