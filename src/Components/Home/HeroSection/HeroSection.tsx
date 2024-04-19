@@ -1,13 +1,13 @@
+
+import { Link } from 'react-router-dom';
 import { ITranslation } from '../../../types';
-import Btn from '../../UI/Button/Btn';
 import TwoLineShape from '../../UI/TwoLineShape/TwoLineShape';
 import './HeroSection.scss';
-
 function HeroSection({ t }: ITranslation) {
   return (
     <section className='hero-section'>
       <div className='container'>
-        <div className='description'>
+        <div className='description' data-aos='fade-right'>
           <div className='info'>
             <TwoLineShape
               className='hero-shape'
@@ -18,19 +18,9 @@ function HeroSection({ t }: ITranslation) {
           </div>
           <h1 className='second-heading'>{t.homePage?.hero?.h1_2}</h1>
           <p>{t.homePage?.hero?.p}</p>
-
-          <Btn
-            size='lg'
-            to='/contact'
-            styles={{ border: '2px solid #fd7304' }}
-            onClick={(e) => {
-              if (e) {
-                e.preventDefault();
-              }
-            }}
-          >
+          <Link to='/contact' className='hero-btn'>
             {t.homePage?.hero?.btn}
-          </Btn>
+          </Link>
         </div>
       </div>
     </section>

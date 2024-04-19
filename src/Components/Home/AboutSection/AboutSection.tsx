@@ -1,10 +1,10 @@
 import { ITranslation } from '../../../types';
-import Btn from '../../UI/Button/Btn';
 import TwoLineShape from '../../UI/TwoLineShape/TwoLineShape';
 import img1 from '../../../assets/home-img1.jpg';
 import img2 from '../../../assets/home-img2.jpg';
 import './AboutSection.scss';
 import { getLang } from '../../../services/user-storage';
+import { Link } from 'react-router-dom';
 
 function AboutSection({ t }: ITranslation) {
   const lang = getLang();
@@ -18,7 +18,7 @@ function AboutSection({ t }: ITranslation) {
             Photos Section
             ==============
       */}
-        <div className='images'>
+        <div className='images' data-aos='fade-down'>
           <div>
             <img
               className='img one'
@@ -40,7 +40,7 @@ function AboutSection({ t }: ITranslation) {
           Section Description 
           ===================
       */}
-        <div className='info'>
+        <div className='info' data-aos='fade-up'>
           {/* 
             =====
             Title 
@@ -73,18 +73,9 @@ function AboutSection({ t }: ITranslation) {
 
             <p>{t.homePage?.about?.p2}</p>
           </div>
-
-          <Btn
-            to='/about'
-            styles={{
-              border: '2px solid #ff7d7d',
-              width: 'fit-content',
-              color: 'black',
-              margin: '10px 0px'
-            }}
-          >
-            {t.homePage?.about?.btn}
-          </Btn>
+          <Link to='/about' className='hero-btn'>
+            {t.homePage?.hero?.btn}
+          </Link>
         </div>
       </div>
     </section>

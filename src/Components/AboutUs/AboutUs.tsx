@@ -26,19 +26,18 @@ function AboutUs({ t }: ITranslation) {
         <div className='description-section'>
           <div className='des-sec-images'>
             <div className='rectangle one'>
-              <div className='overlay'>
+              <div className='overlay' data-aos='fade-right' >
                 <img src='about-1.jpg' alt='athletes doing sports' />
               </div>
-              <div className='overlay'>
+              <div className='overlay' data-aos='fade-left' >
                 <img src='about-2.jpg' alt='fitness tools' />
               </div>
             </div>
-            <div className='rectangle two'>
+            <div className='rectangle two' data-aos='fade-up' >
               <div className='overlay'>
                 <img src='about-3.svg' alt='sports tools' />
               </div>
-
-              <div className='overlay'>
+              <div className='overlay' data-aos='fade-down' >
                 <img
                   src='about-4.svg'
                   alt='athlete running above a phone'
@@ -47,7 +46,7 @@ function AboutUs({ t }: ITranslation) {
             </div>
           </div>
 
-          <div className='des-sec-info'>
+          <div className='des-sec-info' data-aos='fade-up'>
             <div className='title'>
               <h2>{t?.aboutPage?.about}</h2>
               <span className='website-name'>{t?.websiteName}</span>

@@ -7,6 +7,9 @@ import RoutesWrapper from './Route';
 import { useSelector } from 'react-redux';
 import './styles/ant.scss';
 import { StoreType } from './types';
+// AOS Animations
+import AOS from "aos";
+import "aos/dist/aos.css";
 const tokenAnt = {
   token: {
     fontFamily: 'Cairo, sans-serif',
@@ -59,6 +62,11 @@ function App() {
         .setAttribute('lang', currentLang);
     }
   }, [currentLang]);
+useEffect(() => {
+  AOS.init({
+    duration: 1000,
+  });
+}, []);
   return (
     <ConfigProvider
       direction={currentLang === 'en' ? 'ltr' : 'rtl'}

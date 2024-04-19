@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { ITranslation } from '../../../types';
-import Btn from '../../UI/Button/Btn';
 import { FaPlay } from 'react-icons/fa';
 import { Button, Modal } from 'antd';
 import './VideoSection.scss';
@@ -11,6 +10,7 @@ function VideoSection({ t }: ITranslation) {
     <div className='video-section'>
       <div className='video-overlay'>
         <Button
+          data-aos='fade-down'
           className='play-btn'
           type='primary'
           style={{ backgroundColor: '#fd7304' }}
@@ -18,14 +18,14 @@ function VideoSection({ t }: ITranslation) {
         >
           <FaPlay />
         </Button>
-        <h2>{t.homePage?.videoSection?.h2}</h2>
-        <Btn
-          size='lg'
-          styles={{ border: '2px solid #fd7304' }}
-          onClick={() => setModalOpen(true)}
-        >
-          {t.homePage?.videoSection?.btn}
-        </Btn>
+        <h2 data-aos='fade-up'>{t.homePage?.videoSection?.h2}</h2>
+        <div data-aos='fade-up'>
+          <button className='hero-btn'
+            onClick={() => setModalOpen(true)}
+          >
+            {t.homePage?.videoSection?.btn}
+          </button>
+        </div>
       </div>
 
       {/* 

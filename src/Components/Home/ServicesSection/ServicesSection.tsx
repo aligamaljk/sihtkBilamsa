@@ -16,7 +16,7 @@ function ServicesSection({ t }: ITranslation) {
             Section Title
             ==============
         */}
-        <div className='title'>
+        <div className='title' data-aos='fade-down' >
           <div className='heading-wrapper'>
             <TwoLineShape color='#ff7d7d' />
             <h2>{t.homePage?.services?.titleH2}</h2>
@@ -29,7 +29,7 @@ function ServicesSection({ t }: ITranslation) {
           Section Description 
           ===================
       */}
-        <div className='info'>
+        <div className='info' data-aos='fade-up' >
           <div className='box'>
             <div>
               <img src={calendar} alt='calendar' />

@@ -46,6 +46,8 @@ Collaborating with unfamiliar team members within a restricted timeline presente
 -   axios
 -   react-router-dom
 -   react-icons
+-   Firebase
+-   aos
 -   vite
 
 ## Getting Started

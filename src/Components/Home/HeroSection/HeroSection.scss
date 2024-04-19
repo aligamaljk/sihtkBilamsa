@@ -5,7 +5,15 @@
   position: relative;
   z-index: 1;
   color: $white;
-
+  .hero-btn{
+    border-color:#fd7304 ;
+    color: #fff;
+    transition: all 0.3s ease;
+    &:hover{
+      background-color: #fd7304;
+      color: #fff;
+    }
+  }
   &::after {
     content: '';
     position: absolute;

@@ -12,7 +12,7 @@ function Articles({ t }: ITranslation) {
             Section Title
             ===============
         */}
-        <div className='heading'>
+        <div className='heading' data-aos='fade-left' >
           <div className='title'>
             <TwoLineShape />
             <h2>{t.homePage?.articlesSection?.h2}</h2>
@@ -31,7 +31,7 @@ function Articles({ t }: ITranslation) {
             Article Number #1
             =================
         */}
-          <div className='box'>
+          <div className='box' data-aos='fade-right'>
             <Link to='/articles'>
               <img
                 src='https://blog.bonsecours.com/wp-content/uploads/2023/02/Ben-Risks-of-Running-1200x610.jpg'
@@ -51,7 +51,7 @@ function Articles({ t }: ITranslation) {
             Article Number #2
             =================
         */}
-          <div className='box'>
+          <div className='box' data-aos='fade-up'>
             <Link to='/articles'>
               <img
                 src='https://cdn-magazine.nutrabay.com/wp-content/uploads/2023/06/man-sleeping-comfortable-bed-scaled.jpg'
@@ -71,7 +71,7 @@ function Articles({ t }: ITranslation) {
             Article Number #3
             =================
         */}
-          <div className='box'>
+          <div className='box' data-aos='fade-left'>
             <Link to='/articles'>
               <img
                 src='https://fairmountbenefits.com/wp-content/uploads/2020/06/brain-exercise-1024x1024.png'

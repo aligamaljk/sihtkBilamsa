@@ -1,5 +1,5 @@
+import { Link } from 'react-router-dom';
 import { ITranslation } from '../../../types';
-import Btn from '../../UI/Button/Btn';
 import './JoinUs.scss';
 
 function JoinUs({ t }: ITranslation) {
@@ -8,13 +8,15 @@ function JoinUs({ t }: ITranslation) {
       <div className='overlay'>
         <div className='container'>
           <div className='content'>
-            <div className='text'>
+            <div className='text' data-aos='fade-right'>
               <h2>{t.homePage?.joinUsSection?.h2}</h2>
               <p>{t.homePage?.joinUsSection?.p}</p>
             </div>
-            <Btn size='lg' to='/contact'>
-              {t.homePage?.joinUsSection?.btn}
-            </Btn>
+            <div data-aos='fade-left'>
+              <Link to='/contact' className='hero-btn'>
+                {t.homePage?.hero?.btn}
+              </Link>
+            </div>
           </div>
         </div>
       </div>

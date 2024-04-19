@@ -10,7 +10,7 @@ const Contact: React.FC<ITranslation> = ({ t }) => {
   return (
     <>
       <div className='contact'>
-        <div className='section-header'>
+        <div className='section-header' >
           <h1 className='title'>{t.contactUs}</h1>
           <div className='link'>
             <Link to='/'>{t.homeTab}</Link> <IoIosArrowForward />
@@ -18,14 +18,14 @@ const Contact: React.FC<ITranslation> = ({ t }) => {
           </div>
         </div>
         <div className='container'>
-          <div className='content-left'>
+          <div className='content-left' data-aos='fade-right'>
             <h3 className='title-contact'>{t.contactTitle}</h3>
             <p className='desc-contact'>{t.contactDesc}</p>
             <div className='img-wrapper'>
               <img src={contactImg} alt='contact us' />
             </div>
           </div>
-          <div className='content-right'>
+          <div className='content-right' data-aos='fade-left'>
             <Card className='card-contact'>
               <h3 className='title-card'>{t.contactUs}</h3>
               <Form

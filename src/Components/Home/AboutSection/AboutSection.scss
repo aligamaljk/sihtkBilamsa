@@ -3,6 +3,17 @@
 .about-section {
   background-color: $white;
   padding: 50px 0px;
+.hero-btn{
+    border-color:#ff7d7d ;
+    color: #000;
+    transition: all 0.3s ease;
+    width: fit-content;
+
+    &:hover{
+      background-color: #ff7d7d;
+      color: #fff;
+    }
+  }
 
   .container {
     // display: grid;

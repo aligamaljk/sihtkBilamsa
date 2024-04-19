@@ -198,9 +198,7 @@ const Profile: React.FC<ITranslation> = ({ t }) => {
     listType: 'picture-card',
     fileList: fileList,
     onChange: handleChange as any,
-    // multiple: true,
     accept: 'image/*',
-    showUploadList: false,
     maxCount: 1
   };
   return (
@@ -240,15 +238,7 @@ const Profile: React.FC<ITranslation> = ({ t }) => {
                 ]}
               >
                 <Upload {...props}>
-                  {/* {t.uploadImage} */}
-                  {fileList ?
-                    // <img
-                    //   src={fileList[0].url}
-                    //   alt='avatar'
-                    //   style={{ width: '100%' }}
-                    // />
                     t.uploadImage
-                  : t.uploadImage}
                 </Upload>
               </Form.Item>
             </Col>
