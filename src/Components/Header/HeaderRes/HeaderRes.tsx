@@ -3,21 +3,27 @@ import React, { useState } from 'react';
 import { ITranslation } from '../../../types';
 import './HeaderRes.scss';
 import { RiMenuUnfoldFill } from 'react-icons/ri';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { GoSignOut } from 'react-icons/go';
 import { IoIosArrowDown } from 'react-icons/io';
 import { UserOutlined } from '@ant-design/icons';
 import { HiOutlineLogin } from 'react-icons/hi';
 import {
+  clearStoredToken,
+  clearStoredUserProfile,
   getStoredUser
 } from '../../../services/user-storage';
-import { useAppSelector } from '../../../Hooks/Hooks';
-import { itemsLink, logOut } from '../GlobalHome';
+import { useAppDispatch, useAppSelector } from '../../../Hooks/Hooks';
+import { itemsLink } from '../GlobalHome';
+import { doSignOut } from '../../../Firebase/auth';
+import { setCurrentUser } from '../../../services/store/reducers/user';
 
 const HeaderRes: React.FC<ITranslation> = ({ t }) => {
   const { currentLang } = useAppSelector(
     (state) => state?.user
   );
+      const navigate = useNavigate();
+      const dispatch = useAppDispatch();
   const [open, setOpen] = useState(false);
   const showDrawer = () => {
     setOpen(true);
@@ -107,7 +113,18 @@ const HeaderRes: React.FC<ITranslation> = ({ t }) => {
                   okText={t.okText}
                   cancelText={t.cancelText}
                   onConfirm={() => {
-                    logOut({ t });
+doSignOut()
+  .then(() => {
+    clearStoredToken();
+    clearStoredUserProfile();
+    dispatch(setCurrentUser(null));
+    navigate('/login');
+    message.success(t.LogOutMessage);
+  })
+  .catch((error) => {
+    console.log(error);
+    message.error(error.message);
+  });
                   }}
                   onCancel={() => {
                     message.info(t.popupCanceledMessage);

@@ -1,11 +1,4 @@
-import { message } from "antd";
-import { doSignOut } from "../../Firebase/auth";
-import { setCurrentUser } from "../../services/store/reducers/user";
-import { clearStoredToken, clearStoredUser, clearStoredUserProfile } from "../../services/user-storage";
-import { useNavigate } from "react-router";
-import { ITranslation } from "../../types";
-import { NavLink } from "react-router-dom";
-import { useAppDispatch } from "../../Hooks/Hooks";
+import { NavLink } from "react-router-dom";;
 
 export const items = [
   {
@@ -63,20 +56,3 @@ export const itemsLink = [
     )
   }
 ];
-  export const logOut = ({ t }: ITranslation) => {
-    const navigate = useNavigate();
-    const dispatch = useAppDispatch();
-    doSignOut()
-      .then(() => {
-        clearStoredToken();
-        clearStoredUser();
-        clearStoredUserProfile();
-        dispatch(setCurrentUser(null));
-        navigate('/login');
-        message.success(t.LogOutMessage);
-      })
-      .catch((error) => {
-        console.log(error);
-        message.error(error.message);
-      });
-  };

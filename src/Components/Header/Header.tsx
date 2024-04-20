@@ -1,10 +1,13 @@
 
 import { Button, Dropdown, message, Popconfirm } from 'antd';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import {
-  setCurrentLang
+  setCurrentLang,
+  setCurrentUser
 } from '../../services/store/reducers/user';
 import {
+  clearStoredToken,
+  clearStoredUserProfile,
   getStoredUser,
   setLang
 } from '../../services/user-storage';
@@ -19,14 +22,16 @@ import { GoSignOut } from 'react-icons/go';
 import HeaderRes from './HeaderRes/HeaderRes';
 import logoAr from '../../assets/logo-ar.svg';
 import logoEn from '../../assets/logo.svg';
-import { items, itemsLink, logOut } from './GlobalHome';
+import { items, itemsLink } from './GlobalHome';
 import { useAppDispatch, useAppSelector } from '../../Hooks/Hooks';
+import { doSignOut } from '../../Firebase/auth';
 // clearStoredUserProfile()
 const HeaderApp: React.FC<ITranslation> = ({ t }) => {
   const { currentLang } = useAppSelector(
     (state) => state?.user
   );
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const chanageLang = ({ key }: { key: string }) => {
     dispatch(setCurrentLang(key));
@@ -119,7 +124,19 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
                 okText={t.okText}
                 cancelText={t.cancelText}
                 onConfirm={() => {
-                  logOut({ t });
+                  doSignOut()
+                    .then(() => {
+                      clearStoredToken();
+                      clearStoredUserProfile();
+                      clearStoredUserProfile();
+                      dispatch(setCurrentUser(null));
+                      navigate('/login');
+                      message.success(t.LogOutMessage);
+                    })
+                    .catch((error) => {
+                      console.log(error);
+                      message.error(error.message);
+                    });
                 }}
                 onCancel={() => {
                   message.info(t.popupCanceledMessage);
