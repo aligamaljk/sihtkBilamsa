@@ -240,6 +240,8 @@ export interface ITranslation {
     addArticles?: string;
     AddSport?: string;
     requiredAddSport?: string;
+    emty?: string;
+    emtDesc?: string;
   };
 }
 
@@ -386,3 +388,9 @@ export interface User {
   accessToken?: string | null;
   uid?: string;
 }
+  export type Calories = {
+    pro: number;
+    carbs: number;
+    fat: number;
+    nameSelect?: string;
+  };

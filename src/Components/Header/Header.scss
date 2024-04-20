@@ -16,7 +16,22 @@
       color: #000 !important;
     }
   }
-  
+}
+.overlay-services-dropdown{
+  .ant-dropdown-menu{
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    .ant-dropdown-menu-item{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+}
+.active-link{
+  color: $primary-color !important;
 }
 
 .servicesItem {

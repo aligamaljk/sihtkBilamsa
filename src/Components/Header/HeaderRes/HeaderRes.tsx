@@ -1,85 +1,24 @@
 import { Button, Drawer, Dropdown, message, Popconfirm } from 'antd';
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { ITranslation, StoreType } from '../../../types';
-import ActiveLinkTab from '../../UI/ActiveLinkTab';
+import { ITranslation } from '../../../types';
 import './HeaderRes.scss';
 import { RiMenuUnfoldFill } from 'react-icons/ri';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { GoSignOut } from 'react-icons/go';
 import { IoIosArrowDown } from 'react-icons/io';
 import { UserOutlined } from '@ant-design/icons';
 import { HiOutlineLogin } from 'react-icons/hi';
 import {
-  clearStoredUser,
-  clearStoredUserProfile,
   getStoredUser
 } from '../../../services/user-storage';
-import { setCurrentUser } from '../../../services/store/reducers/user';
+import { useAppSelector } from '../../../Hooks/Hooks';
+import { itemsLink, logOut } from '../GlobalHome';
 
 const HeaderRes: React.FC<ITranslation> = ({ t }) => {
-  const { currentLang } = useSelector(
-    (state: StoreType) => state?.user
+  const { currentLang } = useAppSelector(
+    (state) => state?.user
   );
   const [open, setOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState('home');
-    const itemsLink = [
-      {
-        key: '1',
-        label: (
-          <ActiveLinkTab
-            to='/bmi'
-            onClick={() => setActiveTab('BMI')}
-            classNameTab='BMI'
-            state={activeTab}
-            linkText='BMI'
-            className='servicesItem'
-          />
-        )
-      },
-      {
-        key: '2',
-        label: (
-          <ActiveLinkTab
-            to='/calories'
-            onClick={() => setActiveTab('calories')}
-            classNameTab='calories'
-            state={activeTab}
-            linkText={t.calories}
-            className='servicesItem'
-          />
-        )
-      },
-      {
-        key: '3',
-        label: (
-          <ActiveLinkTab
-            to='/articles'
-            onClick={() => setActiveTab('articles')}
-            classNameTab='articles'
-            state={activeTab}
-            linkText={t.articles}
-            className='servicesItem'
-          />
-        )
-      },
-      {
-        key: '4',
-        label: (
-          <ActiveLinkTab
-            to='/activities'
-            onClick={() => setActiveTab('activities')}
-            classNameTab='activities'
-            state={activeTab}
-            linkText={t.activities}
-            className='servicesItem'
-          />
-        )
-      }
-    ];
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
   const showDrawer = () => {
     setOpen(true);
   };
@@ -99,26 +38,28 @@ const HeaderRes: React.FC<ITranslation> = ({ t }) => {
         className='drawer-header'
       >
         <div className='links-res'>
-          <ActiveLinkTab
+          <NavLink
             to='/'
             onClick={() => {
-              setActiveTab('home');
               setOpen(false);
             }}
-            classNameTab='home'
-            state={activeTab}
-            linkText={t.homeTab}
-          />
-          <ActiveLinkTab
+            className={({ isActive }) =>
+              isActive ? 'active-link' : ''
+            }
+          >
+            {t.homeTab}
+          </NavLink>
+          <NavLink
             to='/about'
             onClick={() => {
-              setActiveTab('About Us');
               setOpen(false);
             }}
-            classNameTab='About Us'
-            state={activeTab}
-            linkText={t.aboutUs}
-          />
+            className={({ isActive }) =>
+              isActive ? 'active-link' : ''
+            }
+          >
+            {t.aboutUs}
+          </NavLink>
           <Dropdown
             arrow={{ pointAtCenter: true }}
             trigger={['hover']}
@@ -133,15 +74,7 @@ const HeaderRes: React.FC<ITranslation> = ({ t }) => {
                 cursor: 'pointer',
                 fontSize: '18px',
                 fontWeight: '400',
-                color:
-                  (
-                    activeTab === 'BMI' ||
-                    activeTab === 'calories' ||
-                    activeTab === 'articles' ||
-                    activeTab === 'activities'
-                  ) ?
-                    '#ff7d7d'
-                  : 'white',
+                color: 'white',
                 textTransform: 'capitalize',
                 letterSpacing: '0.14px'
               }}
@@ -149,16 +82,17 @@ const HeaderRes: React.FC<ITranslation> = ({ t }) => {
               {t.services} <IoIosArrowDown />
             </span>
           </Dropdown>
-          <ActiveLinkTab
+          <NavLink
             to='/contact'
             onClick={() => {
-              setActiveTab('Contact Us');
               setOpen(false);
             }}
-            classNameTab='Contact Us'
-            state={activeTab}
-            linkText={t.contactUs}
-          />
+            className={({ isActive }) =>
+              isActive ? 'active-link' : ''
+            }
+          >
+            {t.contactUs}
+          </NavLink>
         </div>
         <div className='login-res'>
           {
@@ -173,12 +107,7 @@ const HeaderRes: React.FC<ITranslation> = ({ t }) => {
                   okText={t.okText}
                   cancelText={t.cancelText}
                   onConfirm={() => {
-                    clearStoredUser();
-                    clearStoredUserProfile();
-                    dispatch(setCurrentUser(null));
-                    navigate('/login');
-                    message.success(t.LogOutMessage);
-                    setOpen(false);
+                    logOut({ t });
                   }}
                   onCancel={() => {
                     message.info(t.popupCanceledMessage);
@@ -200,7 +129,6 @@ const HeaderRes: React.FC<ITranslation> = ({ t }) => {
                   >
                     <span className='text-header'>{t.LogOut}</span>
                     <GoSignOut />
-                    {/* <Image src={img} preview={false} width={18} /> */}
                   </Button>
                 </Popconfirm>
               </div>
@@ -216,17 +144,20 @@ const HeaderRes: React.FC<ITranslation> = ({ t }) => {
                   alignItems: 'center',
                   gap: '5px',
                   paddingRight: '10px',
-                  color: '#ff7d7d'
+                  color: '#37ebc7'
                 }}
               >
                 {t.LogIn}
-                <HiOutlineLogin />
+                <HiOutlineLogin
+                  style={{
+                    transform: 'rotate(180deg)'
+                  }}
+                />
               </Link>
 
           }
-
           {/* Profile Tab*/}
-          <Link
+          <NavLink
             to='/profile'
             title='Profile'
             style={{
@@ -235,6 +166,9 @@ const HeaderRes: React.FC<ITranslation> = ({ t }) => {
               gap: '5px',
               marginRight: '5px'
             }}
+            className={({ isActive }) =>
+              isActive ? 'active-link-header' : 'link-res'
+            }
             onClick={() => {
               setOpen(false);
             }}
@@ -253,7 +187,7 @@ const HeaderRes: React.FC<ITranslation> = ({ t }) => {
               {t.profileTab}
               <UserOutlined />
             </Button>
-          </Link>
+          </NavLink>
         </div>
       </Drawer>
     </>

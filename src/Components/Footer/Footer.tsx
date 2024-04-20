@@ -3,24 +3,10 @@ import logo from '../../assets/logo.svg';
 import { Dropdown, Image } from 'antd';
 import './Footer.scss';
 import { IoIosArrowDown } from 'react-icons/io';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import { itemsLink } from '../Header/GlobalHome';
 
 const FooterApp = ({ t }: ITranslation) => {
-  const itemsLink = [
-    {
-      key: '1',
-      label: <Link to='/bmi'>Bmi</Link>
-    },
-    {
-      key: '2',
-      label: <Link to='/calories'>{t.calories}</Link>
-    },
-    {
-      key: '3',
-      label: <Link to='/articles'>{t.articles}</Link>
-    }
-  ];
-
   return (
     <div className='footer'>
       <div className='container-footer'>
@@ -28,8 +14,22 @@ const FooterApp = ({ t }: ITranslation) => {
           <Image src={logo} alt='logo' preview={false} />
         </div>
         <div className='links-footer'>
-          <Link to='/'>{t.homeTab}</Link>
-          <Link to='/about'>{t.aboutUs}</Link>
+          <NavLink
+            to='/'
+            className={({ isActive }) =>
+              isActive ? 'active-link' : ''
+            }
+          >
+            {t.homeTab}
+          </NavLink>
+          <NavLink
+            to='/about'
+            className={({ isActive }) =>
+              isActive ? 'active-link' : ''
+            }
+          >
+            {t.aboutUs}
+          </NavLink>
           <Dropdown
             arrow={{ pointAtCenter: true }}
             trigger={['hover']}
@@ -52,8 +52,22 @@ const FooterApp = ({ t }: ITranslation) => {
               {t.services} <IoIosArrowDown />
             </span>
           </Dropdown>
-          <Link to='/contact'>{t.contactUs}</Link>
-          <Link to='/profile'>{t.profileTab}</Link>
+          <NavLink
+            to='/contact'
+            className={({ isActive }) =>
+              isActive ? 'active-link' : ''
+            }
+          >
+            {t.contactUs}
+          </NavLink>
+          <NavLink
+            to='/profile'
+            className={({ isActive }) =>
+              isActive ? 'active-link' : ''
+            }
+          >
+            {t.profileTab}
+          </NavLink>
         </div>
         <div className='footer-copyright'>
           <p

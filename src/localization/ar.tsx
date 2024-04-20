@@ -236,5 +236,7 @@ export default {
   addSports: 'اضافه رياضه',
   deleteMessage: 'هل أنت متأكد أنك تريد حذف هذه الرياضة؟',
   deleteMessageConfirm: 'لا يمكن التراجع عن هذا الإجراء',
-  addArticles : 'اضافه المقالات',
+  addArticles: 'اضافه المقالات',
+  emty: 'لا يوجد بيانات',
+  emtDesc: 'لا يوجد بيانات لعرضها',
 };

@@ -1,15 +1,10 @@
-// import { Button, Dropdown, Image, message, Popconfirm } from 'antd';
+
 import { Button, Dropdown, message, Popconfirm } from 'antd';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { Link, NavLink } from 'react-router-dom';
 import {
-  setCurrentLang,
-  setCurrentUser
+  setCurrentLang
 } from '../../services/store/reducers/user';
 import {
-  clearStoredToken,
-  clearStoredUser,
-  clearStoredUserProfile,
   getStoredUser,
   setLang
 } from '../../services/user-storage';
@@ -20,21 +15,18 @@ import { UserOutlined } from '@ant-design/icons';
 import { HiOutlineLogin } from 'react-icons/hi';
 import Logo from '../UI/Logo';
 import './Header.scss';
-import { useState } from 'react';
-import ActiveLinkTab from '../UI/ActiveLinkTab';
 import { GoSignOut } from 'react-icons/go';
 import HeaderRes from './HeaderRes/HeaderRes';
 import logoAr from '../../assets/logo-ar.svg';
 import logoEn from '../../assets/logo.svg';
-import { doSignOut } from '../../Firebase/auth';
+import { items, itemsLink, logOut } from './GlobalHome';
+import { useAppDispatch, useAppSelector } from '../../Hooks/Hooks';
 // clearStoredUserProfile()
 const HeaderApp: React.FC<ITranslation> = ({ t }) => {
-  const { currentLang } = useSelector(
-    (state: StoreType) => state?.user
+  const { currentLang } = useAppSelector(
+    (state) => state?.user
   );
-  const [activeTab, setActiveTab] = useState('home');
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const chanageLang = ({ key }: { key: string }) => {
     dispatch(setCurrentLang(key));
@@ -43,84 +35,7 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
       .getElementsByTagName('html')[0]
       .setAttribute('lang', key);
   };
-  const items = [
-    {
-      key: 'en',
-      label: 'English'
-    },
-    {
-      key: 'ar',
-      label: 'العربية'
-    }
-  ];
 
-  const itemsLink = [
-    {
-      key: '1',
-      label: (
-        <ActiveLinkTab
-          to='/bmi'
-          onClick={() => setActiveTab('BMI')}
-          classNameTab='BMI'
-          state={activeTab}
-          linkText='BMI'
-          className='servicesItem'
-        />
-      )
-    },
-    {
-      key: '2',
-      label: (
-        <ActiveLinkTab
-          to='/calories'
-          onClick={() => setActiveTab('calories')}
-          classNameTab='calories'
-          state={activeTab}
-          linkText={t.calories}
-          className='servicesItem'
-        />
-      )
-    },
-    {
-      key: '3',
-      label: (
-        <ActiveLinkTab
-          to='/articles'
-          onClick={() => setActiveTab('articles')}
-          classNameTab='articles'
-          state={activeTab}
-          linkText={t.articles}
-          className='servicesItem'
-        />
-      )
-    },
-    {
-      key: '4',
-      label: (
-        <ActiveLinkTab
-          to='/activities'
-          onClick={() => setActiveTab('activities')}
-          classNameTab='activities'
-          state={activeTab}
-          linkText={t.activities}
-          className='servicesItem'
-        />
-      )
-    }
-  ];
-  const logOut = () => {
-    doSignOut().then(() => {
-      clearStoredToken();
-      clearStoredUser();
-      clearStoredUserProfile();
-      dispatch(setCurrentUser(null));
-      navigate('/login');
-      message.success(t.LogOutMessage);
-    }).catch((error) => {
-      console.log(error);
-      message.error(error.message);
-    })
-  }
   return (
     <div className='header'>
       <div className='logo'>
@@ -143,20 +58,22 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
       </div>
 
       <div className='links'>
-        <ActiveLinkTab
+        <NavLink
           to='/'
-          onClick={() => setActiveTab('home')}
-          classNameTab='home'
-          state={activeTab}
-          linkText={t.homeTab}
-        />
-        <ActiveLinkTab
+          className={({ isActive }) =>
+            isActive ? 'active-link' : ''
+          }
+        >
+          {t.homeTab}
+        </NavLink>
+        <NavLink
           to='/about'
-          onClick={() => setActiveTab('About Us')}
-          classNameTab='About Us'
-          state={activeTab}
-          linkText={t.aboutUs}
-        />
+          className={({ isActive }) =>
+            isActive ? 'active-link' : ''
+          }
+        >
+          {t.aboutUs}
+        </NavLink>
         <Dropdown
           arrow={{ pointAtCenter: true }}
           trigger={['hover']}
@@ -171,15 +88,7 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
               cursor: 'pointer',
               fontSize: '18px',
               fontWeight: '400',
-              color:
-                (
-                  activeTab === 'BMI' ||
-                  activeTab === 'calories' ||
-                  activeTab === 'articles' ||
-                  activeTab === 'activities'
-                ) ?
-                  '#ff7d7d'
-                : 'white',
+              color: '#fff',
               textTransform: 'capitalize',
               letterSpacing: '0.14px'
             }}
@@ -187,13 +96,14 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
             {t.services} <IoIosArrowDown />
           </span>
         </Dropdown>
-        <ActiveLinkTab
+        <NavLink
           to='/contact'
-          onClick={() => setActiveTab('Contact Us')}
-          classNameTab='Contact Us'
-          state={activeTab}
-          linkText={t.contactUs}
-        />
+          className={({ isActive }) =>
+            isActive ? 'active-link' : ''
+          }
+        >
+          {t.contactUs}
+        </NavLink>
       </div>
       <div className='login'>
         {
@@ -203,20 +113,17 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
               <Popconfirm
                 title={t.LogOut}
                 description={t.LogOutMessageModal}
-                // title="Are you sure?"
                 icon={<></>}
                 placement='topLeft'
                 okType='danger'
                 okText={t.okText}
                 cancelText={t.cancelText}
                 onConfirm={() => {
-                  logOut();
+                  logOut({ t });
                 }}
                 onCancel={() => {
                   message.info(t.popupCanceledMessage);
                 }}
-                // okText="Yes"
-                // cancelText="No"
               >
                 <Button
                   type='text'
@@ -283,7 +190,15 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
         </NavLink>
         {/* admin */}
         {getStoredUser() === 'admin' && (
-          <Link to='/admin'>Admin</Link>
+          <NavLink
+            to='/admin'
+            title='Admin'
+            className={({ isActive }) =>
+              isActive ? 'active-link' : ''
+            }
+          >
+            Admin
+          </NavLink>
         )}
         {/* admin */}
         {/* Language Tab */}

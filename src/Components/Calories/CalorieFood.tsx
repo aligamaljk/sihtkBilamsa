@@ -1,7 +1,6 @@
 import {
   Button,
   Card,
-  Col,
   Form,
   Input,
   Select,
@@ -9,46 +8,43 @@ import {
   Typography
 } from 'antd';
 import React, { useState } from 'react';
-import { ITranslation } from '../../types';
+import { Calories, ITranslation } from '../../types';
 const CalorieFood: React.FC<ITranslation> = ({ t }) => {
-  const [protein, setProtein] = useState<string | undefined>(
-    undefined
-  );
   const [category, setCategory] = useState<any | undefined>(
     undefined
   );
   const [form] = Form.useForm();
   const optionsProtein: SelectProps['options'] = [
     {
-      value: 'chicken',
+      value: 1,
       label: 'chicken'
     },
     {
-      value: 'Salmon',
+      value: 2,
       label: 'Salmon'
     },
     {
-      value: 'Eggs',
+      value: 3,
       label: 'Eggs'
     },
     {
-      value: 'Meat',
+      value: 4,
       label: 'Meat'
     },
     {
-      value: 'Oatmeal',
+      value: 5,
       label: 'Oatmeal'
     },
     {
-      value: ' Rice',
+      value: 6,
       label: ' Rice'
     },
     {
-      value: 'Peanuts',
+      value: 7,
       label: 'Peanuts'
     },
     {
-      value: 'Cashew',
+      value: 8,
       label: 'Cashew'
     }
   ];
@@ -57,58 +53,69 @@ const CalorieFood: React.FC<ITranslation> = ({ t }) => {
     setCategory(values);
   };
 
-  console.log(protein, category);
-  const calories = (category : string ) => {
+  console.log( category);
+
+  const calories = (category : number ) : Calories => {
+    console.log(category, 'category switch');
     let pro : number= 0;
     let carbs : number = 0;
     let fat : number = 0;
+    let nameSelect : string = '';
     switch (category) {
-      case 'chicken':
+      case 1:
         pro = 0.27;
         carbs = 0;
         fat = 0.05;
+        nameSelect = 'chicken';
         break;
-      case 'Salmon':
+      case 2:
         pro = 0.22;
         carbs = 0;
         fat = 0.09;
+        nameSelect = 'Salmon';
         break;
-      case 'Eggs':
+      case 3:
         pro = 0.13;
         carbs = 0.0078;
         fat = 0.1;
+        nameSelect = 'Eggs';
         break;
-      case 'Meat':
+      case 4:
         pro = 0.24;
         carbs = 0;
         fat = 0.15;
+        nameSelect = 'Meat';
         break;
-      case 'Oatmeal':
+      case 5:
         pro = 0.17;
         carbs = 0.6627;
         fat = 0.07;
+        nameSelect = 'Oatmeal';
         break;
-      case ' Rice':
+      case 6:
         pro = 0.0202;
         carbs = 0.211;
         fat = 0.0019;
+        nameSelect = ' Rice';
         break;
-      case ' Peanuts ':
+      case 7:
         pro = 0.258;
         carbs = 0.211;
         fat = 0.0429;
+        nameSelect = 'Peanuts';
         break;
-      case ' Cashew ':
+      case 8:
         pro = 0.1822;
         carbs = 0.309;
         fat = 0.4385;
+        nameSelect = 'Cashew';
         break;
       default:
-        return 0;
+        break;
     }
-    return { pro, carbs, fat };
+    return { pro, carbs, fat, nameSelect };
   };
-
+  
   return (
     <>
       <Card className='card-food'>
@@ -119,6 +126,7 @@ const CalorieFood: React.FC<ITranslation> = ({ t }) => {
             style={{ width: '100%' }}
             className='col-form'
             layout='vertical'
+            form={form}
           >
             <Form.Item
               name='food'
@@ -126,13 +134,17 @@ const CalorieFood: React.FC<ITranslation> = ({ t }) => {
               rules={[{ required: true, message: t.requiredProtein }]}
             >
               <Select
-                // placeholder={t.selectFood}
                 placeholder='ex:Chicken'
                 showSearch
                 allowClear
                 style={{ width: '100%' }}
-                options={optionsProtein}
-              />
+              >
+                {optionsProtein.map((item) => (
+                  <Select.Option key={item.value} value={item.value}>
+                    {item.label}
+                  </Select.Option>
+                ))}
+              </Select>
             </Form.Item>
             <Form.Item
               name='quantity'
@@ -157,7 +169,8 @@ const CalorieFood: React.FC<ITranslation> = ({ t }) => {
                       display: 'block'
                     }}
                   >
-                    {category?.food} ({category?.quantity}g){' '}
+                    {calories(category?.food)?.nameSelect} (
+                    {category?.quantity}g){' '}
                   </Typography.Text>
                   <div
                     className='total-calories'
@@ -175,7 +188,7 @@ const CalorieFood: React.FC<ITranslation> = ({ t }) => {
                       {t.protein}:{' '}
                       <span style={{ fontWeight: '700' }}>
                         {(
-                          calories(category?.food).pro  *
+                          calories(category?.food)?.pro *
                           Number(category?.quantity)
                         ).toFixed(2)}
                         g
@@ -192,7 +205,7 @@ const CalorieFood: React.FC<ITranslation> = ({ t }) => {
                       </span>
                     </div>
                     <div>
-                      {t.fat}:{' '}
+                      {t.fat}:
                       <span style={{ fontWeight: '700' }}>
                         {(
                           calories(category?.food).fat *
@@ -239,7 +252,13 @@ const CalorieFood: React.FC<ITranslation> = ({ t }) => {
               }
             </Form.Item>
             <Form.Item style={{ width: '100%', textAlign: 'center' }}>
-              <Button type='primary' htmlType='submit'>
+              <Button
+                type='primary'
+                htmlType='submit'
+                shape='round'
+                size='large'
+                block
+              >
                 {t.calculate}
               </Button>
             </Form.Item>

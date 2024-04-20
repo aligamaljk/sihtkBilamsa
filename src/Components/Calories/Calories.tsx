@@ -10,58 +10,14 @@ const Calories: React.FC<ITranslation> = ({ t }) => {
   const getLocalProfile = getStoredUserProfile();
   const [form] = Form.useForm();
   const [bmr, setBmr] = useState<number>(0);
-  const [bmrLess, setBmLess] = useState<number>(0);
   const [more, setMore] = useState<string | undefined>(undefined);
-  const [caloriesMor, setCaloriesMor] = useState({
-    fat: 0,
-    protein: 0,
-    carbs: 0
-  });
-  const [caloriesMed, setCaloriesMed] = useState({
-    fat: 0,
-    protein: 0,
-    carbs: 0
-  });
-  const [caloriesHigh, setCaloriesHigh] = useState({
-    fat: 0,
-    protein: 0,
-    carbs: 0
-  });
   const onFinish = (values: any) => {
     console.log('Success:', values);
     const { weight, height, burn, more, age, gender, exercise } =
       values;
-    const genType = gender === 1 ? 5 : -161;
     setMore(more);
     setBmr((10 * weight + 6.25 * height - 5 * age) * exercise);
-
-    setBmLess(bmr  );
-    // if (burn === 'more' || burn === 'week') {
-      // setCaloriesMor({
-      //   carbs: (bmr * 25) / 100 / 4,
-      //   protein: (bmr * 40) / 100 / 4,
-      //   fat: (bmr * 35) / 100 / 9
-      // });
-    // } else if (burn === 'medium' || burn === 'less') {
-    //   setCaloriesMed({
-    //     carbs: (bmr * 40) / 100 / 4,
-    //     protein: (bmr * 30) / 100 / 4,
-    //     fat: (bmr * 30) / 100 / 9
-    //   });
-    // } else if (burn === 'high' || burn === 'stability') {
-    //   setCaloriesHigh({
-    //     carbs: (bmr * 55) / 100 / 4,
-    //     protein: (bmr * 20) / 100 / 4,
-    //     fat: (bmr * 25) / 100 / 9
-    //   });
-    // }
-    setCaloriesMor({
-      carbs: (bmr * 25) / 100 / 4,
-      protein: (bmr * 40) / 100 / 4,
-      fat: (bmr * 35) / 100 / 9
-    });
   };
-
   return (
     <>
       <div className='calories'>
@@ -138,7 +94,6 @@ const Calories: React.FC<ITranslation> = ({ t }) => {
                       <Input type='number' placeholder='cm' />
                     </Form.Item>
                   </div>
-
                   <Form.Item
                     name='burn'
                     label={t.burn}
@@ -208,23 +163,30 @@ const Calories: React.FC<ITranslation> = ({ t }) => {
                       </Select.Option>
                     </Select>
                   </Form.Item>
-                  <Form.Item>
+                  <Form.Item
+                  >
                     <Button
                       type='primary'
+                      shape='round'
+                      size='large'
+                      block
                       htmlType='submit'
                       className='calories-form-button'
                     >
                       {t.calculate}
                     </Button>
+                    {/* <Button onClick={() => form.resetFields()}  type="primary" danger shape='round'>
+                      Reset
+                    </Button> */}
                   </Form.Item>
                 </Form>
               </Card>
               <Card className='content-right'>
                 <div className='title-calories'>
-                  {t.calories} <span>( {bmr.toFixed(2)} cal)</span>
+                  {t.calories} <span>( {Math.round(bmr)} cal)</span>
                 </div>
                 <div className='calories-container'>
-                  {more ?
+                  {more && bmr > 0 ?
                     more == 'more' ?
                       <div className='calories-foot-wrapper-mor'>
                         <div className='title-calories-mor'>
@@ -236,8 +198,8 @@ const Calories: React.FC<ITranslation> = ({ t }) => {
                             {t.carbs}:
                           </div>
                           <div className='calories-foot-item-desc'>
-                            {' '}
-                            {caloriesMor.carbs.toFixed(2)}g{' '}
+                            {Math.round(((bmr + 500) * 25) / 100 / 4)}
+                            cal
                           </div>
                         </div>
                         <div className='calories-foot-item'>
@@ -246,8 +208,7 @@ const Calories: React.FC<ITranslation> = ({ t }) => {
                             {t.protein}:
                           </div>
                           <div className='calories-foot-item-desc'>
-                            {' '}
-                            {caloriesMor.protein.toFixed(2)}g
+                            {Math.round(((bmr + 500) * 40) / 100 / 4)}
                           </div>
                         </div>
                         <div className='calories-foot-item'>
@@ -256,8 +217,8 @@ const Calories: React.FC<ITranslation> = ({ t }) => {
                             {t.fat}:
                           </div>
                           <div className='calories-foot-item-desc'>
-                            {' '}
-                            {caloriesMor.fat.toFixed(2)}g
+                            {Math.round(((bmr + 500) * 35) / 100 / 9)}
+                            cal
                           </div>
                         </div>
                         <div className='calories-foot-item'>
@@ -265,8 +226,7 @@ const Calories: React.FC<ITranslation> = ({ t }) => {
                             {t.totalCalories}:
                           </h3>
                           <div className='calories-foot-item-desc'>
-                            {' '}
-                            {bmrLess.toFixed(2)}g
+                            {Math.round(bmr + 500)}cal
                           </div>
                         </div>
                       </div>
@@ -281,7 +241,8 @@ const Calories: React.FC<ITranslation> = ({ t }) => {
                             {t.carbs}:
                           </div>
                           <div className='calories-foot-item-desc'>
-                            {caloriesHigh.carbs.toFixed(2)}g
+                            {Math.round(((bmr - 500) * 55) / 100 / 4)}
+                            cal
                           </div>
                         </div>
                         <div className='calories-foot-item'>
@@ -289,8 +250,8 @@ const Calories: React.FC<ITranslation> = ({ t }) => {
                             {t.protein}:
                           </div>
                           <div className='calories-foot-item-desc'>
-                            {' '}
-                            {caloriesHigh.protein.toFixed(2)}g
+                            {Math.round(((bmr - 500) * 20) / 100 / 4)}
+                            cal
                           </div>
                         </div>
                         <div className='calories-foot-item'>
@@ -299,8 +260,8 @@ const Calories: React.FC<ITranslation> = ({ t }) => {
                             {t.fat}:
                           </div>
                           <div className='calories-foot-item-desc'>
-                            {' '}
-                            {caloriesHigh.fat.toFixed(2)}g
+                            {Math.round(((bmr - 500) * 25) / 100 / 9)}
+                            cal
                           </div>
                         </div>
                         <div className='calories-foot-item'>
@@ -308,8 +269,7 @@ const Calories: React.FC<ITranslation> = ({ t }) => {
                             {t.totalCalories}:
                           </h3>
                           <div className='calories-foot-item-desc'>
-                            {' '}
-                            {bmrLess.toFixed(2)}{' '}
+                            {Math.round(bmr - 500)}cal
                           </div>
                         </div>
                       </div>
@@ -323,8 +283,7 @@ const Calories: React.FC<ITranslation> = ({ t }) => {
                             {t.carbs}:
                           </div>
                           <div className='calories-foot-item-desc'>
-                            {' '}
-                            {caloriesMed.carbs.toFixed(2)}g{' '}
+                            {Math.round((bmr * 55) / 100 / 4)}cal
                           </div>
                         </div>
                         <div className='calories-foot-item'>
@@ -333,7 +292,7 @@ const Calories: React.FC<ITranslation> = ({ t }) => {
                           </div>
                           <div className='calories-foot-item-desc'>
                             {' '}
-                            {caloriesMed.protein.toFixed(2)}g{' '}
+                            {Math.round((bmr * 20) / 100 / 4)}cal
                           </div>
                         </div>
                         <div className='calories-foot-item'>
@@ -342,8 +301,7 @@ const Calories: React.FC<ITranslation> = ({ t }) => {
                             {t.fat}:
                           </div>
                           <div className='calories-foot-item-desc'>
-                            {' '}
-                            {caloriesMed.fat.toFixed(2)}g{' '}
+                            {Math.round((bmr * 25) / 100 / 4)}cal
                           </div>
                         </div>
                         <div className='calories-foot-item'>
@@ -351,14 +309,19 @@ const Calories: React.FC<ITranslation> = ({ t }) => {
                             {t.totalCalories}:
                           </h3>
                           <div className='calories-foot-item-desc'>
-                            {' '}
-                            {bmrLess.toFixed(2)}{' '}
+                            {Math.round(bmr)}cal
                           </div>
                         </div>
                       </div>
-
                   : <>
-                      <div className='emt'>not found</div>
+                      <div className='emt'
+                        style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', gap: '2rem', padding: '1rem',marginTop:'2rem' }}
+                      >
+                        <h3 style={{ textAlign: 'center', fontSize: '2rem', color: '#7f8897', fontWeight: 'bold' }}>{t.emty}</h3>
+                        <p
+                          style={{ textAlign: 'center', fontSize: '1.5rem', color: '#7f8897' }}
+                        >{t.emtDesc}</p>
+                      </div>
                     </>
                   }
                 </div>

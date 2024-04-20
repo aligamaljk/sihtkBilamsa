@@ -240,4 +240,6 @@ export default {
   deleteMessage: 'Are you sure you want to delete this sport ?',
   deleteMessageConfirm: 'This action cannot be undone',
   addArticles: 'Add Articles',
+  emty: 'No data available',
+  emtDesc: 'No data to display'
 };
