@@ -68,3 +68,9 @@
   font-size: 1.7rem;
   font-weight: 600;
 }
+.ant-skeleton.ant-skeleton-element{
+  width: 100% !important;
+  .ant-skeleton-image{
+    width: 100% !important;
+  }
+}

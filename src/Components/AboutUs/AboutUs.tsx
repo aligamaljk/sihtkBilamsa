@@ -58,7 +58,7 @@ function AboutUs({ t }: ITranslation) {
           </div>
         </div>
 
-        <TeamSection t={t} />
+        {/* <TeamSection t={t} /> */}
       </div>
     </div>
   );

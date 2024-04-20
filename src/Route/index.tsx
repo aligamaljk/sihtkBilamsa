@@ -19,6 +19,7 @@ import Admin from '../Pages/Admin/Admin';;
 import Sports from '../Components/Activities/Sports/Sports';
 import Exercises from '../Components/Activities/Exercises/Exercises';
 import Goal from '../Components/Activities/Gole/Goal';
+import ExercisesDetails from '../Components/Activities/Exercises/ExercisesDetails/ExercisesDetails';
 
 const RoutesWrapper = ({ t }: ITranslation) => {
   const routes = useRoutes([
@@ -85,6 +86,10 @@ const RoutesWrapper = ({ t }: ITranslation) => {
             {
               path: 'exercises',
               element: <Exercises t={t} />
+            },
+            {
+              path: 'exercises/:id',
+              element: <ExercisesDetails t={t} />
             }
           ]
         },
