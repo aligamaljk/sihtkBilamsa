@@ -2,12 +2,12 @@ import { Card, Image } from "antd"
 import { ITranslation } from "../../../types"
 import img from '../../../assets/pexels-anush-gorak-1229356.jpg';
 import { useNavigate } from "react-router";
-const Exercises : React.FC <ITranslation> = ({t}) => {
+const Exercises = ({ t }: ITranslation) => {
   const navigator = useNavigate();
   return (
     <>
       <div className='exercises'>
-        <div className='title'> Exercises </div>
+        <div className='title'> {t.exercises} </div>
         <div className='content'>
           <div className='cards'>
             {[1, 2, 3, 4, 5, 6].map((item) => (
@@ -15,7 +15,9 @@ const Exercises : React.FC <ITranslation> = ({t}) => {
                 className='card'
                 key={item}
                 hoverable
-                onClick={() => navigator(`/activities/exercises/${item}`)}
+                onClick={() =>
+                  navigator(`/activities/exercises/${item}`)
+                }
               >
                 <div className='img'>
                   <Image
@@ -41,6 +43,6 @@ const Exercises : React.FC <ITranslation> = ({t}) => {
       </div>
     </>
   );
-}
+};
 
 export default Exercises

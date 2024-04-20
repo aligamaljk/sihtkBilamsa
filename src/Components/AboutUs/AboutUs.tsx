@@ -2,8 +2,6 @@ import { Link } from 'react-router-dom';
 import { ITranslation } from '../../types';
 import { IoIosArrowForward } from 'react-icons/io';
 import './AboutUs.scss';
-import TeamSection from './teamSection/TeamSection';
-
 function AboutUs({ t }: ITranslation) {
   return (
     <div className='about'>

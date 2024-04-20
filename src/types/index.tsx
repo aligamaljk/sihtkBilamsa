@@ -242,6 +242,7 @@ export interface ITranslation {
     requiredAddSport?: string;
     emty?: string;
     emtDesc?: string;
+    exercisesDetails?: string;
   };
 }
 

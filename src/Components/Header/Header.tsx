@@ -11,7 +11,7 @@ import {
   getStoredUser,
   setLang
 } from '../../services/user-storage';
-import { ITranslation, StoreType } from '../../types';
+import { ITranslation } from '../../types';
 import { IoIosArrowDown } from 'react-icons/io';
 import { MdLanguage } from 'react-icons/md';
 import { UserOutlined } from '@ant-design/icons';

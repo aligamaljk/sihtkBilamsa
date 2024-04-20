@@ -241,5 +241,7 @@ export default {
   deleteMessageConfirm: 'This action cannot be undone',
   addArticles: 'Add Articles',
   emty: 'No data available',
-  emtDesc: 'No data to display'
+  emtDesc: 'No data to display',
+  
+  exercisesDetails: 'Exercises Details',
 };

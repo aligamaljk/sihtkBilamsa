@@ -13,7 +13,7 @@ const Calories: React.FC<ITranslation> = ({ t }) => {
   const [more, setMore] = useState<string | undefined>(undefined);
   const onFinish = (values: any) => {
     console.log('Success:', values);
-    const { weight, height, burn, more, age, gender, exercise } =
+    const { weight, height, more, age, exercise } =
       values;
     setMore(more);
     setBmr((10 * weight + 6.25 * height - 5 * age) * exercise);

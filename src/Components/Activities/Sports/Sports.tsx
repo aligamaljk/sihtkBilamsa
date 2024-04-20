@@ -59,7 +59,7 @@ const Sports : React.FC<ITranslation> = ({t}) => {
         {
           title: t?.actions,
           dataIndex: 'action',
-          render: ( record: any) => (
+          render: () => (
             // console.log(record, 'record'),
             <Popconfirm
               title={t?.deleteMessage}

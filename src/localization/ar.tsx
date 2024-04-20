@@ -239,4 +239,5 @@ export default {
   addArticles: 'اضافه المقالات',
   emty: 'لا يوجد بيانات',
   emtDesc: 'لا يوجد بيانات لعرضها',
+  exercisesDetails: 'تفاصيل التمرين',
 };

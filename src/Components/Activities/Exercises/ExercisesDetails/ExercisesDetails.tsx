@@ -4,7 +4,7 @@ const ExercisesDetails = ({ t }: ITranslation) => {
   return (
     <>
       <div className='exercises-details'>
-        <h1>ExercisesDetails</h1>
+        <h1>{t.exercisesDetails}</h1>
       </div>
     </>
   );

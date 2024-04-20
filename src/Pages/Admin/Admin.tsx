@@ -1,5 +1,5 @@
 import { Button, Col, Form, Input, message, Upload, UploadFile, UploadProps } from "antd"
-import { fileType, fileUploadType, ITranslation, TypesArticle } from "../../types";
+import { fileType, ITranslation, TypesArticle } from "../../types";
 import "./Admin.scss"
 import { useState } from "react";
 import {db, imgDB} from "../../Firebase/Firebase";
@@ -14,29 +14,6 @@ const Admin = ({ t }: ITranslation) => {
   
   const [loading, setLoading] = useState<boolean>(false);
   const [form] = Form.useForm();
-  const beforeUpload = (file: fileUploadType) => {
-    const isLt2M = file.size / 1024 / 1024 < 2;
-    if (!isLt2M) {
-      message.error(
-        'حجم الصورة يجب ان يكون اقل من 2 ميجا بايت'
-      );
-      return false;
-    }
-    return isLt2M;
-  };
- const handleUpload = async ({
-   // file,
-   onSuccess
- }: {
-   // file: fileUploadType;
-   onSuccess: (ret: string) => void;
- }) => {
-   // console.log(file);
-   // console.log(onSuccess);
-   setTimeout(() => {
-     onSuccess('ok');
-   }, 0);
- };
  const handleChange = ({
    fileList: newFileList
  }: {
