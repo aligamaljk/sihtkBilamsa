@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { ITranslation } from '../../../types';
 import './HeaderRes.scss';
 import { RiMenuUnfoldFill } from 'react-icons/ri';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import {  NavLink, useNavigate } from 'react-router-dom';
 import { GoSignOut } from 'react-icons/go';
 import { IoIosArrowDown } from 'react-icons/io';
 import { UserOutlined } from '@ant-design/icons';
