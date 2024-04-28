@@ -167,8 +167,6 @@ const BlogsDetails: React.FC<ITranslation> = ({ t }) => {
           {t.date}: <span>{foundArticle?.date || '22/10/2022'}</span>
         </h3>
       </div>
-      <div className='pag'>
-      </div>
     </div>
   );
 };
