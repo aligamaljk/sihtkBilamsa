@@ -23,17 +23,17 @@ const BlogsDetails: React.FC<ITranslation> = ({ t }) => {
   );
   const [load, setLoad] = useState<boolean>(true);
   const [articlese, setArticles] = useState <ArticleType[]>([]);
-  console.log(idPage);
+  // console.log(idPage);
    const getDate = async () => {
     setLoad(true);
     const articles = collection(db, 'articles');
     const data = await getDocs(articles)
-    console.log(data, "data");
+    // console.log(data, "data");
     
     const allData = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
     setLoad(false);
     setArticles(allData );
-    console.log(allData);
+    // console.log(allData);
   };
   useEffect(() => {
     getDate();
@@ -41,7 +41,7 @@ const BlogsDetails: React.FC<ITranslation> = ({ t }) => {
   const dataDetails = articlese?.find(
     (article: ArticleType) => article.id == id as unknown as string
   )
-  console.log(dataDetails);
+  // console.log(dataDetails);
   
   const data = currentLang === 'en' ? articlesEn : articlesAr;
   const foundArticle = data?.find(
@@ -49,7 +49,7 @@ const BlogsDetails: React.FC<ITranslation> = ({ t }) => {
   );
   const htmlString = foundArticle?.content.join('') || '';
    const handleDeleteArticle = () => {
-    console.log(dataDetails?.id, 'foundArticle?.id');
+    // console.log(dataDetails?.id, 'foundArticle?.id');
     
      deleteDoc(
        doc(db, 'articles', dataDetails?.id as unknown as string)
@@ -65,7 +65,35 @@ const BlogsDetails: React.FC<ITranslation> = ({ t }) => {
   if (load) {
     return (
       <div className='blogs-details'>
-        <Skeleton active />
+        {getStoredUser() === 'admin' && (
+          <div
+            className='header-admin'>
+            <Skeleton.Button
+              active
+              size='large'
+            />
+            <Skeleton.Button
+              active
+              size='large'
+            />
+          </div>
+        )}
+        <Skeleton.Image active />
+        <h1>
+          <Skeleton active />
+          <Skeleton active />
+          <Skeleton active />
+          <Skeleton active />
+          <Skeleton active />
+        </h1>
+        <div className='auth'>
+          <h3>
+            <Skeleton active />
+            <span>
+              <Skeleton active />
+            </span>
+          </h3>
+        </div>
       </div>
     );
   }
@@ -145,12 +173,12 @@ const BlogsDetails: React.FC<ITranslation> = ({ t }) => {
         </h3>
       </div>
       <div className='pag'>
-        <Pagination
+        {/* <Pagination
           responsive={true}
           defaultCurrent={idPage}
           total={50}
           onChange={(page) => setIdPage(page)}
-        />
+        /> */}
       </div>
     </div>
   );

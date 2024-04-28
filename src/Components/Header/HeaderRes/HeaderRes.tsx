@@ -10,6 +10,7 @@ import { UserOutlined } from '@ant-design/icons';
 import { HiOutlineLogin } from 'react-icons/hi';
 import {
   clearStoredToken,
+  clearStoredUser,
   clearStoredUserProfile,
   getStoredUser
 } from '../../../services/user-storage';
@@ -99,6 +100,21 @@ const HeaderRes: React.FC<ITranslation> = ({ t }) => {
           >
             {t.contactUs}
           </NavLink>
+          {/* admin */}
+          {getStoredUser() === 'admin' && (
+            <NavLink
+              to='/admin'
+              title='Admin'
+              className={({ isActive }) =>
+                isActive ? 'active-link' : 'admin-link-res'
+              }
+              onClick={() => {
+                setOpen(false);
+              }}
+            >
+              Admin
+            </NavLink>
+          )}
         </div>
         <div className='login-res'>
           {
@@ -113,18 +129,19 @@ const HeaderRes: React.FC<ITranslation> = ({ t }) => {
                   okText={t.okText}
                   cancelText={t.cancelText}
                   onConfirm={() => {
-doSignOut()
-  .then(() => {
-    clearStoredToken();
-    clearStoredUserProfile();
-    dispatch(setCurrentUser(null));
-    navigate('/login');
-    message.success(t.LogOutMessage);
-  })
-  .catch((error) => {
-    console.log(error);
-    message.error(error.message);
-  });
+                    doSignOut()
+                      .then(() => {
+                        clearStoredToken();
+                        clearStoredUserProfile();
+                        clearStoredUser();
+                        dispatch(setCurrentUser(null));
+                        navigate('/login');
+                        message.success(t.LogOutMessage);
+                      })
+                      .catch((error) => {
+                        console.log(error);
+                        message.error(error.message);
+                      });
                   }}
                   onCancel={() => {
                     message.info(t.popupCanceledMessage);

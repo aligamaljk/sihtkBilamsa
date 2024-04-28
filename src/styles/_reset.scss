@@ -368,21 +368,21 @@ $breakpoints: (
   margin-left: auto !important;
   margin-right: auto !important;
   width: 100%;
-
+  overflow: hidden;
   @include mq('xxl', min) {
-    max-width: 1320px;
+    // max-width: 1320px;
   }
   @include mq('xxl') {
-    max-width: 1137px;
+    // max-width: 1137px;
   }
   @include mq('xl') {
-    max-width: 933px;
+    // max-width: 933px;
   }
   @include mq('lg') {
-    max-width: 723px;
+    // max-width: 723px;
   }
   @include mq('md') {
-    max-width: 100vw;
+    // max-width: 100vw;
     padding: 0 45px;
   }
 }

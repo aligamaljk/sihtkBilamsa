@@ -4,9 +4,9 @@
   min-height: 100vh;
   .main-header {
     background-color: $black-800;
-    left: 0;
+    width: 100%;
     position: fixed;
-    right: 0;
+    left: 0;
     top: 0;
     z-index: 999;
     .header {
@@ -39,8 +39,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        flex-direction: row;
-        height: 100%;
         gap: 10px;
         background: transparent;
       }
@@ -55,6 +53,7 @@
       margin: 0 5px;
     }
     .main-header {
+      // width: 90%;
       .header {
         .link-res,
         .links {

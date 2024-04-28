@@ -7,6 +7,7 @@ import {
 } from '../../services/store/reducers/user';
 import {
   clearStoredToken,
+  clearStoredUser,
   clearStoredUserProfile,
   getStoredUser,
   setLang
@@ -128,7 +129,7 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
                     .then(() => {
                       clearStoredToken();
                       clearStoredUserProfile();
-                      clearStoredUserProfile();
+                      clearStoredUser();
                       dispatch(setCurrentUser(null));
                       navigate('/login');
                       message.success(t.LogOutMessage);
@@ -211,7 +212,7 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
             to='/admin'
             title='Admin'
             className={({ isActive }) =>
-              isActive ? 'active-link' : ''
+              isActive ? 'active-link admin-link' : 'admin-link'
             }
           >
             Admin

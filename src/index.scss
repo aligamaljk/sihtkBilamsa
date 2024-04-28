@@ -45,6 +45,7 @@
 }
 
 
+
 .ant-skeleton-image{
     width: 100% !important;
     height: 200px !important;
@@ -72,5 +73,26 @@
   width: 100% !important;
   .ant-skeleton-image{
     width: 100% !important;
+  }
+}
+@media screen and (max-width: 992px) {
+    .admin-link {
+    display: none;
+  }
+}
+@media screen and (max-width: 768px) {
+  .ant-layout-header {
+    padding: 0 !important;
+  }
+  .section-header{
+    padding: 20px;
+    height: 180px;
+    .title{
+      font-size: 20px;
+    }
+    .link{
+      font-size: 14px;
+    }
+    
   }
 }

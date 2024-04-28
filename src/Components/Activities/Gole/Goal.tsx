@@ -140,6 +140,7 @@ const Goal: React.FC<ITranslation> = ({ t }) => {
               width: '100%',
               textAlign: 'center'
             }}
+            className='form-button'
           >
             <Button
               type='primary'

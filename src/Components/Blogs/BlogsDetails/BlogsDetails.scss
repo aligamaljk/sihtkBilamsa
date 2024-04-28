@@ -7,6 +7,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  .header-admin {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 30px;
+    // padding: 10px 0;
+    // border-top: 1px solid #ccc;
+    .ant-skeleton {
+      width: auto !important;
+    }
+  }
   .ant-image {
     width: 100%;
     background: $blueSky-900;

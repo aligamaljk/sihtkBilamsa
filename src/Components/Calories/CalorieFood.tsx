@@ -181,7 +181,8 @@ const CalorieFood: React.FC<ITranslation> = ({ t }) => {
                       alignItems: 'center',
                       padding: '10px 0',
                       gap: '10px',
-                      marginTop: '20px'
+                      marginTop: '20px',
+                      flexWrap: 'wrap'
                     }}
                   >
                     <div>

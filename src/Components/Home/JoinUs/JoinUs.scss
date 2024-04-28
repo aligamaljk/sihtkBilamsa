@@ -20,9 +20,12 @@
       font-size: 1.5rem;
     }
   }
+  .container{
+    padding-block: 100px;
+  }
   .overlay {
     background-color: rgba(238, 104, 104, 0.8);
-    padding: 100px 0px;
+    // padding: 100px 0px;
     color: $white;
 
     .content {
