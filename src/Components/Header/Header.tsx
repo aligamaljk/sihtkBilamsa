@@ -164,7 +164,7 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
             </div>
             // Log In Tab
           : <Link
-              className='link-res'
+              className='link-res admin-link'
               to='/login'
               style={{
                 display: 'flex',
@@ -181,7 +181,6 @@ const HeaderApp: React.FC<ITranslation> = ({ t }) => {
                 }}
               />
             </Link>
-
         }
         {/* Profile Tab*/}
         <NavLink

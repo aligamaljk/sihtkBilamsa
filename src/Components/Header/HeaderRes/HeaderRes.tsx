@@ -167,18 +167,20 @@ const HeaderRes: React.FC<ITranslation> = ({ t }) => {
                 </Popconfirm>
               </div>
               // Log In Tab
-            : <Link
-                className='link-res'
+            : <NavLink
+                className={({ isActive }) =>
+                  isActive ? 'active-login-res' : 'admin-link-res'
+                }
                 to='/login'
                 onClick={() => {
                   setOpen(false);
                 }}
+                title='LogIn'
                 style={{
                   display: 'flex',
                   alignItems: 'center',
                   gap: '5px',
-                  paddingRight: '10px',
-                  color: '#37ebc7'
+                  paddingRight: '10px'
                 }}
               >
                 {t.LogIn}
@@ -187,7 +189,7 @@ const HeaderRes: React.FC<ITranslation> = ({ t }) => {
                     transform: 'rotate(180deg)'
                   }}
                 />
-              </Link>
+              </NavLink>
 
           }
           {/* Profile Tab*/}
