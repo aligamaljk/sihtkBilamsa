@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Image, message, Pagination, Popconfirm, Skeleton } from 'antd';
+import { Button, Image, message, Popconfirm, Skeleton } from 'antd';
 import { ArticleType, ITranslation, StoreType } from '../../../types';
 import './BlogsDetails.scss';
 import { useSelector } from 'react-redux';
@@ -16,11 +16,6 @@ const BlogsDetails: React.FC<ITranslation> = ({ t }) => {
   );
   
   const { id } = useParams();
-  // console.log(id);
-  
-  const [idPage, setIdPage] = useState<number | undefined>(
-    Number(id)
-  );
   const [load, setLoad] = useState<boolean>(true);
   const [articlese, setArticles] = useState <ArticleType[]>([]);
   // console.log(idPage);
@@ -45,7 +40,7 @@ const BlogsDetails: React.FC<ITranslation> = ({ t }) => {
   
   const data = currentLang === 'en' ? articlesEn : articlesAr;
   const foundArticle = data?.find(
-    (article: ArticleType) => article.id == idPage 
+    (article: ArticleType) => article.id == id 
   );
   const htmlString = foundArticle?.content.join('') || '';
    const handleDeleteArticle = () => {
@@ -173,12 +168,6 @@ const BlogsDetails: React.FC<ITranslation> = ({ t }) => {
         </h3>
       </div>
       <div className='pag'>
-        {/* <Pagination
-          responsive={true}
-          defaultCurrent={idPage}
-          total={50}
-          onChange={(page) => setIdPage(page)}
-        /> */}
       </div>
     </div>
   );
