@@ -9,6 +9,7 @@
     border-color:#fd7304 ;
     color: #fff;
     transition: all 0.3s ease;
+    width: fit-content;
     &:hover{
       background-color: #fd7304;
       color: #fff;
@@ -27,10 +28,6 @@
     background-color: $black;
   }
 
-  .container {
-    // position: relative;
-  }
-
   // Desctiption text of the Section
   .description {
     position: absolute;
@@ -44,15 +41,15 @@
     justify-content: center;
     transform: translateY(0px);
     align-items: start;
+    margin-left:100px;
     @media (max-width: 768px) {
       text-align: center;
       align-items: center;
+      margin-left: 0;
     }
-
     .info {
       position: relative;
     }
-
     h1 {
       font-size: 5rem;
       font-weight: 700;

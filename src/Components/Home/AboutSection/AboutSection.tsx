@@ -74,7 +74,8 @@ function AboutSection({ t }: ITranslation) {
             <p>{t.homePage?.about?.p2}</p>
           </div>
           <Link to='/about' className='hero-btn'>
-            {t.homePage?.hero?.btn}
+            {/* {t.homePage?.hero?.btn} */}
+            {t.aboutUs} !
           </Link>
         </div>
       </div>

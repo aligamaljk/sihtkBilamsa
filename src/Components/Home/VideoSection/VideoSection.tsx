@@ -20,7 +20,8 @@ function VideoSection({ t }: ITranslation) {
         </Button>
         <h2 data-aos='fade-up'>{t.homePage?.videoSection?.h2}</h2>
         <div data-aos='fade-up'>
-          <button className='hero-btn'
+          <button
+            className='hero-btn'
             onClick={() => setModalOpen(true)}
           >
             {t.homePage?.videoSection?.btn}
@@ -45,7 +46,7 @@ function VideoSection({ t }: ITranslation) {
       >
         <div className='iframe-container'>
           <iframe
-            src='https://www.youtube.com/embed/s0m2t4efQms'
+            src='https://www.youtube.com/embed/MLYNur3kd94'
             title='موقع صحتك بِلَمسة'
             allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
             referrerPolicy='strict-origin-when-cross-origin'

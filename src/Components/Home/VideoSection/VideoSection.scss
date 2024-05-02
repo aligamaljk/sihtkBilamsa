@@ -4,8 +4,12 @@
 .video-section {
   background-image: url('/bgVideoSection.jpg');
   background-position: 0% 30%;
-  padding-block: 100px;
+  // padding-block: 100px;
   color: $white;
+  height: 370px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   .hero-btn{
     border-color:#fd7304 ;
     color: #fff;
@@ -21,7 +25,6 @@
     justify-content: center;
     align-items: center;
     gap: 50px;
-
     .play-btn {
       border-radius: 50%;
       padding: 30px 20px;
