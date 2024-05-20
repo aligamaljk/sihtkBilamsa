@@ -38,6 +38,12 @@ Collaborating with unfamiliar team members within a restricted timeline presente
 -   vite
 -   million
 
+
+## Performance 
+
+<img src="./public/Performance.jpg" > </img>
+
+
 ## Getting Started
 
 1. Clone this repository.
