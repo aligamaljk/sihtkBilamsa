@@ -36,6 +36,7 @@ Collaborating with unfamiliar team members within a restricted timeline presente
 -   Firebase
 -   aos
 -   vite
+-   million
 
 ## Getting Started
 
