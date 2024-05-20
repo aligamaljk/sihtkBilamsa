@@ -5,10 +5,9 @@ import './Articles.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { IoIosArrowForward } from 'react-icons/io';
 import { useSelector } from 'react-redux';
-import { articlesAr, articlesEn } from '../../Data/Data';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../Firebase/Firebase';
-
+import { block, For } from 'million/react';
 
 const Articles: React.FC<ITranslation> = ({ t }) => {
   const navget = useNavigate();
@@ -31,6 +30,31 @@ const Articles: React.FC<ITranslation> = ({ t }) => {
   useEffect(() => {
     getDate();
   }, []);
+  const ArticlesCards = block(({ item } : {item: ArticleTypeTwo}) => {
+    return (
+      <Card
+        key={item?.id}
+        className='card'
+        onClick={() => navget(`/articles/${item?.id}`)}
+        hoverable
+      >
+        <div className='img'>
+          <Image preview={false} src={item?.image} />
+        </div>
+        <div className='title-card'>
+          <h1>
+            {currentLang === 'en' ? item?.titleEn : item?.titleAr}
+          </h1>
+          <p className='desc'>
+            {currentLang === 'en' ?
+              item?.descriptionEn?.slice(0, 100)
+            : item?.descriptionAr?.slice(0, 100)}
+            ...
+          </p>
+        </div>
+      </Card>
+    );
+  })
   if(load){
     return (
       <div className="articles">
@@ -68,63 +92,10 @@ const Articles: React.FC<ITranslation> = ({ t }) => {
         </div>
         <div className='container'>
           <div className='cards'>
-            {(currentLang === 'en' ? articlesEn : articlesAr)?.map(
-              (item) => (
-                <Card
-                  key={item?.id}
-                  className='card'
-                  onClick={() => navget(`/articles/${item?.id}`)}
-                  hoverable
-                >
-                  <div className='img'>
-                    <Image preview={false} src={item?.image} />
-                  </div>
-                  <div className='title-card'>
-                    <h1>{item?.title}</h1>
-                  </div>
-                  <div className='desc'>
-                    {item?.desShow
-                      .split(' ')
-                      .reduce((acc, cur, i) => {
-                        // Enter the length of words to display like here    : 9
-                        if (cur !== ' ' && i < 9) {
-                          return (acc = acc + ' ' + cur);
-                        }
-                        return acc;
-                      }, '')}
-                    ...
-                    {/* {item?.content?.map((item : any)=>(
-                  <div key={item} dangerouslySetInnerHTML={{__html: item.slice(0,20)}} ></div>
-                ))} */}
-                  </div>
-                </Card>
-              )
-            )}
             {
-            articles?.map((item) => (
-              <Card
-                key={item?.id}
-                className='card'
-                onClick={() => navget(`/articles/${item?.id}`)}
-                hoverable
-              >
-                <div className='img'>
-                  <Image preview={false} src={item?.image} />
-                </div>
-                <div className='title-card'>
-                  <h1>
-                    {
-                      currentLang === 'en' ? item?.titleEn : item?.titleAr
-                    }
-                    </h1>
-                    <p className='desc'>
-                      {
-                        currentLang === 'en' ? item?.descriptionEn?.slice(0, 100) : item?.descriptionAr?.slice(0, 100)
-                      }...
-                    </p>
-                </div>
-              </Card>
-            ))
+              <For each={articles} memo={true} >
+                {(item) => <ArticlesCards item={item} />}
+              </For>
             }
           </div>
           <Pagination

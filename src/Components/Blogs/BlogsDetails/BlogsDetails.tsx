@@ -4,12 +4,12 @@ import { ArticleType, ITranslation, StoreType } from '../../../types';
 import './BlogsDetails.scss';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router';
-import { articlesAr, articlesEn } from '../../../Data/Data';
 import { collection, deleteDoc, doc, getDocs } from 'firebase/firestore';
 import { db } from '../../../Firebase/Firebase';
 import { Link } from 'react-router-dom';
 import { getStoredUser } from '../../../services/user-storage';
-const BlogsDetails: React.FC<ITranslation> = ({ t }) => {
+import { block } from 'million/react';
+const BlogsDetails: React.FC<ITranslation> = block(({ t }) => {
   const navigator = useNavigate();
   const { currentLang } = useSelector(
     (state: StoreType) => state?.user
@@ -38,11 +38,6 @@ const BlogsDetails: React.FC<ITranslation> = ({ t }) => {
   )
   // console.log(dataDetails);
   
-  const data = currentLang === 'en' ? articlesEn : articlesAr;
-  const foundArticle = data?.find(
-    (article: ArticleType) => article.id == id 
-  );
-  const htmlString = foundArticle?.content.join('') || '';
    const handleDeleteArticle = () => {
     // console.log(dataDetails?.id, 'foundArticle?.id');
     
@@ -138,15 +133,14 @@ const BlogsDetails: React.FC<ITranslation> = ({ t }) => {
       }
       <Image
         preview={false}
-        src={foundArticle?.image || dataDetails?.image}
+        src={dataDetails?.image}
       />
       <h1>
-        {foundArticle?.title || currentLang === 'en' ?
+        { currentLang === 'en' ?
           dataDetails?.titleEn
         : dataDetails?.titleAr}
       </h1>
       <div className='des'>
-        <div dangerouslySetInnerHTML={{ __html: htmlString }}></div>
         <p>
           {currentLang === 'en' ?
             dataDetails?.descriptionEn
@@ -158,17 +152,16 @@ const BlogsDetails: React.FC<ITranslation> = ({ t }) => {
           {t.author}:
           <span>
             {' '}
-            {foundArticle?.author || currentLang === 'en' ?
+            { currentLang === 'en' ?
               dataDetails?.authorEn
             : dataDetails?.authorAr}
           </span>
         </h3>
         <h3>
-          {t.date}: <span>{foundArticle?.date || '22/10/2022'}</span>
+          {t.date}: <span>{ '22/10/2022'}</span>
         </h3>
       </div>
     </div>
   );
-};
-
+})
 export default BlogsDetails;

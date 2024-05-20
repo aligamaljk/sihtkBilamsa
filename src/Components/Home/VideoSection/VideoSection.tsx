@@ -41,8 +41,10 @@ function VideoSection({ t }: ITranslation) {
         open={modalOpen}
         onCancel={() => setModalOpen(false)}
         width={'fit-content'}
-        cancelButtonProps={{ style: { display: 'none' } }}
-        okButtonProps={{ style: { display: 'none' } }}
+        // cancelButtonProps={{ style: { display: 'none' } }}
+        // okButtonProps={{ style: { display: 'none' } }}
+        footer={null}
+        closeIcon={null}
       >
         <div className='iframe-container'>
           <iframe
