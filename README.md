@@ -12,16 +12,6 @@
 -   **Reminders and Scheduling:** Ability to set reminders for meals, water intake, and exercise sessions to help users adhere to a healthy routine.
 
 
-## Challenges
-
-Collaborating with unfamiliar team members within a restricted timeline presented certain challenges while building the project.
-
-**How did we tackle this challenge**
-
-1. We implemented regular team meetings to foster communication and collaboration.
-2. We assigned specific roles and responsibilities to each team member based on their strengths and expertise.
-3. We encouraged open communication and feedback to address any misunderstandings or conflicts promptly.
-
 ## Tools and libraries used
 
 -   react
